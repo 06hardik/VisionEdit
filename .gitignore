@@ -99,3 +99,7 @@ scratch/
 # Python environment lock files (optional — uncomment if you use them)
 # Pipfile.lock
 # poetry.lock
+
+# Allow test dataset loaders (Python files, not actual video data)
+!tests/datasets/
+!tests/datasets/*.py

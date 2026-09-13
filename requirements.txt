@@ -1,0 +1,32 @@
+# ── VisionEdit — Python Dependencies ──────────────────────────────────────────
+# Install with:  pip install -r requirements.txt
+# Requires Python 3.9+
+# Requires ffmpeg on PATH (for PySceneDetect splitting and MoviePy rendering)
+
+# ── Core video I/O ─────────────────────────────────────────────────────────────
+scenedetect[opencv]>=0.6.4       # scene splitting (PySceneDetect)
+decord>=0.6.0                    # fast GPU/CPU video frame extraction
+opencv-python-headless>=4.9.0   # Haar cascades, Laplacian, frame ops
+
+# ── Object detection & zero-shot matching ─────────────────────────────────────
+ultralytics>=8.2.0               # YOLOv10-S + YOLOWorld (auto-downloads weights)
+
+# ── Affective scoring — Custom FER CNN (Mini-Xception, replaces DeepFace) ─────
+torch>=2.1.0                     # PyTorch — FER CNN inference + YOLO consistency
+torchvision>=0.16.0              # Image transforms used during preprocessing
+mediapipe>=0.10.0                # Face detection (MediaPipe, more accurate than Haar)
+h5py>=3.9.0                      # Read original Keras .hdf5 weights for conversion
+requests>=2.31.0                 # Download weights in scripts/download_weights.py
+
+# ── Rendering & audio ─────────────────────────────────────────────────────────
+moviepy>=1.0.3                   # video assembly, slow-mo, stitching
+librosa>=0.10.0                  # beat detection / audio analysis
+soundfile>=0.12.1                # audio I/O backend for librosa
+audioread>=3.0.1                 # fallback audio I/O
+
+# ── Config & utilities ────────────────────────────────────────────────────────
+pyyaml>=6.0                      # config.yaml parsing
+numpy>=1.24.0                    # numeric arrays
+scipy>=1.11.0                    # knapsack / signal processing helpers
+tqdm>=4.66.0                     # progress bars
+loguru>=0.7.0                    # structured logging

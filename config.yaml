@@ -1,0 +1,181 @@
+# ══════════════════════════════════════════════════════════════════════════════
+#  VisionEdit — Pipeline Configuration
+#  All values here are defaults. Override at runtime via CLI flags.
+#  See main.py --help for available overrides.
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── Phase 1: Temporal Segmentation ───────────────────────────────────────────
+segmentation:
+  # Number of uniformly sampled frames extracted per micro-scene (FR1)
+  frames_per_scene: 16
+  # Scene change detection algorithm: "content" | "adaptive" | "threshold"
+  detector: "content"
+  # ContentDetector / AdaptiveDetector threshold (higher = fewer scene cuts)
+  threshold: 27.0
+
+# ── Phase 2: Stream A — Semantic Relevance (Two-Stage Cascade OD) ────────────
+streams:
+  semantic:
+    # ── Stage 1: Always-on lightweight detector ───────────────────────────────
+    # Justified by Hua et al. (2025) [B1]: YOLOv8-S best speed-accuracy S-class.
+    # Auto-downloaded by Ultralytics on first run (~22 MB).
+    yolo_model: "yolov8s.pt"
+
+    # ── Stage 2: Gated expensive detector (runs only on candidates) ───────────
+    # Only triggered when Stage 1 top confidence >= stage2_trigger_threshold.
+    # Implements cascade principle from Shah et al. (2026) [B3]:
+    #   RR = (1 - alpha) * C_expensive / (C_cheap + C_expensive)
+    yolo_model_heavy: "yolov9e.pt"
+    # Confidence threshold above which Stage 2 fires (0.0 = always, 1.0 = never)
+    stage2_trigger_threshold: 0.60
+
+    # ── YOLO-World (zero-shot prompts only) ───────────────────────────────────
+    yolo_world_model: "yolov8s-world.pt"
+    # Free-text zero-shot prompt classes. Empty list -> cascade OD (no prompts).
+    prompt: []
+
+    # ── Detection threshold ───────────────────────────────────────────────────
+    # Minimum confidence for a detection to be counted toward O_i
+    min_confidence: 0.25
+
+    # ── Kalman Tracker (adaptive tau -- fixes B3 fixed tau=75 limitation) ─────
+    # Estimated video fps (used to normalise tau from seconds to frames).
+    video_fps: 25.0
+    # Persistence threshold in SECONDS (adaptive: tau_frames = tau_base_sec * fps)
+    # At 25fps: 5.0s = 125 frames (vs B3's fixed 75 frames at 15fps)
+    tau_base_sec: 5.0
+
+    # ── FLOP budgets (for cascade savings reporting, from Hua et al. [B1]) ────
+    # YOLOv8-S: 28.6 GFLOPs/frame, YOLOv9-E: 189.0 GFLOPs/frame
+    stage1_gflops: 28.6
+    stage2_gflops: 189.0
+
+    # ── SaLA (Shape-aware Label Assignment, Yang et al. [B4]) ─────────────────
+    # Note: SaLA is applied during TRAINING only (inference-cost neutral).
+    # sais() and shape_score() utilities are in saliency_score.py.
+    # Use these when fine-tuning Stage 1/2 models on your custom dataset.
+
+
+  # ── Phase 3: Stream B — Affective Scoring ──────────────────────────────────
+  affective:
+    # Emotion backend: "fer_cnn" (custom CNN) | "stub" (returns 0.0, for tests)
+    backend: "fer_cnn"
+    # Backbone architecture:
+    #   "clcm"          — RECOMMENDED: ~2.4M params, cross-dataset validated
+    #                     (Gursesli et al., 2024; IEEE Access)
+    #   "mini_xception" — original ~58K params (backward compat)
+    backbone: "mini_xception"
+    # Path to Mini-Xception pre-trained weights (.pt).
+    # Run 'python scripts/download_weights.py' to download automatically.
+    model_weights: "weights/fer_mini_xception.pt"
+    # Path to CLCM backbone weights (.pt).  Used when backbone: "clcm".
+    clcm_weights: "weights/fer_clcm.pt"
+    # Face detection backend used to crop faces before FER inference.
+    # "mediapipe" (recommended, more accurate) | "haar" (OpenCV fallback)
+    face_detector: "mediapipe"
+    # Minimum MediaPipe face detection confidence (0.0-1.0)
+    min_face_confidence: 0.5
+    # Padding fraction added around each detected face bounding box.
+    # 0.15 = 15% padding on each side (captures chin and forehead).
+    face_padding_ratio: 0.15
+    # Emotions treated as "positive" and summed for E_i
+    positive_emotions: ["happy", "surprise"]
+    # Emotions treated as "negative" -- subtracted from E_i.
+    # Set to [] to ignore negative emotions entirely.
+    negative_emotions: []
+
+    # ── Binary Expert CNNs (Salman et al., 2025 -- MoEDE principle) ──────────
+    # Triggered for low-confidence predictions on hard classes (disgust/fear).
+    # Set to null to disable experts (falls back to primary CNN only).
+    expert_weights:
+      disgust: "weights/expert_disgust.pt"
+      fear:    "weights/expert_fear.pt"
+    # Primary CNN top-1 confidence below which binary experts are consulted.
+    # 0.60 = only run experts when primary is genuinely uncertain.
+    expert_trigger_threshold: 0.60
+
+    # ── Temporal Aggregation (Salman et al., 2025 -- LSTM principle) ─────────
+    # Rolling window size in frames for per-face temporal accumulation.
+    temporal_window: 10
+    # LSTM weights for clip-level aggregation. Set to null to use simple mean.
+    lstm_weights: null
+
+    # ── Intensity Ranking (Punuri et al., 2024 -- A3) ────────────────────────
+    # Grad-CAM mean activation thresholds for 3-tier intensity ranking.
+    # Below minimal -> MINIMAL; between -> AVERAGE; above strong -> STRONG.
+    intensity_thresholds:
+      minimal: 0.40
+      strong:  0.70
+
+    # ── Grad-CAM Heatmap Visualizer (Punuri et al., 2024 -- A3 extension) ─────
+    # Replaces LRP from A3 with Grad-CAM: works on all frames, not just
+    # correctly classified ones (the key LRP limitation we address).
+    # Output: face_crop | JET heatmap | annotated overlay  (side-by-side PNG)
+    gradcam:
+      # Master switch. false = zero overhead (no heatmaps saved).
+      # Set to true to generate visual evidence for the teacher presentation.
+      save_enabled: false
+      # Root directory for saved overlay PNGs.
+      # Files appear as: outputs/gradcam/<clip_id>/frame<F>_face<N>_<emotion>_<intensity>.png
+      output_dir: "outputs/gradcam"
+      # Maximum overlays saved per clip (prevents disk flooding on long videos).
+      # Selects top-N frames by Grad-CAM activation score.
+      max_saves_per_clip: 3
+      # Output image size [width, height] per panel (3 panels side-by-side).
+      target_size: [224, 224]
+      # Heatmap-to-face blend alpha (0.0 = no heatmap, 1.0 = heatmap only).
+      overlay_alpha: 0.45
+
+
+  # ── Phase 4: Stream C — Technical Quality ──────────────────────────────────
+  quality:
+    # Laplacian variance threshold θ_blur (FR4).
+    # Clips below this value are zero-weighted in fusion (quality gate).
+    blur_threshold: 100.0
+
+# ── Phase 5: Fusion & Selection ──────────────────────────────────────────────
+fusion:
+  weights:
+    w1: 0.40   # Stream B — emotion weight
+    w2: 0.35   # Stream A — semantic/object relevance weight
+    w3: 0.25   # Stream C — motion energy weight
+
+selection:
+  # Knapsack target: total duration (seconds) of the output highlight reel
+  target_duration_sec: 60
+  # Discretization bin size (seconds) for the knapsack DP table
+  bin_size_sec: 0.1
+
+# ── Phase 6: Assembly & Rendering ────────────────────────────────────────────
+rendering:
+  # Path to background audio track for beat-matched pacing.
+  # Set to null to skip beat matching and use equal-length cuts.
+  audio_path: null
+  # Saliency threshold above which a clip is slowed to 0.5x speed
+  slowmo_threshold: 0.85
+  # Slow-motion factor (e.g. 0.5 = half speed)
+  slowmo_factor: 0.5
+  # Output .mp4 path (relative to project root or absolute)
+  output_path: "output/highlight.mp4"
+  # Video codec for MoviePy export
+  codec: "libx264"
+  # Audio codec for MoviePy export
+  audio_codec: "aac"
+  # Output frames per second (null = match source clip fps)
+  fps: null
+
+# ── Datasets (for validation / benchmarking) ─────────────────────────────────
+datasets:
+  # Kinetics-400: root directory of local dataset.
+  # Folder structure: kinetics400_root/<category name>/<clip>.mp4
+  # Category names use SPACES (e.g. "laughing", "playing guitar") -- match label_map.txt exactly.
+  # Download using: python scripts/download_kinetics400.py
+  kinetics400_root: "C:/Users/ASUS/OneDrive/Desktop/VisionEdit/datasets/kinetics400"
+
+  # HMDB51: root directory of local HMDB51 copy.
+  # Folder structure: hmdb51_root/<action_category>/<clip>.avi
+  hmdb51_root: "D:/datasets/hmdb51"
+
+  # Split files directory for HMDB51 (optional -- for official train/test splits)
+  # Download from: https://serre-lab.clps.brown.edu/wp-content/uploads/2013/10/test_train_splits.rar
+  hmdb51_splits_dir: null

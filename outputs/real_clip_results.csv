@@ -1,0 +1,30 @@
+clip,class_name,E_i,fer_label,fer_intensity,O_i,od_top_class,od_track_count,M_i,Q_i,passes_gate,S_i
+SLJBlFHPinU.mp4,answering questions,0.0848,neutral,MINIMAL,0.8793,person,4,0.6147,467.7,True,0.495338
+XAoAcyy2Psc.mp4,answering questions,0.0403,neutral,MINIMAL,0.9545,person,4,0.4986,348.3,True,0.474854
+NqE4FpM7Ypk.mp4,answering questions,0.0953,neutral,MINIMAL,0.8192,person,1,0.1942,67.4,False,0.0
+dplRiYsjQUk.mp4,answering questions,0.1566,neutral,MINIMAL,0.9687,person,3,0.2455,1073.0,True,0.463065
+RVQIvrvwA8I.mp4,answering questions,0.0336,neutral,MINIMAL,0.8707,person,2,0.7414,219.3,True,0.503539
+QqlTEhzK_Gw.mp4,applauding,0.7036,happy,STRONG,0.8997,person,5,1.0,336.3,True,0.846339
+5uVHxPCk7d4.mp4,applauding,0.8305,happy,STRONG,0.0,none,0,1.0,540.0,True,0.582218
+9vOxThR8gns.mp4,applauding,0.7737,happy,STRONG,0.3201,tv,1,0.5298,122.1,True,0.553973
+CpeXj_A8YKY.mp4,applauding,0.6871,happy,STRONG,0.7739,person,8,1.0,180.2,True,0.79572
+YSGHvSk3xqY.mp4,applauding,0.758,happy,STRONG,0.9334,person,17,0.1618,782.0,True,0.670332
+3and4vWkW4s.mp4,archery,0.0476,neutral,MINIMAL,0.8297,person,2,0.2157,1276.3,True,0.363344
+5rElcI860iU.mp4,archery,0.0474,neutral,MINIMAL,0.6833,person,1,0.0505,867.9,True,0.27074
+Jfl-1zWi2Go.mp4,archery,0.0969,neutral,MINIMAL,0.9129,person,5,1.0,814.3,True,0.60829
+S0Xwh6F6tz0.mp4,archery,-0.0539,neutral,MINIMAL,0.7838,person,1,0.5406,643.8,True,0.40948
+MrI8XlHC4p0.mp4,archery,-0.0407,neutral,MINIMAL,0.557,person,2,0.7184,139.7,True,0.37455
+6i6Dvl-MebY.mp4,blowing out candles,0.6406,happy,STRONG,0.9305,person,14,0.6209,689.6,True,0.737156
+Hp2i2CG11wY.mp4,blowing out candles,0.6091,happy,STRONG,0.9437,person,14,1.0,70.5,False,0.0
+cVv_XMw4W2U.mp4,blowing out candles,0.702,happy,STRONG,0.8901,person,15,0.8519,100.2,True,0.805309
+8EV2thGZ9zU.mp4,blowing out candles,0.6164,happy,STRONG,0.8193,person,8,0.9252,44.5,False,0.0
+FX-MM3_kMrk.mp4,blowing out candles,0.5811,happy,STRONG,0.9149,person,7,0.3894,129.7,True,0.65002
+PeznSAFMvhc.mp4,bouncing on trampoline,0.6526,surprise,AVERAGE,0.7724,person,5,1.0,317.1,True,0.781378
+UWIUuPeb2hQ.mp4,bouncing on trampoline,0.5342,surprise,AVERAGE,0.8246,person,2,0.1939,84.1,False,0.0
+aZbwDWOX7ZQ.mp4,bouncing on trampoline,0.5547,surprise,AVERAGE,0.8787,person,2,0.9187,166.3,True,0.759111
+SgKsAhSyibY.mp4,bouncing on trampoline,0.4503,surprise,AVERAGE,0.8852,person,7,1.0,219.5,True,0.739927
+Sq0C8qafWGA.mp4,bouncing on trampoline,0.5119,surprise,AVERAGE,0.9171,person,3,0.3285,313.9,True,0.607867
+-jOClYqKtE8.mp4,bowling,0.1278,neutral,MINIMAL,0.9161,person,6,1.0,537.0,True,0.621741
+--dVV4_CSvw.mp4,bowling,0.0394,neutral,MINIMAL,0.9059,person,13,0.3156,691.0,True,0.411737
+-WH-lxmGJVY.mp4,bowling,0.1463,neutral,MINIMAL,0.9366,person,4,0.7568,515.6,True,0.57553
+test_clip.mp4,javelin throw,0.058,neutral,MINIMAL,0.8581,person,2,0.6683,256.6,True,0.490592

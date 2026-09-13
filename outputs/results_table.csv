@@ -1,0 +1,9 @@
+scene_index,start_sec,end_sec,duration_sec,E_i,fer_label,fer_intensity,fer_expert_used,fer_num_faces,O_i,od_top_class,od_track_count,od_stage2_used,od_cascade_savings_pct,M_i,Q_i,passes_gate,S_i
+0,0.0,3.2,3.2,0.72,happy,STRONG,False,3,0.84,person,2,True,69.5,0.62,145.0,True,0.737
+1,3.2,6.4,3.2,0.15,neutral,MINIMAL,False,1,0.53,car,1,True,69.5,0.41,98.0,True,0.348
+2,6.4,9.1,2.7,0.31,disgust,AVERAGE,True,2,0.47,person,2,False,0.0,0.28,112.0,True,0.3585
+3,9.1,11.8,2.7,0.55,happy,AVERAGE,False,2,0.61,dog,1,False,0.0,0.71,32.0,False,0.0
+4,11.8,14.3,2.5,0.0,neutral,MINIMAL,False,0,0.78,bicycle,3,True,69.5,0.88,210.0,True,0.493
+5,14.3,17.5,3.2,0.48,surprise,AVERAGE,False,1,0.91,person,4,True,69.5,0.55,185.0,True,0.648
+6,17.5,19.9,2.4,0.12,neutral,MINIMAL,False,1,0.66,car,2,False,0.0,0.33,134.0,True,0.3615
+7,19.9,22.6,2.7,0.83,surprise,STRONG,False,4,0.79,person,3,True,69.5,0.74,162.0,True,0.7935

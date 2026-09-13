@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VisionEdit &mdash; Architecture Diagram</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e1a;--card:#111827;--card2:#1a2236;--border:#1e2d45;--acc-a:#3b82f6;--acc-b:#a855f7;--acc-c:#10b981;--acc-f:#f59e0b;--acc-s:#ef4444;--text:#e2e8f0;--muted:#64748b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
+.hdr{text-align:center;padding:48px 24px 28px;border-bottom:1px solid var(--border)}
+.hdr h1{font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hdr p{color:var(--muted);margin-top:6px;font-size:.9rem}
+.formula{display:inline-block;margin-top:14px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 24px;font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--acc-f)}
+.main{max-width:1180px;margin:0 auto;padding:36px 22px 80px}
+.sec{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted);margin:28px 0 12px;display:flex;align-items:center;gap:12px}
+.sec::after{content:'';flex:1;height:1px;background:var(--border)}
+.arrow{text-align:center;font-size:1.4rem;color:var(--muted);margin:6px 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.4)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.a::before{background:var(--acc-a)}.b::before{background:var(--acc-b)}.c::before{background:var(--acc-c)}.f::before{background:var(--acc-f)}.s::before{background:var(--acc-s)}.p1::before{background:linear-gradient(90deg,#60a5fa,#818cf8)}.ds::before{background:linear-gradient(90deg,#f59e0b,#fb923c)}
+.ct{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.a .ct{color:var(--acc-a)}.b .ct{color:var(--acc-b)}.c .ct{color:var(--acc-c)}.f .ct{color:var(--acc-f)}.s .ct{color:var(--acc-s)}.p1 .ct{color:#818cf8}.ds .ct{color:#fb923c}
+.card h3{font-size:1rem;font-weight:700;margin-bottom:9px}
+.card p{font-size:.82rem;color:#94a3b8;line-height:1.55}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{background:#0f172a;border:1px solid var(--border);border-radius:6px;padding:3px 9px;font-size:.7rem;font-family:'JetBrains Mono',monospace;color:#94a3b8}
+.tag.g{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.3);color:#34d399;font-family:'Inter',sans-serif}
+.tag.sa{background:rgba(59,130,246,.12);border-color:rgba(59,130,246,.3);color:#60a5fa;font-weight:700}
+.tag.sb{background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.3);color:#c084fc;font-weight:700}
+.tag.sc{background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3);color:#34d399;font-weight:700}
+.tag.sf{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.3);color:#fbbf24;font-weight:700}
+.tag.paper{font-family:'Inter',sans-serif;color:#64748b;font-style:italic;font-size:.68rem}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:6px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:6px 0}
+.cl{margin-top:12px;display:flex;flex-direction:column;gap:7px}
+.ci{background:var(--card2);border-radius:8px;padding:9px 13px;border-left:3px solid var(--border)}
+.ci.a{border-left-color:var(--acc-a)}.ci.b{border-left-color:var(--acc-b)}.ci.c{border-left-color:var(--acc-c)}
+.cn{font-size:.77rem;font-weight:600;font-family:'JetBrains Mono',monospace}
+.cd{font-size:.72rem;color:#64748b;margin-top:2px;line-height:1.4}
+.cf{font-size:.69rem;color:#34d399;margin-top:3px}
+.fbig{background:var(--card2);border-radius:10px;padding:14px 20px;font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--acc-f);text-align:center;margin:10px 0;border:1px solid rgba(245,158,11,.2)}
+.fleg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.li{background:var(--card2);border-radius:8px;padding:8px 12px;text-align:center;border:1px solid var(--border)}
+.lv{font-size:1rem;font-weight:700;font-family:'JetBrains Mono',monospace}
+.ll{font-size:.67rem;color:var(--muted);margin-top:2px}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.pi{background:var(--card2);border-radius:8px;padding:10px 14px;border:1px solid var(--border)}
+.pid{font-size:.7rem;font-weight:700;font-family:'JetBrains Mono',monospace;color:#64748b;margin-bottom:3px}
+.pt{font-size:.77rem;font-weight:500}
+.pf{font-size:.69rem;color:#34d399;margin-top:4px}
+.pl{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin-top:28px}
+.pl h3{font-size:.85rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.or{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.ob{background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:.77rem;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="hdr">
+<h1>VisionEdit &mdash; Multi-Stream Architecture</h1>
+<p>Research-backed pipeline for automatic video highlight detection &bull; 10 papers reviewed</p>
+<div class="formula">S<sub>i</sub> = (0.40&middot;E<sub>i</sub> + 0.35&middot;O<sub>i</sub> + 0.25&middot;M<sub>i</sub>) &times; &#x1D7D9;(Q<sub>i</sub> &ge; &theta;<sub>blur</sub>)</div>
+</div>
+<div class="main">
+
+<div class="sec">Input</div>
+<div class="card p1">
+<div class="ct">Input &mdash; Source Video</div>
+<h3>&#x1F4F9; Source Video + Dataset Validation</h3>
+<p>Any MP4/AVI/MKV. Validated using <strong>Kinetics-400</strong> (400 classes) and <strong>HMDB51</strong> (51 classes) with targeted category groups matching each stream's validation need.</p>
+<div class="tags">
+<span class="tag">Kinetics-400 &rarr; D:/datasets/kinetics400</span>
+<span class="tag">HMDB51 &rarr; D:/datasets/hmdb51</span>
+<span class="tag g">config.yaml paths set</span>
+</div>
+</div>
+
+<div class="arrow">&darr;</div>
+
+<div class="sec">Phase 1 &mdash; Temporal Segmentation</div>
+<div class="card p1">
+<div class="ct">Phase 1</div>
+<h3>&#x2702;&#xFE0F; Scene Detector</h3>
+<p>PySceneDetect <code>ContentDetector</code> splits the video into scenes using pixel-level content change detection. Each scene &rarr; <code>SceneInfo(index, start_sec, end_sec, frames)</code>.</p>
+<div class="tags">
+<span class="tag">scene_detector.py</span><span class="tag">threshold: 27.0</span><span class="tag g">SceneInfo objects</span>
+</div>
+</div>
+
+<div class="arrow">&darr;</div>
+
+<div class="sec">Phases 2&ndash;4 &mdash; Three Parallel Intelligence Streams</div>
+<div class="grid3">
+
+<div class="card a">
+<div class="ct">Stream A &mdash; Semantic</div>
+<h3>&#x1F3AF; Object Detection</h3>
+<p>Two-stage cascade scores each scene by the saliency of detected objects, with Kalman tracking and adaptive persistence.</p>
+<div class="tags">
+<span class="tag sa">O_i &isin; [0,1]</span>
+<span class="tag paper">B1 Hua 2025 &bull; B3 Shah 2026 &bull; B4 Yang 2024</span>
+</div>
+<div class="cl">
+<div class="ci a"><div class="cn">Stage 1: YOLOv8-S</div><div class="cd">Always-on. 28.6 GFLOPs/frame. Anchor-free, decoupled head.</div><div class="cf">&uarr; Fixes B1: single heavy model on all frames</div></div>
+<div class="ci a"><div class="cn">Stage 2: YOLOv9-E (gated)</div><div class="cd">Fires only when Stage 1 conf &ge; 0.60. ~20% of frames trigger it.</div><div class="cf">&sim;69.5% FLOP savings (B3 RR formula)</div></div>
+<div class="ci a"><div class="cn">Kalman Tracker</div><div class="cd">Adaptive &tau; = &tau;_sec &times; fps. At 25fps: 125 frames (not fixed 75).</div><div class="cf">&uarr; Fixes B3: fixed &tau;=75 assumes 15fps</div></div>
+<div class="ci a"><div class="cn">Decomposed Salience</div><div class="cd">O_i = 0.5&middot;conf + 0.3&middot;stability + 0.2&middot;persistence</div><div class="cf">&uarr; Fixes B2: raw confidence only</div></div>
+<div class="ci a"><div class="cn">SaIS (training-only)</div><div class="cd">SaIS = IoU + 0.5&middot;shape_score. Zero inference cost.</div><div class="cf">&uarr; B4 Yang 2024 SaLA</div></div>
+</div>
+</div>
+
+<div class="card b">
+<div class="ct">Stream B &mdash; Affective</div>
+<h3>&#x1F60A; Facial Emotion Recognition</h3>
+<p>CLCM backbone + Grad-CAM intensity + binary expert CNNs + LSTM temporal aggregation.</p>
+<div class="tags">
+<span class="tag sb">E_i &isin; [-1,1]</span>
+<span class="tag paper">A2 Abbas 2025 &bull; A3 Punuri 2024 &bull; A4 Salman 2025 &bull; A5 Kosta 2023</span>
+</div>
+<div class="cl">
+<div class="ci b"><div class="cn">CLCM Backbone (~2.4M params)</div><div class="cd">Custom Lightweight CNN (primary paper A2). WeightedFERLoss with inverse-sqrt-freq class weights.</div><div class="cf">&uarr; Fixes A2: class imbalance on CK+ lab data</div></div>
+<div class="ci b"><div class="cn">Grad-CAM</div><div class="cd">Per-pixel heatmap for every face. Works on ALL frames, not just correct ones.</div><div class="cf">&uarr; Fixes A3 LRP: fails on misclassified frames</div></div>
+<div class="ci b"><div class="cn">Binary Expert CNNs (Disgust/Fear)</div><div class="cd">2 experts triggered only when primary conf &lt; 0.60. vs A4's 8 full backbones always-on.</div><div class="cf">&uarr; Fixes A4: 32.76M params overhead</div></div>
+<div class="ci b"><div class="cn">LSTM Temporal Aggregator</div><div class="cd">Rolling window of 10 frames per face track. Stable clip-level label + confidence.</div><div class="cf">&uarr; Fixes A5: no temporal modeling</div></div>
+<div class="ci b"><div class="cn">Intensity Ranking</div><div class="cd">Grad-CAM mean &rarr; MINIMAL / AVERAGE / STRONG. 3-panel PNG saved.</div><div class="cf">&uarr; Extends A3 ranking with Grad-CAM</div></div>
+</div>
+</div>
+
+<div class="card c">
+<div class="ct">Stream C &mdash; Quality</div>
+<h3>&#x1F52C; Technical Quality</h3>
+<p>Blur gate acts as hard veto. Blurry clips are eliminated regardless of emotion or object scores.</p>
+<div class="tags">
+<span class="tag sc">Q_i (blur) &middot; M_i &isin; [0,1]</span>
+</div>
+<div class="cl">
+<div class="ci c"><div class="cn">Blur Gate (Laplacian)</div><div class="cd">Q_i = Laplacian variance. If Q_i &lt; &theta;_blur (100) &rarr; S_i = 0 regardless.</div><div class="cf">Hard veto: blurry &ne; highlight-worthy</div></div>
+<div class="ci c"><div class="cn">Motion Energy</div><div class="cd">M_i = mean frame-difference magnitude. High for sports/action, low for static shots.</div><div class="cf">25% contribution to final S_i</div></div>
+</div>
+</div>
+
+</div><!-- grid3 -->
+
+<div class="arrow">&darr;</div>
+
+<div class="sec">Phase 5 &mdash; Fusion Layer</div>
+<div class="card f">
+<div class="ct">Phase 5 &mdash; Fusion</div>
+<h3>&#x2696;&#xFE0F; Weighted Saliency Scorer &mdash; <code>fuse_rich()</code></h3>
+<div class="fbig">S<sub>i</sub> = (w1&middot;E<sub>i</sub> + w2&middot;O<sub>i</sub> + w3&middot;M<sub>i</sub>) &times; gate(Q<sub>i</sub> &ge; &theta;)</div>
+<div class="fleg">
+<div class="li"><div class="lv" style="color:#c084fc">w1=0.40</div><div class="ll">Emotion</div></div>
+<div class="li"><div class="lv" style="color:#60a5fa">w2=0.35</div><div class="ll">Semantic</div></div>
+<div class="li"><div class="lv" style="color:#34d399">w3=0.25</div><div class="ll">Motion</div></div>
+<div class="li"><div class="lv" style="color:#fbbf24">&theta;=100</div><div class="ll">Blur gate</div></div>
+</div>
+<p style="margin-top:12px;font-size:.82rem;color:#64748b">Returns per-clip metadata dict: E_i, emotion label, intensity, expert flag + O_i, top class, track count, stage-2 flag, cascade savings + M_i, Q_i, gate, S_i. Used by results generator.</p>
+<div class="tags" style="margin-top:10px">
+<span class="tag">scorer.py &rarr; fuse_rich()</span>
+<span class="tag g">Live structured log table per run</span>
+<span class="tag">results_table.csv / .json / .md</span>
+</div>
+</div>
+
+<div class="arrow">&darr;</div>
+
+<div class="sec">Phase 6 &mdash; Selection &amp; Assembly</div>
+<div class="card s">
+<div class="ct">Phase 6 &mdash; Output</div>
+<h3>&#x1F3AC; Knapsack Selection &rarr; Highlight Reel</h3>
+<p>DP knapsack selects top-S_i clips within target duration budget. Assembler stitches, optionally applies slow-motion to high-S_i moments (&ge; 0.85), exports MP4.</p>
+<div class="tags">
+<span class="tag">selector.py</span><span class="tag">assembler.py</span>
+<span class="tag">target_duration_sec: 60</span>
+<span class="tag g">output/highlight.mp4</span>
+</div>
+</div>
+
+<div class="sec">Current Outputs (Intermediate Progress)</div>
+<div class="card f" style="border-color:rgba(245,158,11,.2)">
+<div class="ct">Generated Artefacts</div>
+<h3>&#x1F4CA; Results &amp; Visuals &mdash; run: <code>python -m scripts.generate_results</code></h3>
+<div class="or">
+<div class="ob"><div class="dot" style="background:#f59e0b"></div>outputs/results_table.csv</div>
+<div class="ob"><div class="dot" style="background:#f59e0b"></div>outputs/results_summary.md</div>
+<div class="ob"><div class="dot" style="background:#f59e0b"></div>outputs/literature_crossref.txt</div>
+<div class="ob"><div class="dot" style="background:#a855f7"></div>outputs/gradcam/ &larr; set save_enabled:true in config</div>
+<div class="ob"><div class="dot" style="background:#3b82f6"></div>outputs/results_table.json</div>
+</div>
+</div>
+
+<div class="sec">Validation Datasets</div>
+<div class="grid2">
+<div class="card ds">
+<div class="ct">Kinetics-400</div>
+<h3>&#x1F3AC; Action Recognition &mdash; 400 classes</h3>
+<p>Validates all three streams using targeted class groups selected from the official label_map.txt.</p>
+<div class="cl">
+<div class="ci a"><div class="cn">HIGH_MOTION (25 classes)</div><div class="cd">gymnastics tumbling, breakdancing, somersaulting, parkour, skateboarding, snowboarding, springboard diving, hurdling, long jump, triple jump, high jump, pole vault, hammer throw, javelin throw, shot put, bungee jumping, skydiving, rock climbing, ice skating, skiing slalom, skiing (not slalom or crosscountry), snowkiting, bouncing on trampoline, cartwheeling, surfing water</div></div>
+<div class="ci a"><div class="cn">HIGH_SEMANTIC (30 classes)</div><div class="cd">shooting basketball, dribbling basketball, dunking basketball, playing basketball, playing tennis, playing volleyball, playing cricket, playing badminton, playing ice hockey, kicking soccer ball, shooting goal (soccer), playing guitar, playing piano, playing drums, playing violin, riding a bike, riding mountain bike, riding horse, riding camel, riding elephant, driving car, driving tractor, sled dog racing, walking the dog, feeding birds, catching fish, archery, bowling, golf driving, golf putting</div></div>
+<div class="ci b"><div class="cn">HIGH_FACE (19 classes)</div><div class="cd">laughing, crying, singing, hugging, kissing, celebrating, applauding, clapping, giving or receiving award, blowing out candles, opening present, yawning, sneezing, headbanging, pumping fist, news anchoring, presenting weather forecast, testifying, answering questions</div></div>
+<div class="ci c"><div class="cn">LOW_ACTIVITY control (8 classes)</div><div class="cd">reading book, reading newspaper, texting, using computer, writing, waiting in line, sitting, sleeping &rarr; expected low S_i</div></div>
+</div>
+<div class="tags" style="margin-top:12px">
+<span class="tag">D:/datasets/kinetics400</span>
+<span class="tag g">config.yaml kinetics400_root set</span>
+</div>
+</div>
+<div class="card ds">
+<div class="ct">HMDB51</div>
+<h3>&#x1F93C; Human Motion Database &mdash; 51 classes</h3>
+<p>Primarily targets Stream B (FER) validation &mdash; clips contain visible faces with expressive emotions. All 51 categories available.</p>
+<div class="cl">
+<div class="ci b"><div class="cn">HIGH_FACE (5 categories)</div><div class="cd">laugh, cry, talk, smile, kiss &rarr; expect high E_i, AVERAGE/STRONG intensity</div></div>
+<div class="ci c"><div class="cn">HIGH_MOTION (5 categories)</div><div class="cd">cartwheel, somersault, jump, dive, flic_flac &rarr; expect high M_i</div></div>
+<div class="ci a"><div class="cn">HIGH_OBJECT (5 categories)</div><div class="cd">shoot_ball, ride_bike, play_guitar, dribble, golf &rarr; expect high O_i</div></div>
+<div class="ci c"><div class="cn">LOW_MOTION control (5 categories)</div><div class="cd">sit, stand, smoke, eat, drink &rarr; expected low M_i</div></div>
+</div>
+<div class="tags" style="margin-top:12px">
+<span class="tag">D:/datasets/hmdb51</span>
+<span class="tag g">config.yaml hmdb51_root set</span>
+</div>
+</div>
+</div>
+
+<div class="pl">
+<h3>10 Papers &rarr; Architectural Improvements</h3>
+<div class="pg">
+<div class="pi"><div class="pid">[A1] Gursesli 2024</div><div class="pt">FER confusion matrix &mdash; disgust/fear F1 ~40%</div><div class="pf">&rarr; Binary expert CNNs for hard classes</div></div>
+<div class="pi"><div class="pid">[A2] Abbas 2025 (our primary paper)</div><div class="pt">CLCM &mdash; tested only on lab-controlled CK+</div><div class="pf">&rarr; WeightedFERLoss (inverse-sqrt-freq)</div></div>
+<div class="pi"><div class="pid">[A3] Punuri 2024</div><div class="pt">LRP heatmaps fail on misclassified frames</div><div class="pf">&rarr; Grad-CAM (works on ALL predictions)</div></div>
+<div class="pi"><div class="pid">[A4] Salman 2025</div><div class="pt">8 full MobileNetV2 experts (32.76M params)</div><div class="pf">&rarr; 2 lightweight experts, triggered &lt;60% conf only</div></div>
+<div class="pi"><div class="pid">[A5] Kosta 2023</div><div class="pt">No temporal modeling of emotion in video</div><div class="pf">&rarr; LSTM rolling-window temporal aggregator</div></div>
+<div class="pi"><div class="pid">[B1] Hua 2025</div><div class="pt">Benchmark &mdash; always runs single heavy YOLO</div><div class="pf">&rarr; Two-stage cascade (~69.5% FLOP savings)</div></div>
+<div class="pi"><div class="pid">[B2] Miri 2025</div><div class="pt">Flat confidence only, no track stability</div><div class="pf">&rarr; Decomposed salience (conf+stability+persistence)</div></div>
+<div class="pi"><div class="pid">[B3] Shah 2026</div><div class="pt">Fixed &tau;=75 frames regardless of video fps</div><div class="pf">&rarr; Adaptive &tau; = &tau;_sec &times; fps (normalised)</div></div>
+<div class="pi"><div class="pid">[B4] Yang 2024</div><div class="pt">IoU-only label assignment, ignores shape</div><div class="pf">&rarr; SaIS = IoU + 0.5&times;shape_score (training-only)</div></div>
+<div class="pi"><div class="pid">[B5] Ramos 2025</div><div class="pt">Review only &mdash; no anchor-free inference validated</div><div class="pf">&rarr; YOLOv8-S (anchor-free, decoupled head) Stage 1</div></div>
+</div>
+</div>
+
+</div><!-- main -->
+</body>
+</html>

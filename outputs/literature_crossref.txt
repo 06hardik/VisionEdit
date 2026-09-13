@@ -1,0 +1,33 @@
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+
+|       Paper        |               Limitation Found               |                   Our Fix                    |                Measurable Outcome                |
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+
+| A1 Gursesli 2024   | Disgust/fear ~40% F1 in confusion matrix     | Binary expert CNN (MoEDE principle, Salman   | Expert fires on ~20% ambiguous frames; corrects  |
+|                    |                                              | 2025)                                        | disgust/fear                                     |
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+
+| A2 Abbas 2025      | Tested only on CK+ (lab-controlled, ~300     | CLCM backbone + WeightedFERLoss (inverse-    | disgust/fear weights 2.12x/1.64x vs happy 0.36x  |
+|                    | subjects)                                    | sqrt-freq weights)                           |                                                  |
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+
+| A3 Punuri 2024     | LRP fails on misclassified/ambiguous frames  | Grad-CAM heatmaps (works on all predictions) | 3-tier intensity: MINIMAL/AVERAGE/STRONG, saved  |
+|                    |                                              |                                              | as 3-panel PNG                                   |
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+
+| A4 Salman 2025     | 8 full MobileNetV2 experts/frame (32.76M     | 2 lightweight CLCM experts, triggered only   | Triggers ~15-20% of frames vs always-on 8x       |
+|                    | params, high cost)                           | when conf < 0.60                             | backbone                                         |
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+
+| A5 Kosta 2023      | No temporal modeling of emotion sequences in | LSTM rolling-window temporal aggregator      | Clip-level label from temporal aggregation vs    |
+|                    | video                                        | (window=10 frames)                           | noisy per-frame peaks                            |
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+
+| B1 Hua 2025        | Review only -- single heavy model on every   | Two-stage cascade: YOLOv8-S always-on +      | ~69.5% FLOP savings when 80% of frames skip      |
+|                    | frame                                        | gated YOLOv9-E                               | Stage 2                                          |
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+
+| B2 Miri 2025       | Flat confidence as quality metric, no        | Decomposed salience: 0.5*conf +              | Salience > raw conf for stable long-lived tracks |
+|                    | temporal stability                           | 0.3*stability + 0.2*persistence              |                                                  |
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+
+| B3 Shah 2026       | Fixed tau=75 frames regardless of fps        | Adaptive tau: tau_frames = tau_base_sec *    | At 25fps: tau=125 frames (5s) vs B3 fixed 75     |
+|                    | (assumes 15fps)                              | fps                                          |                                                  |
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+
+| B4 Yang 2024       | Standard IoU in label assignment ignores     | SaIS = IoU + 0.5*shape_score (training-only, | SaIS > IoU for same pair (e.g. 1.181 vs 0.681 on |
+|                    | shape/orientation                            | zero inference cost)                         | test boxes)                                      |
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+
+| B5 Ramos 2025      | Review only -- no anchor-free implementation | YOLOv8-S (anchor-free, decoupled head) as    | Anchor-free confirmed best speed-accuracy in     |
+|                    | validated                                    | Stage 1 baseline                             | B1/B5                                            |
++--------------------+----------------------------------------------+----------------------------------------------+--------------------------------------------------+

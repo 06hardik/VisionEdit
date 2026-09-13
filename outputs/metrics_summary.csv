@@ -1,0 +1,8 @@
+class_name,clips_scored,avg_E_i,avg_O_i,avg_M_i,avg_Q_i,pct_passed,avg_S_i,dom_emotion,dom_intensity,top_od_class
+answering questions,5,0.0821,0.8985,0.4589,435.1,80.0,0.3874,neutral,MINIMAL,person
+applauding,5,0.7506,0.5854,0.7383,392.1,100.0,0.6897,happy,STRONG,person
+archery,5,0.0195,0.7533,0.505,748.4,100.0,0.4053,neutral,MINIMAL,person
+blowing out candles,5,0.6298,0.8997,0.7575,206.9,60.0,0.4385,happy,STRONG,person
+bouncing on trampoline,5,0.5407,0.8556,0.6882,220.2,80.0,0.5777,surprise,AVERAGE,person
+bowling,3,0.1045,0.9195,0.6908,581.2,100.0,0.5363,neutral,MINIMAL,person
+javelin throw,1,0.058,0.8581,0.6683,256.6,100.0,0.4906,neutral,MINIMAL,person

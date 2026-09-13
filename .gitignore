@@ -1,0 +1,101 @@
+﻿# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.class
+*.pyc
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.eggs
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+.pytest_cache/
+.cache
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+*.py,cover
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Project-specific ────────────────────────────────────────────────────────
+
+# Large binary model weights (download via scripts/download_weights.py)
+weights/
+*.pt
+*.pth
+*.onnx
+*.safetensors
+
+# Downloaded datasets (large — download via scripts/download_kinetics400.py)
+datasets/
+
+# FiftyOne local cache
+fiftyone/
+
+# Generated outputs — results are reproducible
+outputs/gradcam/
+outputs/*.mp4
+outputs/highlight.mp4
+
+# Keep CSV/JSON/MD outputs (small, useful for reference)
+!outputs/results_table.csv
+!outputs/results_table.json
+!outputs/results_summary.md
+!outputs/literature_crossref.txt
+!outputs/real_clip_results.csv
+!outputs/metrics_summary.csv
+!outputs/architecture_diagram.html
+!outputs/presentation.html
+
+# CV_PAPERS PDFs are large — keep the folder tracked but ignore binaries
+CV_PAPERS/*.pdf
+
+# Temp / scratch
+tmp/
+.tmp/
+scratch/
+*.log
+*.bak
+
+# Python environment lock files (optional — uncomment if you use them)
+# Pipfile.lock
+# poetry.lock

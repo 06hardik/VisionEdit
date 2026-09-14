@@ -1,30 +1,643 @@
-clip,class_name,E_i,fer_label,fer_intensity,O_i,od_top_class,od_track_count,M_i,Q_i,passes_gate,S_i
-SLJBlFHPinU.mp4,answering questions,0.0848,neutral,MINIMAL,0.8793,person,4,0.6147,467.7,True,0.495338
-XAoAcyy2Psc.mp4,answering questions,0.0403,neutral,MINIMAL,0.9545,person,4,0.4986,348.3,True,0.474854
-NqE4FpM7Ypk.mp4,answering questions,0.0953,neutral,MINIMAL,0.8192,person,1,0.1942,67.4,False,0.0
-dplRiYsjQUk.mp4,answering questions,0.1566,neutral,MINIMAL,0.9687,person,3,0.2455,1073.0,True,0.463065
-RVQIvrvwA8I.mp4,answering questions,0.0336,neutral,MINIMAL,0.8707,person,2,0.7414,219.3,True,0.503539
-QqlTEhzK_Gw.mp4,applauding,0.7036,happy,STRONG,0.8997,person,5,1.0,336.3,True,0.846339
-5uVHxPCk7d4.mp4,applauding,0.8305,happy,STRONG,0.0,none,0,1.0,540.0,True,0.582218
-9vOxThR8gns.mp4,applauding,0.7737,happy,STRONG,0.3201,tv,1,0.5298,122.1,True,0.553973
-CpeXj_A8YKY.mp4,applauding,0.6871,happy,STRONG,0.7739,person,8,1.0,180.2,True,0.79572
-YSGHvSk3xqY.mp4,applauding,0.758,happy,STRONG,0.9334,person,17,0.1618,782.0,True,0.670332
-3and4vWkW4s.mp4,archery,0.0476,neutral,MINIMAL,0.8297,person,2,0.2157,1276.3,True,0.363344
-5rElcI860iU.mp4,archery,0.0474,neutral,MINIMAL,0.6833,person,1,0.0505,867.9,True,0.27074
-Jfl-1zWi2Go.mp4,archery,0.0969,neutral,MINIMAL,0.9129,person,5,1.0,814.3,True,0.60829
-S0Xwh6F6tz0.mp4,archery,-0.0539,neutral,MINIMAL,0.7838,person,1,0.5406,643.8,True,0.40948
-MrI8XlHC4p0.mp4,archery,-0.0407,neutral,MINIMAL,0.557,person,2,0.7184,139.7,True,0.37455
-6i6Dvl-MebY.mp4,blowing out candles,0.6406,happy,STRONG,0.9305,person,14,0.6209,689.6,True,0.737156
-Hp2i2CG11wY.mp4,blowing out candles,0.6091,happy,STRONG,0.9437,person,14,1.0,70.5,False,0.0
-cVv_XMw4W2U.mp4,blowing out candles,0.702,happy,STRONG,0.8901,person,15,0.8519,100.2,True,0.805309
-8EV2thGZ9zU.mp4,blowing out candles,0.6164,happy,STRONG,0.8193,person,8,0.9252,44.5,False,0.0
-FX-MM3_kMrk.mp4,blowing out candles,0.5811,happy,STRONG,0.9149,person,7,0.3894,129.7,True,0.65002
-PeznSAFMvhc.mp4,bouncing on trampoline,0.6526,surprise,AVERAGE,0.7724,person,5,1.0,317.1,True,0.781378
-UWIUuPeb2hQ.mp4,bouncing on trampoline,0.5342,surprise,AVERAGE,0.8246,person,2,0.1939,84.1,False,0.0
-aZbwDWOX7ZQ.mp4,bouncing on trampoline,0.5547,surprise,AVERAGE,0.8787,person,2,0.9187,166.3,True,0.759111
-SgKsAhSyibY.mp4,bouncing on trampoline,0.4503,surprise,AVERAGE,0.8852,person,7,1.0,219.5,True,0.739927
-Sq0C8qafWGA.mp4,bouncing on trampoline,0.5119,surprise,AVERAGE,0.9171,person,3,0.3285,313.9,True,0.607867
--jOClYqKtE8.mp4,bowling,0.1278,neutral,MINIMAL,0.9161,person,6,1.0,537.0,True,0.621741
---dVV4_CSvw.mp4,bowling,0.0394,neutral,MINIMAL,0.9059,person,13,0.3156,691.0,True,0.411737
--WH-lxmGJVY.mp4,bowling,0.1463,neutral,MINIMAL,0.9366,person,4,0.7568,515.6,True,0.57553
-test_clip.mp4,javelin throw,0.058,neutral,MINIMAL,0.8581,person,2,0.6683,256.6,True,0.490592
+clip,class_name,group,E_i,fer_label,fer_intensity,O_i,od_top_class,od_track_count,M_i,Q_i,passes_gate,S_i
+laughing_00.mp4,laughing,HIGH_FACE,0.8115,happy,STRONG,0.7817,person,7,0.567,716.0,True,0.739933
+laughing_01.mp4,laughing,HIGH_FACE,0.8107,happy,STRONG,0.7179,person,7,0.5953,615.1,True,0.724392
+laughing_02.mp4,laughing,HIGH_FACE,0.8132,happy,STRONG,0.649,person,4,0.54,587.1,True,0.687418
+laughing_03.mp4,laughing,HIGH_FACE,0.8214,happy,STRONG,0.7337,person,3,0.5662,163.0,True,0.726912
+laughing_04.mp4,laughing,HIGH_FACE,0.873,happy,STRONG,0.7026,person,4,0.5199,568.2,True,0.725073
+laughing_05.mp4,laughing,HIGH_FACE,0.7761,happy,STRONG,0.7279,person,4,0.4987,412.5,True,0.689853
+laughing_06.mp4,laughing,HIGH_FACE,0.7976,happy,STRONG,0.7061,person,3,0.501,441.0,True,0.691439
+laughing_07.mp4,laughing,HIGH_FACE,0.8273,happy,STRONG,0.7478,person,2,0.5156,460.5,True,0.721527
+laughing_08.mp4,laughing,HIGH_FACE,0.9524,happy,STRONG,0.7318,person,5,0.579,536.7,True,0.78183
+laughing_09.mp4,laughing,HIGH_FACE,0.7177,happy,STRONG,0.7127,person,7,0.4216,622.3,True,0.64194
+laughing_10.mp4,laughing,HIGH_FACE,0.922,happy,STRONG,0.7041,person,2,0.6558,225.7,True,0.779207
+laughing_11.mp4,laughing,HIGH_FACE,0.7485,happy,STRONG,0.7366,person,8,0.501,350.7,True,0.682458
+laughing_12.mp4,laughing,HIGH_FACE,0.8852,happy,STRONG,0.6908,person,4,0.5331,426.6,True,0.729103
+laughing_13.mp4,laughing,HIGH_FACE,0.8427,happy,STRONG,0.742,person,7,0.5438,210.3,True,0.73272
+laughing_14.mp4,laughing,HIGH_FACE,0.8806,happy,STRONG,0.8063,person,4,0.5992,562.1,True,0.784237
+laughing_15.mp4,laughing,HIGH_FACE,0.7975,happy,STRONG,0.7124,person,6,0.4666,573.5,True,0.684993
+laughing_16.mp4,laughing,HIGH_FACE,0.8119,happy,STRONG,0.7586,person,7,0.4878,722.9,True,0.712209
+laughing_17.mp4,laughing,HIGH_FACE,0.8014,happy,STRONG,0.7017,person,4,0.521,328.2,True,0.696398
+laughing_18.mp4,laughing,HIGH_FACE,0.6947,happy,STRONG,0.7392,person,3,0.5965,705.7,True,0.685707
+laughing_19.mp4,laughing,HIGH_FACE,0.8623,happy,STRONG,0.7397,person,8,0.4493,486.6,True,0.716137
+laughing_20.mp4,laughing,HIGH_FACE,0.752,happy,STRONG,0.7116,person,3,0.6338,456.4,True,0.708322
+laughing_21.mp4,laughing,HIGH_FACE,0.6632,happy,STRONG,0.69,person,6,0.5159,404.9,True,0.635743
+laughing_22.mp4,laughing,HIGH_FACE,0.8763,happy,STRONG,0.7451,person,2,0.5987,496.5,True,0.760981
+laughing_23.mp4,laughing,HIGH_FACE,0.8023,happy,STRONG,0.7091,person,2,0.5759,636.8,True,0.713102
+laughing_24.mp4,laughing,HIGH_FACE,0.9132,happy,STRONG,0.7228,person,8,0.5677,747.1,True,0.760169
+laughing_25.mp4,laughing,HIGH_FACE,0.7548,happy,STRONG,0.7446,person,6,0.5027,768.8,True,0.688218
+laughing_26.mp4,laughing,HIGH_FACE,0.9044,happy,STRONG,0.7693,person,7,0.6425,618.1,True,0.791636
+laughing_27.mp4,laughing,HIGH_FACE,0.7586,happy,STRONG,0.7348,person,1,0.6037,545.5,True,0.711577
+applauding_00.mp4,applauding,HIGH_FACE,0.7231,happy,STRONG,0.6147,person,5,0.7633,244.8,True,0.695213
+applauding_01.mp4,applauding,HIGH_FACE,0.7707,happy,STRONG,0.6266,person,1,0.7321,583.6,True,0.71065
+applauding_02.mp4,applauding,HIGH_FACE,0.7998,happy,STRONG,0.5795,person,7,0.8282,653.3,True,0.729812
+applauding_03.mp4,applauding,HIGH_FACE,0.7904,happy,STRONG,0.6399,person,4,0.7829,450.1,True,0.735835
+applauding_04.mp4,applauding,HIGH_FACE,0.686,happy,STRONG,0.6254,person,6,0.748,311.3,True,0.680275
+applauding_05.mp4,applauding,HIGH_FACE,0.8356,happy,STRONG,0.6352,person,2,0.7213,135.1,True,0.736893
+applauding_06.mp4,applauding,HIGH_FACE,0.6797,happy,STRONG,0.6247,person,8,0.7245,186.5,True,0.671651
+applauding_07.mp4,applauding,HIGH_FACE,0.746,happy,STRONG,0.6052,person,4,0.7158,201.0,True,0.689199
+applauding_08.mp4,applauding,HIGH_FACE,0.7501,happy,STRONG,0.5778,person,8,0.7272,682.1,True,0.68408
+applauding_09.mp4,applauding,HIGH_FACE,0.8047,happy,STRONG,0.6062,person,1,0.5552,601.0,True,0.672831
+applauding_10.mp4,applauding,HIGH_FACE,0.6743,happy,STRONG,0.5682,person,6,0.7844,80.0,False,0.0
+applauding_11.mp4,applauding,HIGH_FACE,0.7727,happy,STRONG,0.6372,person,3,0.7702,491.9,True,0.724642
+applauding_12.mp4,applauding,HIGH_FACE,0.7233,happy,STRONG,0.5955,person,4,0.6751,923.7,True,0.666498
+applauding_13.mp4,applauding,HIGH_FACE,0.7033,happy,STRONG,0.5823,person,3,0.7344,565.5,True,0.668734
+applauding_14.mp4,applauding,HIGH_FACE,0.7912,happy,STRONG,0.6032,person,8,0.7286,289.8,True,0.70975
+applauding_15.mp4,applauding,HIGH_FACE,0.7146,happy,STRONG,0.636,person,3,0.7363,376.6,True,0.692507
+applauding_16.mp4,applauding,HIGH_FACE,0.7403,happy,STRONG,0.5865,person,3,0.6106,352.7,True,0.654038
+applauding_17.mp4,applauding,HIGH_FACE,0.5507,happy,STRONG,0.6021,person,1,0.7647,647.5,True,0.622165
+applauding_18.mp4,applauding,HIGH_FACE,0.7618,happy,STRONG,0.6111,person,2,0.6785,230.2,True,0.688213
+applauding_19.mp4,applauding,HIGH_FACE,0.7174,happy,STRONG,0.584,person,1,0.6823,458.9,True,0.661945
+applauding_20.mp4,applauding,HIGH_FACE,0.6789,happy,STRONG,0.5555,person,3,0.7269,260.1,True,0.647707
+applauding_21.mp4,applauding,HIGH_FACE,0.7611,happy,STRONG,0.6488,person,8,0.7856,537.3,True,0.727908
+applauding_22.mp4,applauding,HIGH_FACE,0.8119,happy,STRONG,0.5806,person,7,0.7054,487.1,True,0.704329
+applauding_23.mp4,applauding,HIGH_FACE,0.7063,happy,STRONG,0.6144,person,2,0.7173,397.6,True,0.676857
+applauding_24.mp4,applauding,HIGH_FACE,0.7044,happy,STRONG,0.6323,person,7,0.7288,187.9,True,0.685264
+applauding_25.mp4,applauding,HIGH_FACE,0.7227,happy,STRONG,0.5917,person,2,0.8266,522.5,True,0.702842
+applauding_26.mp4,applauding,HIGH_FACE,0.8062,happy,STRONG,0.6133,person,3,0.7953,603.0,True,0.735977
+blowing_out_candles_00.mp4,blowing out candles,HIGH_FACE,0.6835,happy,STRONG,0.8278,person,5,0.772,722.2,True,0.75612
+blowing_out_candles_01.mp4,blowing out candles,HIGH_FACE,0.6508,happy,STRONG,0.9151,person,1,0.7312,388.6,True,0.763403
+blowing_out_candles_02.mp4,blowing out candles,HIGH_FACE,0.6913,happy,STRONG,0.8376,person,7,0.8604,394.9,True,0.784771
+blowing_out_candles_03.mp4,blowing out candles,HIGH_FACE,0.7288,happy,STRONG,0.8621,person,6,0.8051,366.8,True,0.79452
+blowing_out_candles_04.mp4,blowing out candles,HIGH_FACE,0.5577,happy,STRONG,0.8673,person,3,0.7532,546.0,True,0.714926
+blowing_out_candles_05.mp4,blowing out candles,HIGH_FACE,0.6026,happy,STRONG,0.8956,person,7,0.7444,80.0,False,0.0
+blowing_out_candles_06.mp4,blowing out candles,HIGH_FACE,0.7091,happy,STRONG,0.9123,person,4,0.7386,412.5,True,0.787589
+blowing_out_candles_07.mp4,blowing out candles,HIGH_FACE,0.6186,happy,STRONG,0.8914,person,1,0.7246,616.3,True,0.740573
+blowing_out_candles_08.mp4,blowing out candles,HIGH_FACE,0.6413,happy,STRONG,0.8411,person,4,0.8012,544.1,True,0.751198
+blowing_out_candles_09.mp4,blowing out candles,HIGH_FACE,0.5391,happy,STRONG,0.8856,person,8,0.7937,431.3,True,0.724019
+blowing_out_candles_10.mp4,blowing out candles,HIGH_FACE,0.6212,happy,STRONG,0.9169,person,5,0.7203,798.6,True,0.74947
+blowing_out_candles_11.mp4,blowing out candles,HIGH_FACE,0.6067,happy,STRONG,0.9082,person,7,0.8683,193.5,True,0.777617
+blowing_out_candles_12.mp4,blowing out candles,HIGH_FACE,0.6787,happy,STRONG,0.8584,person,3,0.8081,737.2,True,0.773921
+blowing_out_candles_13.mp4,blowing out candles,HIGH_FACE,0.7565,happy,STRONG,0.9108,person,6,0.7401,594.4,True,0.806407
+blowing_out_candles_14.mp4,blowing out candles,HIGH_FACE,0.808,happy,STRONG,0.9178,person,8,0.894,683.1,True,0.867943
+blowing_out_candles_15.mp4,blowing out candles,HIGH_FACE,0.5795,happy,STRONG,0.8724,person,1,0.8039,267.1,True,0.738099
+blowing_out_candles_16.mp4,blowing out candles,HIGH_FACE,0.6929,happy,STRONG,0.823,person,3,0.7572,573.5,True,0.754496
+blowing_out_candles_17.mp4,blowing out candles,HIGH_FACE,0.5403,happy,STRONG,0.8974,person,3,0.8163,643.8,True,0.734278
+blowing_out_candles_18.mp4,blowing out candles,HIGH_FACE,0.5538,happy,STRONG,0.8384,person,7,0.8312,687.6,True,0.722744
+blowing_out_candles_19.mp4,blowing out candles,HIGH_FACE,0.5896,happy,STRONG,0.8417,person,2,0.8212,80.0,False,0.0
+blowing_out_candles_20.mp4,blowing out candles,HIGH_FACE,0.6931,happy,STRONG,0.8322,person,2,0.677,478.3,True,0.737728
+blowing_out_candles_21.mp4,blowing out candles,HIGH_FACE,0.6927,happy,STRONG,0.9022,person,2,0.771,284.0,True,0.785602
+blowing_out_candles_22.mp4,blowing out candles,HIGH_FACE,0.6036,happy,STRONG,0.888,person,3,0.8028,275.9,True,0.752941
+blowing_out_candles_23.mp4,blowing out candles,HIGH_FACE,0.6097,happy,STRONG,0.8624,person,5,0.7639,263.3,True,0.736699
+blowing_out_candles_24.mp4,blowing out candles,HIGH_FACE,0.6495,happy,STRONG,0.8864,person,3,0.791,542.2,True,0.767821
+celebrating_00.mp4,celebrating,HIGH_FACE,0.6352,happy,STRONG,0.772,person,3,0.8369,313.3,True,0.733486
+celebrating_01.mp4,celebrating,HIGH_FACE,0.6866,happy,STRONG,0.812,person,7,0.692,884.3,True,0.731863
+celebrating_02.mp4,celebrating,HIGH_FACE,0.7834,happy,STRONG,0.761,person,3,0.9079,258.5,True,0.806682
+celebrating_03.mp4,celebrating,HIGH_FACE,0.7418,happy,STRONG,0.7284,person,4,0.9049,323.4,True,0.777887
+celebrating_04.mp4,celebrating,HIGH_FACE,0.7625,happy,STRONG,0.7767,person,6,0.7883,343.8,True,0.773894
+celebrating_05.mp4,celebrating,HIGH_FACE,0.8629,happy,STRONG,0.7502,person,8,0.8428,589.2,True,0.818443
+celebrating_06.mp4,celebrating,HIGH_FACE,0.78,happy,STRONG,0.8037,person,4,0.7448,451.8,True,0.779512
+celebrating_07.mp4,celebrating,HIGH_FACE,0.7516,happy,STRONG,0.7799,person,5,0.7698,360.9,True,0.766038
+celebrating_08.mp4,celebrating,HIGH_FACE,0.7079,happy,STRONG,0.7366,person,2,0.8089,571.8,True,0.743189
+celebrating_09.mp4,celebrating,HIGH_FACE,0.7438,happy,STRONG,0.7859,person,6,0.7574,126.7,True,0.761912
+celebrating_10.mp4,celebrating,HIGH_FACE,0.7315,happy,STRONG,0.7489,person,3,0.8343,768.7,True,0.763308
+celebrating_11.mp4,celebrating,HIGH_FACE,0.7225,happy,STRONG,0.7637,person,2,0.7664,263.2,True,0.747883
+celebrating_12.mp4,celebrating,HIGH_FACE,0.7878,happy,STRONG,0.6972,person,5,0.7992,690.3,True,0.758964
+celebrating_13.mp4,celebrating,HIGH_FACE,0.6497,happy,STRONG,0.7682,person,1,0.7941,566.0,True,0.727268
+celebrating_14.mp4,celebrating,HIGH_FACE,0.7972,happy,STRONG,0.7571,person,1,0.75,321.3,True,0.771374
+celebrating_15.mp4,celebrating,HIGH_FACE,0.8277,happy,STRONG,0.8294,person,6,0.8357,574.2,True,0.830315
+celebrating_16.mp4,celebrating,HIGH_FACE,0.6725,happy,STRONG,0.8006,person,4,0.7952,281.4,True,0.748012
+celebrating_17.mp4,celebrating,HIGH_FACE,0.7253,happy,STRONG,0.7611,person,7,0.8231,444.7,True,0.762274
+celebrating_18.mp4,celebrating,HIGH_FACE,0.7313,happy,STRONG,0.7739,person,7,0.9228,600.5,True,0.794093
+celebrating_19.mp4,celebrating,HIGH_FACE,0.6903,happy,STRONG,0.7861,person,6,0.7753,449.7,True,0.745098
+celebrating_20.mp4,celebrating,HIGH_FACE,0.6499,happy,STRONG,0.7394,person,7,0.8189,168.9,True,0.72349
+celebrating_21.mp4,celebrating,HIGH_FACE,0.7186,happy,STRONG,0.7587,person,7,0.8131,594.1,True,0.756283
+hugging_00.mp4,hugging,HIGH_FACE,0.6407,happy,AVERAGE,0.5624,person,7,0.3681,578.4,True,0.545164
+hugging_01.mp4,hugging,HIGH_FACE,0.6683,happy,AVERAGE,0.5596,person,6,0.3072,200.2,True,0.539996
+hugging_02.mp4,hugging,HIGH_FACE,0.6003,happy,AVERAGE,0.541,person,2,0.5574,354.0,True,0.568837
+hugging_03.mp4,hugging,HIGH_FACE,0.5664,happy,AVERAGE,0.5667,person,3,0.2768,627.4,True,0.494073
+hugging_04.mp4,hugging,HIGH_FACE,0.5651,happy,AVERAGE,0.5077,person,1,0.3953,683.9,True,0.502526
+hugging_05.mp4,hugging,HIGH_FACE,0.5972,happy,AVERAGE,0.4679,person,6,0.4472,388.2,True,0.514464
+hugging_06.mp4,hugging,HIGH_FACE,0.5929,happy,AVERAGE,0.5117,person,7,0.48,647.1,True,0.536229
+hugging_07.mp4,hugging,HIGH_FACE,0.5887,happy,AVERAGE,0.5504,person,8,0.4881,548.0,True,0.550139
+hugging_08.mp4,hugging,HIGH_FACE,0.5646,happy,AVERAGE,0.5447,person,4,0.4485,819.1,True,0.528583
+hugging_09.mp4,hugging,HIGH_FACE,0.5522,happy,AVERAGE,0.5371,person,5,0.4686,345.9,True,0.526043
+hugging_10.mp4,hugging,HIGH_FACE,0.5248,happy,AVERAGE,0.5186,person,4,0.5074,280.1,True,0.518265
+hugging_11.mp4,hugging,HIGH_FACE,0.5665,happy,AVERAGE,0.5055,person,5,0.4155,370.3,True,0.507389
+hugging_12.mp4,hugging,HIGH_FACE,0.5699,happy,AVERAGE,0.5374,person,2,0.4223,414.2,True,0.52164
+hugging_13.mp4,hugging,HIGH_FACE,0.5678,happy,AVERAGE,0.5292,person,6,0.3797,620.9,True,0.507282
+hugging_14.mp4,hugging,HIGH_FACE,0.5725,happy,AVERAGE,0.5858,person,4,0.3947,337.6,True,0.532711
+hugging_15.mp4,hugging,HIGH_FACE,0.6438,happy,AVERAGE,0.5458,person,4,0.4026,380.7,True,0.549208
+hugging_16.mp4,hugging,HIGH_FACE,0.664,happy,AVERAGE,0.5517,person,7,0.4591,669.9,True,0.573486
+hugging_17.mp4,hugging,HIGH_FACE,0.6063,happy,AVERAGE,0.5185,person,5,0.4431,711.3,True,0.534761
+hugging_18.mp4,hugging,HIGH_FACE,0.6328,happy,AVERAGE,0.5571,person,8,0.3898,635.1,True,0.545556
+hugging_19.mp4,hugging,HIGH_FACE,0.47,happy,AVERAGE,0.5828,person,2,0.497,278.1,True,0.516238
+opening_present_00.mp4,opening present,HIGH_FACE,0.6265,surprise,STRONG,0.6368,person,8,0.5071,331.7,True,0.600271
+opening_present_01.mp4,opening present,HIGH_FACE,0.5414,surprise,STRONG,0.6981,person,7,0.6089,641.9,True,0.613113
+opening_present_02.mp4,opening present,HIGH_FACE,0.5959,surprise,STRONG,0.7341,person,5,0.5662,860.4,True,0.636861
+opening_present_03.mp4,opening present,HIGH_FACE,0.6041,surprise,STRONG,0.7192,person,2,0.6255,80.0,False,0.0
+opening_present_04.mp4,opening present,HIGH_FACE,0.6661,surprise,STRONG,0.6578,person,5,0.4731,467.1,True,0.614943
+opening_present_05.mp4,opening present,HIGH_FACE,0.6409,surprise,STRONG,0.7422,person,6,0.5225,452.8,True,0.646748
+opening_present_06.mp4,opening present,HIGH_FACE,0.582,surprise,STRONG,0.6585,person,8,0.4413,623.2,True,0.573568
+opening_present_07.mp4,opening present,HIGH_FACE,0.5687,surprise,STRONG,0.7391,person,3,0.549,709.5,True,0.62342
+opening_present_08.mp4,opening present,HIGH_FACE,0.6104,surprise,STRONG,0.7356,person,5,0.4901,452.5,True,0.62414
+opening_present_09.mp4,opening present,HIGH_FACE,0.5335,surprise,STRONG,0.649,person,7,0.4724,537.6,True,0.558655
+opening_present_10.mp4,opening present,HIGH_FACE,0.6429,surprise,STRONG,0.7132,person,5,0.5263,126.1,True,0.638343
+opening_present_11.mp4,opening present,HIGH_FACE,0.5882,surprise,STRONG,0.6768,person,7,0.5383,613.7,True,0.606739
+opening_present_12.mp4,opening present,HIGH_FACE,0.5763,surprise,STRONG,0.6455,person,3,0.5377,725.3,True,0.590851
+opening_present_13.mp4,opening present,HIGH_FACE,0.7034,surprise,STRONG,0.6799,person,5,0.4987,328.4,True,0.644009
+opening_present_14.mp4,opening present,HIGH_FACE,0.695,surprise,STRONG,0.6854,person,7,0.5524,457.4,True,0.655998
+opening_present_15.mp4,opening present,HIGH_FACE,0.6755,surprise,STRONG,0.7402,person,8,0.5006,502.3,True,0.654388
+opening_present_16.mp4,opening present,HIGH_FACE,0.6186,surprise,STRONG,0.6852,person,4,0.4687,200.9,True,0.604396
+opening_present_17.mp4,opening present,HIGH_FACE,0.4702,surprise,STRONG,0.6901,person,7,0.5013,608.5,True,0.554963
+giving_or_receiving_award_00.mp4,giving or receiving award,HIGH_FACE,0.5319,happy,AVERAGE,0.6771,person,6,0.4201,920.8,True,0.55479
+giving_or_receiving_award_01.mp4,giving or receiving award,HIGH_FACE,0.5249,happy,AVERAGE,0.7539,person,4,0.4465,233.9,True,0.585441
+giving_or_receiving_award_02.mp4,giving or receiving award,HIGH_FACE,0.4928,happy,AVERAGE,0.7459,person,6,0.3378,169.2,True,0.54262
+giving_or_receiving_award_03.mp4,giving or receiving award,HIGH_FACE,0.567,happy,AVERAGE,0.7978,person,1,0.2848,272.1,True,0.577255
+giving_or_receiving_award_04.mp4,giving or receiving award,HIGH_FACE,0.5772,happy,AVERAGE,0.7107,person,6,0.352,394.4,True,0.567608
+giving_or_receiving_award_05.mp4,giving or receiving award,HIGH_FACE,0.5229,happy,AVERAGE,0.7215,person,5,0.3417,604.6,True,0.547102
+giving_or_receiving_award_06.mp4,giving or receiving award,HIGH_FACE,0.5234,happy,AVERAGE,0.7087,person,4,0.3908,586.5,True,0.555106
+giving_or_receiving_award_07.mp4,giving or receiving award,HIGH_FACE,0.5691,happy,AVERAGE,0.7443,person,3,0.4546,80.0,False,0.0
+giving_or_receiving_award_08.mp4,giving or receiving award,HIGH_FACE,0.4755,happy,AVERAGE,0.7005,person,5,0.302,469.2,True,0.510869
+giving_or_receiving_award_09.mp4,giving or receiving award,HIGH_FACE,0.5517,happy,AVERAGE,0.7645,person,7,0.3693,206.9,True,0.580615
+giving_or_receiving_award_10.mp4,giving or receiving award,HIGH_FACE,0.6385,happy,AVERAGE,0.767,person,4,0.3978,823.9,True,0.623312
+giving_or_receiving_award_11.mp4,giving or receiving award,HIGH_FACE,0.7256,happy,AVERAGE,0.713,person,7,0.3443,627.4,True,0.625868
+giving_or_receiving_award_12.mp4,giving or receiving award,HIGH_FACE,0.5327,happy,AVERAGE,0.7563,person,6,0.4306,349.3,True,0.585458
+giving_or_receiving_award_13.mp4,giving or receiving award,HIGH_FACE,0.6173,happy,AVERAGE,0.7555,person,7,0.3655,689.1,True,0.602719
+giving_or_receiving_award_14.mp4,giving or receiving award,HIGH_FACE,0.7391,happy,AVERAGE,0.7547,person,1,0.2989,401.3,True,0.634529
+giving_or_receiving_award_15.mp4,giving or receiving award,HIGH_FACE,0.5258,happy,AVERAGE,0.708,person,2,0.4177,847.2,True,0.562532
+giving_or_receiving_award_16.mp4,giving or receiving award,HIGH_FACE,0.5658,happy,AVERAGE,0.7013,person,4,0.4142,216.9,True,0.575305
+giving_or_receiving_award_17.mp4,giving or receiving award,HIGH_FACE,0.6057,happy,AVERAGE,0.738,person,1,0.3498,299.5,True,0.58803
+giving_or_receiving_award_18.mp4,giving or receiving award,HIGH_FACE,0.5774,happy,AVERAGE,0.7663,person,5,0.4634,485.9,True,0.615014
+singing_00.mp4,singing,HIGH_FACE,0.4995,happy,AVERAGE,0.6748,person,3,0.435,290.0,True,0.544714
+singing_01.mp4,singing,HIGH_FACE,0.5632,happy,AVERAGE,0.6592,person,8,0.5834,333.9,True,0.601853
+singing_02.mp4,singing,HIGH_FACE,0.3818,happy,AVERAGE,0.6627,person,4,0.5097,416.7,True,0.512081
+singing_03.mp4,singing,HIGH_FACE,0.512,happy,AVERAGE,0.7456,person,5,0.5085,448.0,True,0.592872
+singing_04.mp4,singing,HIGH_FACE,0.4504,happy,AVERAGE,0.6733,person,7,0.5886,683.5,True,0.562981
+singing_05.mp4,singing,HIGH_FACE,0.5795,happy,AVERAGE,0.6876,person,8,0.4533,465.7,True,0.585802
+singing_06.mp4,singing,HIGH_FACE,0.4665,happy,AVERAGE,0.7233,person,5,0.5363,81.2,False,0.0
+singing_07.mp4,singing,HIGH_FACE,0.4105,happy,AVERAGE,0.672,person,4,0.5937,316.6,True,0.547823
+singing_08.mp4,singing,HIGH_FACE,0.4908,happy,AVERAGE,0.6924,person,1,0.5226,573.7,True,0.569314
+singing_09.mp4,singing,HIGH_FACE,0.447,happy,AVERAGE,0.7094,person,2,0.4521,635.3,True,0.540131
+singing_10.mp4,singing,HIGH_FACE,0.4592,happy,AVERAGE,0.6666,person,5,0.4861,285.8,True,0.538493
+singing_11.mp4,singing,HIGH_FACE,0.506,happy,AVERAGE,0.7416,person,2,0.3574,523.7,True,0.551338
+singing_12.mp4,singing,HIGH_FACE,0.3389,happy,AVERAGE,0.6924,person,1,0.3642,313.1,True,0.46894
+singing_13.mp4,singing,HIGH_FACE,0.4901,happy,AVERAGE,0.6392,person,1,0.4974,579.0,True,0.544094
+singing_14.mp4,singing,HIGH_FACE,0.5272,happy,AVERAGE,0.6404,person,7,0.5363,344.1,True,0.569096
+singing_15.mp4,singing,HIGH_FACE,0.5119,happy,AVERAGE,0.7132,person,5,0.4572,541.5,True,0.568653
+singing_16.mp4,singing,HIGH_FACE,0.4357,happy,AVERAGE,0.6458,person,6,0.56,172.4,True,0.540279
+singing_17.mp4,singing,HIGH_FACE,0.5499,happy,AVERAGE,0.7101,person,5,0.4149,350.9,True,0.572233
+singing_18.mp4,singing,HIGH_FACE,0.4768,happy,AVERAGE,0.6413,person,4,0.4902,334.6,True,0.53771
+singing_19.mp4,singing,HIGH_FACE,0.4629,happy,AVERAGE,0.6403,person,2,0.424,400.1,True,0.515278
+singing_20.mp4,singing,HIGH_FACE,0.5045,happy,AVERAGE,0.7039,person,7,0.3741,378.5,True,0.541671
+singing_21.mp4,singing,HIGH_FACE,0.6037,happy,AVERAGE,0.6878,person,7,0.4027,306.4,True,0.582898
+singing_22.mp4,singing,HIGH_FACE,0.4965,happy,AVERAGE,0.7067,person,3,0.5608,820.6,True,0.586174
+crying_00.mp4,crying,HIGH_FACE,-0.2841,sad,STRONG,0.6431,person,5,0.4341,864.0,True,0.333598
+crying_01.mp4,crying,HIGH_FACE,-0.3109,sad,STRONG,0.6276,person,8,0.4385,510.5,True,0.329277
+crying_02.mp4,crying,HIGH_FACE,-0.353,sad,STRONG,0.6364,person,6,0.3075,651.2,True,0.299615
+crying_03.mp4,crying,HIGH_FACE,-0.3382,sad,STRONG,0.6819,person,3,0.3275,454.7,True,0.32053
+crying_04.mp4,crying,HIGH_FACE,-0.2915,sad,STRONG,0.5773,person,3,0.369,672.1,True,0.294314
+crying_05.mp4,crying,HIGH_FACE,-0.4682,sad,STRONG,0.6145,person,8,0.3403,414.7,True,0.300166
+crying_06.mp4,crying,HIGH_FACE,-0.2662,sad,STRONG,0.6091,person,7,0.3209,450.8,True,0.293421
+crying_07.mp4,crying,HIGH_FACE,-0.2716,sad,STRONG,0.5916,person,7,0.3724,275.1,True,0.300152
+crying_08.mp4,crying,HIGH_FACE,-0.2595,sad,STRONG,0.6109,person,3,0.221,518.1,True,0.269058
+crying_09.mp4,crying,HIGH_FACE,-0.3332,sad,STRONG,0.6436,person,6,0.3673,664.4,True,0.317078
+crying_10.mp4,crying,HIGH_FACE,-0.2758,sad,STRONG,0.6498,person,5,0.3926,672.6,True,0.325586
+crying_11.mp4,crying,HIGH_FACE,-0.3762,sad,STRONG,0.6427,person,4,0.4427,348.1,True,0.335629
+crying_12.mp4,crying,HIGH_FACE,-0.2726,sad,STRONG,0.6683,person,5,0.3774,315.2,True,0.328247
+crying_13.mp4,crying,HIGH_FACE,-0.3206,sad,STRONG,0.6622,person,8,0.2784,633.9,True,0.301391
+crying_14.mp4,crying,HIGH_FACE,-0.2465,sad,STRONG,0.6376,person,7,0.3731,504.7,True,0.316437
+crying_15.mp4,crying,HIGH_FACE,-0.2864,sad,STRONG,0.6256,person,3,0.34,160.6,True,0.303956
+news_anchoring_00.mp4,news anchoring,HIGH_FACE,0.129,neutral,MINIMAL,0.8353,person,8,0.1783,364.3,True,0.388536
+news_anchoring_01.mp4,news anchoring,HIGH_FACE,0.1572,neutral,MINIMAL,0.7717,person,8,0.0489,488.9,True,0.34521
+news_anchoring_02.mp4,news anchoring,HIGH_FACE,0.0743,neutral,MINIMAL,0.7689,person,3,0.1612,397.2,True,0.339105
+news_anchoring_03.mp4,news anchoring,HIGH_FACE,0.1904,neutral,MINIMAL,0.8146,person,2,0.229,618.5,True,0.418523
+news_anchoring_04.mp4,news anchoring,HIGH_FACE,0.1413,neutral,MINIMAL,0.8242,person,4,0.1582,406.6,True,0.384527
+news_anchoring_05.mp4,news anchoring,HIGH_FACE,0.1395,neutral,MINIMAL,0.818,person,8,0.3764,545.8,True,0.43621
+news_anchoring_06.mp4,news anchoring,HIGH_FACE,0.0824,neutral,MINIMAL,0.7775,person,1,0.0939,739.7,True,0.328545
+news_anchoring_07.mp4,news anchoring,HIGH_FACE,0.0651,neutral,MINIMAL,0.8354,person,2,0.2303,287.6,True,0.375993
+news_anchoring_08.mp4,news anchoring,HIGH_FACE,0.146,neutral,MINIMAL,0.8403,person,6,0.072,576.1,True,0.370527
+news_anchoring_09.mp4,news anchoring,HIGH_FACE,0.1937,neutral,MINIMAL,0.8068,person,8,0.1487,359.0,True,0.397032
+news_anchoring_10.mp4,news anchoring,HIGH_FACE,-0.0311,neutral,MINIMAL,0.7858,person,2,0.2056,183.1,True,0.326406
+news_anchoring_11.mp4,news anchoring,HIGH_FACE,0.1163,neutral,MINIMAL,0.8377,person,6,0.1696,630.1,True,0.382097
+news_anchoring_12.mp4,news anchoring,HIGH_FACE,0.0488,neutral,MINIMAL,0.8002,person,1,0.2648,275.3,True,0.365782
+news_anchoring_13.mp4,news anchoring,HIGH_FACE,0.1127,neutral,MINIMAL,0.923,person,5,0.2195,478.9,True,0.423005
+news_anchoring_14.mp4,news anchoring,HIGH_FACE,0.0303,neutral,MINIMAL,0.7952,person,1,0.1556,212.3,True,0.32935
+news_anchoring_15.mp4,news anchoring,HIGH_FACE,0.0705,neutral,MINIMAL,0.8237,person,6,0.1295,504.9,True,0.348878
+news_anchoring_16.mp4,news anchoring,HIGH_FACE,0.021,neutral,MINIMAL,0.7696,person,7,0.2771,631.1,True,0.347009
+news_anchoring_17.mp4,news anchoring,HIGH_FACE,0.1552,neutral,MINIMAL,0.8292,person,5,0.1598,629.6,True,0.39226
+news_anchoring_18.mp4,news anchoring,HIGH_FACE,0.078,neutral,MINIMAL,0.8345,person,3,0.1445,591.3,True,0.359393
+news_anchoring_19.mp4,news anchoring,HIGH_FACE,0.1495,neutral,MINIMAL,0.8225,person,3,0.0837,288.0,True,0.368609
+news_anchoring_20.mp4,news anchoring,HIGH_FACE,0.1796,neutral,MINIMAL,0.8029,person,1,0.168,371.9,True,0.394837
+gymnastics_tumbling_00.mp4,gymnastics tumbling,HIGH_MOTION,0.2019,neutral,MINIMAL,0.7456,person,7,0.9411,319.2,True,0.576982
+gymnastics_tumbling_01.mp4,gymnastics tumbling,HIGH_MOTION,0.1318,neutral,MINIMAL,0.7304,person,1,1.0,479.0,True,0.558365
+gymnastics_tumbling_02.mp4,gymnastics tumbling,HIGH_MOTION,0.128,neutral,MINIMAL,0.6285,person,1,0.9546,502.2,True,0.509821
+gymnastics_tumbling_03.mp4,gymnastics tumbling,HIGH_MOTION,0.0601,neutral,MINIMAL,0.7746,person,6,0.9101,216.8,True,0.522664
+gymnastics_tumbling_04.mp4,gymnastics tumbling,HIGH_MOTION,0.0792,neutral,MINIMAL,0.7152,person,4,0.9457,355.7,True,0.518454
+gymnastics_tumbling_05.mp4,gymnastics tumbling,HIGH_MOTION,0.1313,neutral,MINIMAL,0.7254,person,5,0.926,80.0,False,0.0
+gymnastics_tumbling_06.mp4,gymnastics tumbling,HIGH_MOTION,0.1574,neutral,MINIMAL,0.7506,person,3,1.0,250.6,True,0.575676
+gymnastics_tumbling_07.mp4,gymnastics tumbling,HIGH_MOTION,0.1798,neutral,MINIMAL,0.7421,person,8,1.0,615.1,True,0.581645
+gymnastics_tumbling_08.mp4,gymnastics tumbling,HIGH_MOTION,0.2149,neutral,MINIMAL,0.7458,person,1,0.9619,575.9,True,0.587486
+gymnastics_tumbling_09.mp4,gymnastics tumbling,HIGH_MOTION,0.2221,neutral,MINIMAL,0.7403,person,7,0.9222,529.8,True,0.578522
+gymnastics_tumbling_10.mp4,gymnastics tumbling,HIGH_MOTION,0.1585,neutral,MINIMAL,0.7077,person,4,0.9013,366.8,True,0.536449
+gymnastics_tumbling_11.mp4,gymnastics tumbling,HIGH_MOTION,0.1163,neutral,MINIMAL,0.7545,person,4,0.9935,294.5,True,0.55897
+gymnastics_tumbling_12.mp4,gymnastics tumbling,HIGH_MOTION,0.0781,neutral,MINIMAL,0.7023,person,2,0.9066,472.7,True,0.503665
+gymnastics_tumbling_13.mp4,gymnastics tumbling,HIGH_MOTION,0.1852,neutral,MINIMAL,0.7456,person,8,0.9788,194.4,True,0.579745
+gymnastics_tumbling_14.mp4,gymnastics tumbling,HIGH_MOTION,0.1908,neutral,MINIMAL,0.7495,person,3,0.9781,434.6,True,0.583189
+gymnastics_tumbling_15.mp4,gymnastics tumbling,HIGH_MOTION,0.1605,neutral,MINIMAL,0.7403,person,5,0.951,706.1,True,0.561041
+gymnastics_tumbling_16.mp4,gymnastics tumbling,HIGH_MOTION,0.1113,neutral,MINIMAL,0.7463,person,5,0.9149,554.0,True,0.53445
+gymnastics_tumbling_17.mp4,gymnastics tumbling,HIGH_MOTION,0.1112,neutral,MINIMAL,0.7508,person,6,0.9668,277.7,True,0.548961
+gymnastics_tumbling_18.mp4,gymnastics tumbling,HIGH_MOTION,0.2874,neutral,MINIMAL,0.7264,person,2,0.9929,574.2,True,0.617451
+gymnastics_tumbling_19.mp4,gymnastics tumbling,HIGH_MOTION,0.0668,neutral,MINIMAL,0.749,person,4,0.9253,288.5,True,0.520183
+gymnastics_tumbling_20.mp4,gymnastics tumbling,HIGH_MOTION,0.1125,neutral,MINIMAL,0.8501,person,3,0.992,314.1,True,0.590544
+gymnastics_tumbling_21.mp4,gymnastics tumbling,HIGH_MOTION,0.138,neutral,MINIMAL,0.7657,person,6,1.0,533.0,True,0.573176
+gymnastics_tumbling_22.mp4,gymnastics tumbling,HIGH_MOTION,0.1123,neutral,MINIMAL,0.7577,person,2,0.9054,237.6,True,0.536487
+gymnastics_tumbling_23.mp4,gymnastics tumbling,HIGH_MOTION,0.2365,neutral,MINIMAL,0.7093,person,2,0.9806,861.2,True,0.587988
+breakdancing_00.mp4,breakdancing,HIGH_MOTION,0.2476,neutral,MINIMAL,0.6253,person,3,0.9811,225.6,True,0.563151
+breakdancing_01.mp4,breakdancing,HIGH_MOTION,0.1443,neutral,MINIMAL,0.7091,person,3,0.9986,644.1,True,0.555572
+breakdancing_02.mp4,breakdancing,HIGH_MOTION,0.3402,neutral,MINIMAL,0.723,person,3,0.9804,459.8,True,0.634242
+breakdancing_03.mp4,breakdancing,HIGH_MOTION,0.2385,neutral,MINIMAL,0.7453,person,2,0.9618,420.6,True,0.596716
+breakdancing_04.mp4,breakdancing,HIGH_MOTION,0.1207,neutral,MINIMAL,0.6743,person,1,1.0,710.6,True,0.534268
+breakdancing_05.mp4,breakdancing,HIGH_MOTION,0.2449,neutral,MINIMAL,0.6603,person,7,0.9559,350.2,True,0.56803
+breakdancing_06.mp4,breakdancing,HIGH_MOTION,0.0942,neutral,MINIMAL,0.6962,person,3,0.8232,406.6,True,0.487148
+breakdancing_07.mp4,breakdancing,HIGH_MOTION,0.2157,neutral,MINIMAL,0.6723,person,6,0.9395,671.3,True,0.556476
+breakdancing_08.mp4,breakdancing,HIGH_MOTION,0.1623,neutral,MINIMAL,0.6558,person,4,1.0,222.0,True,0.544454
+breakdancing_09.mp4,breakdancing,HIGH_MOTION,0.2768,neutral,MINIMAL,0.6023,person,3,1.0,379.7,True,0.571527
+breakdancing_10.mp4,breakdancing,HIGH_MOTION,0.2063,neutral,MINIMAL,0.664,person,6,0.8913,473.7,True,0.537712
+breakdancing_11.mp4,breakdancing,HIGH_MOTION,0.209,neutral,MINIMAL,0.6526,person,1,0.9628,497.6,True,0.552695
+breakdancing_12.mp4,breakdancing,HIGH_MOTION,0.254,neutral,MINIMAL,0.6509,person,6,0.8548,674.3,True,0.543129
+breakdancing_13.mp4,breakdancing,HIGH_MOTION,0.0804,neutral,MINIMAL,0.7196,person,7,0.9513,402.7,True,0.521872
+breakdancing_14.mp4,breakdancing,HIGH_MOTION,0.2196,neutral,MINIMAL,0.7134,person,4,0.9438,701.9,True,0.573487
+breakdancing_15.mp4,breakdancing,HIGH_MOTION,0.2553,neutral,MINIMAL,0.7061,person,5,0.8606,128.4,True,0.564434
+breakdancing_16.mp4,breakdancing,HIGH_MOTION,0.0704,neutral,MINIMAL,0.6462,person,3,0.9907,695.1,True,0.502011
+breakdancing_17.mp4,breakdancing,HIGH_MOTION,0.1836,neutral,MINIMAL,0.689,person,2,0.8386,476.0,True,0.524255
+breakdancing_18.mp4,breakdancing,HIGH_MOTION,0.1328,neutral,MINIMAL,0.6804,person,3,0.9668,152.1,True,0.532963
+breakdancing_19.mp4,breakdancing,HIGH_MOTION,0.1954,neutral,MINIMAL,0.7171,person,8,0.9095,195.4,True,0.556541
+breakdancing_20.mp4,breakdancing,HIGH_MOTION,0.2393,neutral,MINIMAL,0.6989,person,1,0.903,272.6,True,0.566086
+breakdancing_21.mp4,breakdancing,HIGH_MOTION,0.1947,neutral,MINIMAL,0.7493,person,4,0.9042,331.0,True,0.566173
+bouncing_on_trampoline_00.mp4,bouncing on trampoline,HIGH_MOTION,0.5513,surprise,AVERAGE,0.8501,person,7,0.7224,123.1,True,0.698654
+bouncing_on_trampoline_01.mp4,bouncing on trampoline,HIGH_MOTION,0.6124,surprise,AVERAGE,0.8692,person,2,0.788,535.3,True,0.746185
+bouncing_on_trampoline_02.mp4,bouncing on trampoline,HIGH_MOTION,0.5622,surprise,AVERAGE,0.843,person,4,0.6286,515.2,True,0.677087
+bouncing_on_trampoline_03.mp4,bouncing on trampoline,HIGH_MOTION,0.5371,surprise,AVERAGE,0.846,person,8,0.7285,192.3,True,0.693056
+bouncing_on_trampoline_04.mp4,bouncing on trampoline,HIGH_MOTION,0.4947,surprise,AVERAGE,0.8424,person,2,0.6119,299.6,True,0.645713
+bouncing_on_trampoline_05.mp4,bouncing on trampoline,HIGH_MOTION,0.4399,surprise,AVERAGE,0.8601,person,3,0.8032,515.6,True,0.6778
+bouncing_on_trampoline_06.mp4,bouncing on trampoline,HIGH_MOTION,0.5385,surprise,AVERAGE,0.8494,person,3,0.7603,448.2,True,0.702764
+bouncing_on_trampoline_07.mp4,bouncing on trampoline,HIGH_MOTION,0.5793,surprise,AVERAGE,0.8394,person,8,0.8228,455.3,True,0.731218
+bouncing_on_trampoline_08.mp4,bouncing on trampoline,HIGH_MOTION,0.4781,surprise,AVERAGE,0.8905,person,6,0.7616,613.7,True,0.693314
+bouncing_on_trampoline_09.mp4,bouncing on trampoline,HIGH_MOTION,0.4964,surprise,AVERAGE,0.8294,person,5,0.6962,194.7,True,0.662895
+bouncing_on_trampoline_10.mp4,bouncing on trampoline,HIGH_MOTION,0.5528,surprise,AVERAGE,0.8436,person,6,0.7467,325.3,True,0.70304
+skateboarding_00.mp4,skateboarding,HIGH_MOTION,0.1934,neutral,MINIMAL,0.7647,person,1,0.7059,286.7,True,0.521487
+skateboarding_01.mp4,skateboarding,HIGH_MOTION,0.057,neutral,MINIMAL,0.7732,person,7,0.8414,819.9,True,0.503784
+skateboarding_02.mp4,skateboarding,HIGH_MOTION,0.1844,neutral,MINIMAL,0.7333,person,1,0.8301,603.1,True,0.537956
+skateboarding_03.mp4,skateboarding,HIGH_MOTION,-0.0356,neutral,MINIMAL,0.8138,person,5,0.8728,612.3,True,0.503021
+skateboarding_04.mp4,skateboarding,HIGH_MOTION,0.1587,neutral,MINIMAL,0.8019,person,3,0.8461,597.5,True,0.555678
+skateboarding_05.mp4,skateboarding,HIGH_MOTION,0.1409,neutral,MINIMAL,0.7407,person,3,0.9173,80.0,False,0.0
+skateboarding_06.mp4,skateboarding,HIGH_MOTION,0.2444,neutral,MINIMAL,0.7795,person,1,0.9046,491.8,True,0.596728
+skateboarding_07.mp4,skateboarding,HIGH_MOTION,0.1563,neutral,MINIMAL,0.8251,person,5,0.9408,686.8,True,0.586495
+skateboarding_08.mp4,skateboarding,HIGH_MOTION,0.0914,neutral,MINIMAL,0.8343,person,5,0.9048,332.3,True,0.554763
+skateboarding_09.mp4,skateboarding,HIGH_MOTION,0.0976,neutral,MINIMAL,0.6995,person,5,0.9349,670.3,True,0.517624
+skateboarding_10.mp4,skateboarding,HIGH_MOTION,-0.0019,neutral,MINIMAL,0.8168,person,2,0.8875,607.3,True,0.507771
+skateboarding_11.mp4,skateboarding,HIGH_MOTION,0.1469,neutral,MINIMAL,0.782,person,8,0.8878,140.5,True,0.554382
+skateboarding_12.mp4,skateboarding,HIGH_MOTION,0.0803,neutral,MINIMAL,0.8125,person,7,0.7709,583.3,True,0.509207
+skateboarding_13.mp4,skateboarding,HIGH_MOTION,0.1678,neutral,MINIMAL,0.7302,person,2,0.9696,651.2,True,0.565082
+skateboarding_14.mp4,skateboarding,HIGH_MOTION,0.1981,neutral,MINIMAL,0.7928,person,1,0.8946,369.0,True,0.580377
+skateboarding_15.mp4,skateboarding,HIGH_MOTION,0.2357,neutral,MINIMAL,0.7972,person,6,0.929,531.1,True,0.605572
+skateboarding_16.mp4,skateboarding,HIGH_MOTION,0.078,neutral,MINIMAL,0.7386,person,3,0.7749,306.4,True,0.483459
+skateboarding_17.mp4,skateboarding,HIGH_MOTION,0.1145,neutral,MINIMAL,0.798,person,6,0.8619,378.8,True,0.540575
+skateboarding_18.mp4,skateboarding,HIGH_MOTION,0.0434,neutral,MINIMAL,0.7909,person,6,0.9033,218.4,True,0.520005
+skateboarding_19.mp4,skateboarding,HIGH_MOTION,0.117,neutral,MINIMAL,0.785,person,6,0.8822,409.8,True,0.542086
+skateboarding_20.mp4,skateboarding,HIGH_MOTION,0.0653,neutral,MINIMAL,0.7802,person,1,0.8346,563.2,True,0.507842
+skateboarding_21.mp4,skateboarding,HIGH_MOTION,0.111,neutral,MINIMAL,0.7533,person,7,0.6914,987.5,True,0.480915
+skateboarding_22.mp4,skateboarding,HIGH_MOTION,0.0923,neutral,MINIMAL,0.7351,person,5,0.8237,316.4,True,0.500118
+skateboarding_23.mp4,skateboarding,HIGH_MOTION,0.1376,neutral,MINIMAL,0.7984,person,4,0.8808,632.3,True,0.554704
+skateboarding_24.mp4,skateboarding,HIGH_MOTION,0.1675,neutral,MINIMAL,0.7751,person,3,0.8578,323.8,True,0.552725
+skateboarding_25.mp4,skateboarding,HIGH_MOTION,0.0869,neutral,MINIMAL,0.7795,person,1,0.9428,766.7,True,0.543294
+snowboarding_00.mp4,snowboarding,HIGH_MOTION,-0.0127,neutral,MINIMAL,0.6156,person,5,0.8656,617.0,True,0.431843
+snowboarding_01.mp4,snowboarding,HIGH_MOTION,0.0289,neutral,MINIMAL,0.6401,person,7,0.9942,80.0,False,0.0
+snowboarding_02.mp4,snowboarding,HIGH_MOTION,0.1815,neutral,MINIMAL,0.6064,person,7,0.8727,400.1,True,0.503009
+snowboarding_03.mp4,snowboarding,HIGH_MOTION,0.0856,neutral,MINIMAL,0.6194,person,4,0.9571,471.9,True,0.490341
+snowboarding_04.mp4,snowboarding,HIGH_MOTION,0.079,neutral,MINIMAL,0.5903,person,3,0.9638,357.9,True,0.47914
+snowboarding_05.mp4,snowboarding,HIGH_MOTION,0.0646,neutral,MINIMAL,0.6038,person,7,0.7984,863.9,True,0.436745
+snowboarding_06.mp4,snowboarding,HIGH_MOTION,0.0743,neutral,MINIMAL,0.6067,person,1,0.8632,371.3,True,0.457879
+snowboarding_07.mp4,snowboarding,HIGH_MOTION,0.1034,neutral,MINIMAL,0.5666,person,4,0.8835,266.9,True,0.460513
+snowboarding_08.mp4,snowboarding,HIGH_MOTION,0.1493,neutral,MINIMAL,0.6502,person,4,0.9294,390.8,True,0.519664
+snowboarding_09.mp4,snowboarding,HIGH_MOTION,0.0714,neutral,MINIMAL,0.6809,person,5,0.9817,697.9,True,0.512282
+snowboarding_10.mp4,snowboarding,HIGH_MOTION,0.0492,neutral,MINIMAL,0.6099,person,3,0.9075,152.4,True,0.460047
+snowboarding_11.mp4,snowboarding,HIGH_MOTION,0.103,neutral,MINIMAL,0.6632,person,2,0.9514,414.6,True,0.511173
+snowboarding_12.mp4,snowboarding,HIGH_MOTION,0.1426,neutral,MINIMAL,0.6654,person,7,0.8638,446.5,True,0.505842
+snowboarding_13.mp4,snowboarding,HIGH_MOTION,-0.0269,neutral,MINIMAL,0.5904,person,1,0.9846,675.9,True,0.452799
+snowboarding_14.mp4,snowboarding,HIGH_MOTION,0.1799,neutral,MINIMAL,0.6496,person,1,0.9732,335.8,True,0.542626
+snowboarding_15.mp4,snowboarding,HIGH_MOTION,-0.0169,neutral,MINIMAL,0.6217,person,4,0.8988,794.0,True,0.442305
+snowboarding_16.mp4,snowboarding,HIGH_MOTION,-0.0329,neutral,MINIMAL,0.6181,person,3,0.8999,341.6,True,0.441302
+snowboarding_17.mp4,snowboarding,HIGH_MOTION,0.008,neutral,MINIMAL,0.6391,person,3,0.8801,428.3,True,0.446904
+snowboarding_18.mp4,snowboarding,HIGH_MOTION,-0.0482,neutral,MINIMAL,0.6453,person,5,0.9223,535.2,True,0.456419
+snowboarding_19.mp4,snowboarding,HIGH_MOTION,0.0517,neutral,MINIMAL,0.6124,person,1,0.8992,880.1,True,0.459807
+springboard_diving_00.mp4,springboard diving,HIGH_MOTION,0.261,neutral,MINIMAL,0.7635,person,5,0.8643,446.6,True,0.587714
+springboard_diving_01.mp4,springboard diving,HIGH_MOTION,0.1315,neutral,MINIMAL,0.7147,person,3,0.9032,384.5,True,0.528544
+springboard_diving_02.mp4,springboard diving,HIGH_MOTION,0.1586,neutral,MINIMAL,0.7667,person,7,0.8339,287.6,True,0.540251
+springboard_diving_03.mp4,springboard diving,HIGH_MOTION,0.0353,neutral,MINIMAL,0.7459,person,3,0.9656,762.0,True,0.516576
+springboard_diving_04.mp4,springboard diving,HIGH_MOTION,0.1748,neutral,MINIMAL,0.7027,person,1,0.9865,418.3,True,0.562478
+springboard_diving_05.mp4,springboard diving,HIGH_MOTION,0.1711,neutral,MINIMAL,0.6839,person,1,0.8289,471.0,True,0.51501
+springboard_diving_06.mp4,springboard diving,HIGH_MOTION,0.1137,neutral,MINIMAL,0.6704,person,7,0.7953,260.1,True,0.478966
+springboard_diving_07.mp4,springboard diving,HIGH_MOTION,0.1621,neutral,MINIMAL,0.7433,person,8,0.8819,564.0,True,0.545465
+springboard_diving_08.mp4,springboard diving,HIGH_MOTION,0.1843,neutral,MINIMAL,0.7124,person,2,0.8419,515.3,True,0.533523
+springboard_diving_09.mp4,springboard diving,HIGH_MOTION,0.1587,neutral,MINIMAL,0.6998,person,3,0.917,846.6,True,0.537648
+springboard_diving_10.mp4,springboard diving,HIGH_MOTION,0.1097,neutral,MINIMAL,0.7348,person,4,0.8672,303.7,True,0.517853
+springboard_diving_11.mp4,springboard diving,HIGH_MOTION,0.0849,neutral,MINIMAL,0.7525,person,6,0.875,106.8,True,0.516076
+springboard_diving_12.mp4,springboard diving,HIGH_MOTION,0.3463,neutral,MINIMAL,0.684,person,7,0.8841,224.9,True,0.598947
+springboard_diving_13.mp4,springboard diving,HIGH_MOTION,0.1992,neutral,MINIMAL,0.7287,person,3,0.8598,581.7,True,0.549662
+springboard_diving_14.mp4,springboard diving,HIGH_MOTION,0.1721,neutral,MINIMAL,0.7239,person,8,0.8642,481.4,True,0.538256
+springboard_diving_15.mp4,springboard diving,HIGH_MOTION,0.1949,neutral,MINIMAL,0.804,person,2,0.8792,421.8,True,0.579177
+springboard_diving_16.mp4,springboard diving,HIGH_MOTION,0.2392,neutral,MINIMAL,0.7434,person,6,0.8842,459.5,True,0.576902
+springboard_diving_17.mp4,springboard diving,HIGH_MOTION,0.1895,neutral,MINIMAL,0.7088,person,3,0.8229,375.8,True,0.529602
+hurdling_00.mp4,hurdling,HIGH_MOTION,0.0415,neutral,MINIMAL,0.7594,person,4,0.8754,240.2,True,0.50126
+hurdling_01.mp4,hurdling,HIGH_MOTION,0.0231,neutral,MINIMAL,0.7707,person,8,0.9617,471.4,True,0.519387
+hurdling_02.mp4,hurdling,HIGH_MOTION,0.0208,neutral,MINIMAL,0.7836,person,4,0.811,493.4,True,0.485338
+hurdling_03.mp4,hurdling,HIGH_MOTION,0.0385,neutral,MINIMAL,0.7912,person,2,0.9114,823.2,True,0.520159
+hurdling_04.mp4,hurdling,HIGH_MOTION,0.0913,neutral,MINIMAL,0.8375,person,7,0.7442,641.0,True,0.51568
+hurdling_05.mp4,hurdling,HIGH_MOTION,0.0439,neutral,MINIMAL,0.8061,person,4,0.9017,289.3,True,0.525128
+hurdling_06.mp4,hurdling,HIGH_MOTION,0.1153,neutral,MINIMAL,0.7862,person,3,0.7346,359.6,True,0.504952
+hurdling_07.mp4,hurdling,HIGH_MOTION,0.0343,neutral,MINIMAL,0.7371,person,3,0.8234,372.5,True,0.477531
+hurdling_08.mp4,hurdling,HIGH_MOTION,0.0523,neutral,MINIMAL,0.8175,person,8,0.9184,413.1,True,0.53666
+hurdling_09.mp4,hurdling,HIGH_MOTION,0.1064,neutral,MINIMAL,0.7963,person,4,0.9437,454.8,True,0.55719
+hurdling_10.mp4,hurdling,HIGH_MOTION,0.0797,neutral,MINIMAL,0.7808,person,3,0.9219,230.5,True,0.535631
+hurdling_11.mp4,hurdling,HIGH_MOTION,0.0411,neutral,MINIMAL,0.7606,person,5,0.9279,826.3,True,0.51461
+hurdling_12.mp4,hurdling,HIGH_MOTION,0.1134,neutral,MINIMAL,0.7752,person,3,0.8794,196.6,True,0.536507
+hurdling_13.mp4,hurdling,HIGH_MOTION,0.1261,neutral,MINIMAL,0.8575,person,2,0.8824,516.8,True,0.57117
+hurdling_14.mp4,hurdling,HIGH_MOTION,0.0029,neutral,MINIMAL,0.8275,person,4,0.8839,494.9,True,0.511731
+hurdling_15.mp4,hurdling,HIGH_MOTION,0.0299,neutral,MINIMAL,0.7987,person,4,0.7574,694.4,True,0.480826
+hurdling_16.mp4,hurdling,HIGH_MOTION,0.0909,neutral,MINIMAL,0.7838,person,4,0.8343,519.7,True,0.519266
+hurdling_17.mp4,hurdling,HIGH_MOTION,-0.0416,neutral,MINIMAL,0.8029,person,7,0.7509,474.6,True,0.468746
+hurdling_18.mp4,hurdling,HIGH_MOTION,0.0911,neutral,MINIMAL,0.7632,person,7,0.8439,265.0,True,0.514544
+rock_climbing_00.mp4,rock climbing,HIGH_MOTION,0.1822,neutral,MINIMAL,0.6415,person,2,0.7021,287.8,True,0.47291
+rock_climbing_01.mp4,rock climbing,HIGH_MOTION,0.1162,neutral,MINIMAL,0.6514,person,4,0.7839,636.0,True,0.470434
+rock_climbing_02.mp4,rock climbing,HIGH_MOTION,0.2512,neutral,MINIMAL,0.6512,person,5,0.7378,784.1,True,0.512871
+rock_climbing_03.mp4,rock climbing,HIGH_MOTION,0.2317,neutral,MINIMAL,0.6253,person,6,0.9185,395.1,True,0.54119
+rock_climbing_04.mp4,rock climbing,HIGH_MOTION,0.1815,neutral,MINIMAL,0.591,person,6,0.7614,682.1,True,0.4698
+rock_climbing_05.mp4,rock climbing,HIGH_MOTION,0.0426,neutral,MINIMAL,0.629,person,8,0.8372,485.0,True,0.446521
+rock_climbing_06.mp4,rock climbing,HIGH_MOTION,0.1265,neutral,MINIMAL,0.6374,person,4,0.7702,788.5,True,0.466269
+rock_climbing_07.mp4,rock climbing,HIGH_MOTION,0.1215,neutral,MINIMAL,0.6609,person,2,0.8243,687.2,True,0.485965
+rock_climbing_08.mp4,rock climbing,HIGH_MOTION,0.0775,neutral,MINIMAL,0.6494,person,1,0.6901,607.0,True,0.430798
+rock_climbing_09.mp4,rock climbing,HIGH_MOTION,0.0202,neutral,MINIMAL,0.5895,person,1,0.7575,474.4,True,0.403798
+rock_climbing_10.mp4,rock climbing,HIGH_MOTION,0.105,neutral,MINIMAL,0.6538,person,7,0.7963,112.8,True,0.469912
+rock_climbing_11.mp4,rock climbing,HIGH_MOTION,0.2097,neutral,MINIMAL,0.6655,person,1,0.8125,647.3,True,0.519949
+rock_climbing_12.mp4,rock climbing,HIGH_MOTION,0.2187,neutral,MINIMAL,0.6077,person,6,0.7712,389.0,True,0.492959
+rock_climbing_13.mp4,rock climbing,HIGH_MOTION,0.0751,neutral,MINIMAL,0.6929,person,4,0.9387,577.4,True,0.507201
+rock_climbing_14.mp4,rock climbing,HIGH_MOTION,0.1131,neutral,MINIMAL,0.6539,person,1,0.8325,481.3,True,0.482198
+rock_climbing_15.mp4,rock climbing,HIGH_MOTION,0.002,neutral,MINIMAL,0.6673,person,5,0.7728,676.5,True,0.427567
+rock_climbing_16.mp4,rock climbing,HIGH_MOTION,0.1974,neutral,MINIMAL,0.6295,person,3,0.8892,209.6,True,0.521589
+playing_basketball_00.mp4,playing basketball,HIGH_SEMANTIC,0.1999,neutral,MINIMAL,0.8826,person,5,0.6678,463.8,True,0.555812
+playing_basketball_01.mp4,playing basketball,HIGH_SEMANTIC,0.314,neutral,MINIMAL,0.8929,person,5,0.8117,622.5,True,0.64102
+playing_basketball_02.mp4,playing basketball,HIGH_SEMANTIC,0.1253,neutral,MINIMAL,0.9018,person,1,0.8811,344.1,True,0.586009
+playing_basketball_03.mp4,playing basketball,HIGH_SEMANTIC,0.1891,neutral,MINIMAL,0.9092,person,5,0.8166,461.5,True,0.598032
+playing_basketball_04.mp4,playing basketball,HIGH_SEMANTIC,0.1838,neutral,MINIMAL,0.9856,person,4,0.8133,293.3,True,0.62178
+playing_basketball_05.mp4,playing basketball,HIGH_SEMANTIC,0.2809,neutral,MINIMAL,0.9427,person,6,0.8461,376.1,True,0.65385
+playing_basketball_06.mp4,playing basketball,HIGH_SEMANTIC,0.234,neutral,MINIMAL,0.963,person,2,0.7099,425.7,True,0.608115
+playing_basketball_07.mp4,playing basketball,HIGH_SEMANTIC,0.1796,neutral,MINIMAL,0.8815,person,3,0.9213,418.6,True,0.610707
+playing_basketball_08.mp4,playing basketball,HIGH_SEMANTIC,0.3073,neutral,MINIMAL,0.9249,person,6,0.8658,393.1,True,0.663072
+playing_basketball_09.mp4,playing basketball,HIGH_SEMANTIC,0.1927,neutral,MINIMAL,0.8851,person,7,0.851,537.7,True,0.59962
+playing_basketball_10.mp4,playing basketball,HIGH_SEMANTIC,0.1867,neutral,MINIMAL,0.9397,person,3,0.8836,444.6,True,0.624463
+playing_basketball_11.mp4,playing basketball,HIGH_SEMANTIC,0.276,neutral,MINIMAL,0.8736,person,5,0.8159,444.1,True,0.620144
+playing_basketball_12.mp4,playing basketball,HIGH_SEMANTIC,0.1999,neutral,MINIMAL,0.946,person,5,0.7843,486.2,True,0.607145
+playing_basketball_13.mp4,playing basketball,HIGH_SEMANTIC,0.2417,neutral,MINIMAL,0.9628,person,4,0.9171,309.5,True,0.662924
+playing_basketball_14.mp4,playing basketball,HIGH_SEMANTIC,0.3071,neutral,MINIMAL,0.8886,person,8,0.7634,580.0,True,0.624706
+playing_basketball_15.mp4,playing basketball,HIGH_SEMANTIC,0.3522,neutral,MINIMAL,0.9264,person,1,0.7986,536.2,True,0.66477
+playing_basketball_16.mp4,playing basketball,HIGH_SEMANTIC,0.2473,neutral,MINIMAL,0.9327,person,1,0.8038,208.7,True,0.626312
+playing_basketball_17.mp4,playing basketball,HIGH_SEMANTIC,0.2571,neutral,MINIMAL,0.9482,person,6,0.7446,414.4,True,0.620875
+playing_basketball_18.mp4,playing basketball,HIGH_SEMANTIC,0.2868,neutral,MINIMAL,0.9826,person,4,0.9105,566.0,True,0.686234
+playing_basketball_19.mp4,playing basketball,HIGH_SEMANTIC,0.278,neutral,MINIMAL,0.9408,person,3,0.772,639.7,True,0.633502
+playing_basketball_20.mp4,playing basketball,HIGH_SEMANTIC,0.1292,neutral,MINIMAL,0.9391,person,2,0.8282,507.6,True,0.587399
+playing_basketball_21.mp4,playing basketball,HIGH_SEMANTIC,0.1841,neutral,MINIMAL,0.9378,person,7,0.9119,725.5,True,0.62985
+playing_basketball_22.mp4,playing basketball,HIGH_SEMANTIC,0.2695,neutral,MINIMAL,0.9287,person,1,0.8723,561.5,True,0.650938
+playing_basketball_23.mp4,playing basketball,HIGH_SEMANTIC,0.293,neutral,MINIMAL,0.8958,person,6,0.7632,543.8,True,0.621509
+playing_basketball_24.mp4,playing basketball,HIGH_SEMANTIC,0.1969,neutral,MINIMAL,0.9012,person,6,0.8653,523.7,True,0.610495
+playing_basketball_25.mp4,playing basketball,HIGH_SEMANTIC,0.1006,neutral,MINIMAL,0.9694,person,7,0.8586,410.2,True,0.594162
+playing_basketball_26.mp4,playing basketball,HIGH_SEMANTIC,0.2183,neutral,MINIMAL,0.9782,person,4,0.7887,458.2,True,0.626881
+playing_basketball_27.mp4,playing basketball,HIGH_SEMANTIC,0.2722,neutral,MINIMAL,0.9545,person,3,0.8741,726.3,True,0.661499
+playing_tennis_00.mp4,playing tennis,HIGH_SEMANTIC,0.1326,neutral,MINIMAL,0.9319,person,2,0.7576,607.7,True,0.568592
+playing_tennis_01.mp4,playing tennis,HIGH_SEMANTIC,0.2245,neutral,MINIMAL,0.8722,person,1,0.6691,711.3,True,0.562359
+playing_tennis_02.mp4,playing tennis,HIGH_SEMANTIC,0.1791,neutral,MINIMAL,0.9143,person,1,0.7367,603.3,True,0.575835
+playing_tennis_03.mp4,playing tennis,HIGH_SEMANTIC,0.1895,neutral,MINIMAL,0.9,person,3,0.8885,374.5,True,0.612933
+playing_tennis_04.mp4,playing tennis,HIGH_SEMANTIC,0.2369,neutral,MINIMAL,0.9193,person,4,0.7545,721.2,True,0.605151
+playing_tennis_05.mp4,playing tennis,HIGH_SEMANTIC,0.144,neutral,MINIMAL,0.9341,person,4,0.8296,432.0,True,0.591913
+playing_tennis_06.mp4,playing tennis,HIGH_SEMANTIC,0.1019,neutral,MINIMAL,0.8986,person,6,0.7569,397.9,True,0.544496
+playing_tennis_07.mp4,playing tennis,HIGH_SEMANTIC,0.2103,neutral,MINIMAL,0.867,person,5,0.6475,264.0,True,0.549422
+playing_tennis_08.mp4,playing tennis,HIGH_SEMANTIC,0.1923,neutral,MINIMAL,0.915,person,2,0.7296,246.0,True,0.57956
+playing_tennis_09.mp4,playing tennis,HIGH_SEMANTIC,0.1291,neutral,MINIMAL,0.9186,person,1,0.7692,458.1,True,0.565471
+playing_tennis_10.mp4,playing tennis,HIGH_SEMANTIC,0.2034,neutral,MINIMAL,0.8675,person,7,0.7826,222.6,True,0.580645
+playing_tennis_11.mp4,playing tennis,HIGH_SEMANTIC,0.1808,neutral,MINIMAL,0.8505,person,2,0.7758,212.3,True,0.563959
+playing_tennis_12.mp4,playing tennis,HIGH_SEMANTIC,0.2499,neutral,MINIMAL,0.8974,person,7,0.8074,722.0,True,0.615918
+playing_tennis_13.mp4,playing tennis,HIGH_SEMANTIC,0.0545,neutral,MINIMAL,0.9321,person,2,0.6732,402.5,True,0.516312
+playing_tennis_14.mp4,playing tennis,HIGH_SEMANTIC,0.0761,neutral,MINIMAL,0.9487,person,6,0.8615,600.0,True,0.57785
+playing_tennis_15.mp4,playing tennis,HIGH_SEMANTIC,0.1582,neutral,MINIMAL,0.9108,person,8,0.721,159.3,True,0.562309
+playing_tennis_16.mp4,playing tennis,HIGH_SEMANTIC,0.133,neutral,MINIMAL,0.939,person,7,0.7199,381.1,True,0.561832
+playing_tennis_17.mp4,playing tennis,HIGH_SEMANTIC,0.0871,neutral,MINIMAL,0.92,person,7,0.7752,80.0,False,0.0
+playing_tennis_18.mp4,playing tennis,HIGH_SEMANTIC,0.1873,neutral,MINIMAL,0.9094,person,5,0.7452,344.9,True,0.579502
+playing_tennis_19.mp4,playing tennis,HIGH_SEMANTIC,0.1433,neutral,MINIMAL,0.8886,person,6,0.6898,458.7,True,0.540814
+playing_tennis_20.mp4,playing tennis,HIGH_SEMANTIC,0.0933,neutral,MINIMAL,0.8866,person,6,0.8109,457.1,True,0.550389
+playing_tennis_21.mp4,playing tennis,HIGH_SEMANTIC,0.1454,neutral,MINIMAL,0.9625,person,2,0.7426,267.6,True,0.580698
+playing_tennis_22.mp4,playing tennis,HIGH_SEMANTIC,0.1604,neutral,MINIMAL,0.9197,person,5,0.736,481.3,True,0.570057
+playing_tennis_23.mp4,playing tennis,HIGH_SEMANTIC,0.1223,neutral,MINIMAL,0.9369,person,4,0.6325,338.2,True,0.534948
+playing_tennis_24.mp4,playing tennis,HIGH_SEMANTIC,0.1167,neutral,MINIMAL,0.9266,person,2,0.8202,670.3,True,0.57601
+playing_tennis_25.mp4,playing tennis,HIGH_SEMANTIC,0.1593,neutral,MINIMAL,0.9564,person,1,0.7337,387.5,True,0.581888
+playing_guitar_00.mp4,playing guitar,HIGH_SEMANTIC,0.2941,neutral,MINIMAL,0.8137,person,4,0.3996,581.6,True,0.50233
+playing_guitar_01.mp4,playing guitar,HIGH_SEMANTIC,0.2462,neutral,MINIMAL,0.7689,person,5,0.4405,80.0,False,0.0
+playing_guitar_02.mp4,playing guitar,HIGH_SEMANTIC,0.1902,neutral,MINIMAL,0.7419,person,6,0.3291,704.5,True,0.418001
+playing_guitar_03.mp4,playing guitar,HIGH_SEMANTIC,0.328,neutral,MINIMAL,0.8063,person,2,0.4392,522.8,True,0.523214
+playing_guitar_04.mp4,playing guitar,HIGH_SEMANTIC,0.3107,neutral,MINIMAL,0.7654,person,5,0.4532,80.0,False,0.0
+playing_guitar_05.mp4,playing guitar,HIGH_SEMANTIC,0.3547,neutral,MINIMAL,0.7923,person,5,0.4194,308.8,True,0.52405
+playing_guitar_06.mp4,playing guitar,HIGH_SEMANTIC,0.13,neutral,MINIMAL,0.775,person,4,0.4754,510.1,True,0.442093
+playing_guitar_07.mp4,playing guitar,HIGH_SEMANTIC,0.191,neutral,MINIMAL,0.8035,person,4,0.5234,616.6,True,0.488475
+playing_guitar_08.mp4,playing guitar,HIGH_SEMANTIC,0.3588,neutral,MINIMAL,0.8117,person,8,0.4977,208.3,True,0.552026
+playing_guitar_09.mp4,playing guitar,HIGH_SEMANTIC,0.2384,neutral,MINIMAL,0.7316,person,8,0.4912,507.5,True,0.474222
+playing_guitar_10.mp4,playing guitar,HIGH_SEMANTIC,0.2966,neutral,MINIMAL,0.7737,person,1,0.4651,265.9,True,0.505724
+playing_guitar_11.mp4,playing guitar,HIGH_SEMANTIC,0.2522,neutral,MINIMAL,0.7411,person,5,0.4291,234.0,True,0.467565
+playing_guitar_12.mp4,playing guitar,HIGH_SEMANTIC,0.301,neutral,MINIMAL,0.8261,person,2,0.3521,295.3,True,0.497568
+playing_guitar_13.mp4,playing guitar,HIGH_SEMANTIC,0.292,neutral,MINIMAL,0.7724,person,7,0.4592,466.2,True,0.501954
+playing_guitar_14.mp4,playing guitar,HIGH_SEMANTIC,0.2105,neutral,MINIMAL,0.8076,person,2,0.3613,993.9,True,0.457152
+playing_guitar_15.mp4,playing guitar,HIGH_SEMANTIC,0.3027,neutral,MINIMAL,0.7904,person,1,0.4183,515.7,True,0.50229
+playing_guitar_16.mp4,playing guitar,HIGH_SEMANTIC,0.3242,neutral,MINIMAL,0.8018,person,5,0.3048,222.8,True,0.486508
+playing_guitar_17.mp4,playing guitar,HIGH_SEMANTIC,0.2813,neutral,MINIMAL,0.7847,person,8,0.4463,203.6,True,0.49872
+playing_guitar_18.mp4,playing guitar,HIGH_SEMANTIC,0.1722,neutral,MINIMAL,0.8044,person,8,0.4926,80.0,False,0.0
+playing_guitar_19.mp4,playing guitar,HIGH_SEMANTIC,0.3379,neutral,MINIMAL,0.8118,person,7,0.4371,524.4,True,0.528575
+playing_guitar_20.mp4,playing guitar,HIGH_SEMANTIC,0.2288,neutral,MINIMAL,0.7874,person,6,0.416,80.0,False,0.0
+playing_guitar_21.mp4,playing guitar,HIGH_SEMANTIC,0.1989,neutral,MINIMAL,0.7843,person,4,0.4616,590.7,True,0.469478
+playing_guitar_22.mp4,playing guitar,HIGH_SEMANTIC,0.261,neutral,MINIMAL,0.7878,person,2,0.3327,272.8,True,0.463344
+playing_guitar_23.mp4,playing guitar,HIGH_SEMANTIC,0.1361,neutral,MINIMAL,0.8448,person,5,0.3186,353.3,True,0.429743
+archery_00.mp4,archery,HIGH_SEMANTIC,0.0682,neutral,MINIMAL,0.7871,person,7,0.4257,339.5,True,0.409204
+archery_01.mp4,archery,HIGH_SEMANTIC,0.0157,neutral,MINIMAL,0.7572,person,4,0.4555,372.3,True,0.385163
+archery_02.mp4,archery,HIGH_SEMANTIC,0.0396,neutral,MINIMAL,0.6996,person,2,0.6172,673.1,True,0.414992
+archery_03.mp4,archery,HIGH_SEMANTIC,-0.072,neutral,MINIMAL,0.7388,person,5,0.4771,790.2,True,0.377837
+archery_04.mp4,archery,HIGH_SEMANTIC,0.0684,neutral,MINIMAL,0.7406,person,8,0.514,408.0,True,0.415093
+archery_05.mp4,archery,HIGH_SEMANTIC,0.0297,neutral,MINIMAL,0.7791,person,8,0.5608,132.1,True,0.424779
+archery_06.mp4,archery,HIGH_SEMANTIC,0.0766,neutral,MINIMAL,0.7098,person,6,0.5296,143.8,True,0.41146
+archery_07.mp4,archery,HIGH_SEMANTIC,-0.0158,neutral,MINIMAL,0.7862,person,2,0.4779,583.9,True,0.394654
+archery_08.mp4,archery,HIGH_SEMANTIC,0.0502,neutral,MINIMAL,0.7219,person,1,0.3832,478.6,True,0.368534
+archery_09.mp4,archery,HIGH_SEMANTIC,0.058,neutral,MINIMAL,0.7468,person,1,0.5127,318.4,True,0.412738
+archery_10.mp4,archery,HIGH_SEMANTIC,0.0484,neutral,MINIMAL,0.7034,person,2,0.5584,616.7,True,0.405124
+archery_11.mp4,archery,HIGH_SEMANTIC,0.0279,neutral,MINIMAL,0.74,person,3,0.454,294.4,True,0.38368
+archery_12.mp4,archery,HIGH_SEMANTIC,-0.0038,neutral,MINIMAL,0.7552,person,7,0.5255,656.7,True,0.395692
+archery_13.mp4,archery,HIGH_SEMANTIC,-0.0597,neutral,MINIMAL,0.7258,person,4,0.5313,177.4,True,0.386838
+archery_14.mp4,archery,HIGH_SEMANTIC,0.0634,neutral,MINIMAL,0.7616,person,7,0.4155,647.4,True,0.395787
+archery_15.mp4,archery,HIGH_SEMANTIC,0.0959,neutral,MINIMAL,0.7682,person,1,0.3179,416.3,True,0.386731
+archery_16.mp4,archery,HIGH_SEMANTIC,0.1035,neutral,MINIMAL,0.7676,person,1,0.451,381.3,True,0.422814
+archery_17.mp4,archery,HIGH_SEMANTIC,0.0577,neutral,MINIMAL,0.827,person,2,0.5276,329.9,True,0.444447
+archery_18.mp4,archery,HIGH_SEMANTIC,-0.031,neutral,MINIMAL,0.776,person,6,0.5664,310.2,True,0.413206
+archery_19.mp4,archery,HIGH_SEMANTIC,0.0871,neutral,MINIMAL,0.7628,person,4,0.6159,505.0,True,0.455823
+archery_20.mp4,archery,HIGH_SEMANTIC,0.0795,neutral,MINIMAL,0.7127,person,4,0.509,294.2,True,0.408521
+archery_21.mp4,archery,HIGH_SEMANTIC,0.0218,neutral,MINIMAL,0.7581,person,2,0.5221,714.5,True,0.404549
+archery_22.mp4,archery,HIGH_SEMANTIC,0.0148,neutral,MINIMAL,0.7535,person,1,0.4899,355.4,True,0.392108
+archery_23.mp4,archery,HIGH_SEMANTIC,0.1201,neutral,MINIMAL,0.7328,person,7,0.3902,174.5,True,0.402087
+archery_24.mp4,archery,HIGH_SEMANTIC,0.1025,neutral,MINIMAL,0.8056,person,5,0.5443,854.7,True,0.459038
+archery_25.mp4,archery,HIGH_SEMANTIC,0.0344,neutral,MINIMAL,0.7297,person,3,0.4965,512.4,True,0.393263
+archery_26.mp4,archery,HIGH_SEMANTIC,0.1401,neutral,MINIMAL,0.7982,person,3,0.4778,394.3,True,0.454866
+archery_27.mp4,archery,HIGH_SEMANTIC,0.0245,neutral,MINIMAL,0.7481,person,5,0.5153,290.6,True,0.400447
+bowling_00.mp4,bowling,HIGH_SEMANTIC,0.0844,neutral,MINIMAL,0.9493,person,3,0.6327,479.3,True,0.52417
+bowling_01.mp4,bowling,HIGH_SEMANTIC,0.0539,neutral,MINIMAL,0.8653,person,7,0.669,971.6,True,0.491676
+bowling_02.mp4,bowling,HIGH_SEMANTIC,0.0743,neutral,MINIMAL,0.9215,person,2,0.685,570.4,True,0.523512
+bowling_03.mp4,bowling,HIGH_SEMANTIC,0.0121,neutral,MINIMAL,0.9407,person,5,0.715,421.5,True,0.512858
+bowling_04.mp4,bowling,HIGH_SEMANTIC,0.1441,neutral,MINIMAL,0.91,person,3,0.6444,296.1,True,0.53726
+bowling_05.mp4,bowling,HIGH_SEMANTIC,0.0471,neutral,MINIMAL,0.9408,person,7,0.7719,244.6,True,0.541113
+bowling_06.mp4,bowling,HIGH_SEMANTIC,0.0662,neutral,MINIMAL,0.9091,person,7,0.8412,552.9,True,0.554942
+bowling_07.mp4,bowling,HIGH_SEMANTIC,0.1431,neutral,MINIMAL,0.8958,person,2,0.7396,302.7,True,0.555667
+bowling_08.mp4,bowling,HIGH_SEMANTIC,0.0563,neutral,MINIMAL,0.857,person,2,0.7683,597.5,True,0.514579
+bowling_09.mp4,bowling,HIGH_SEMANTIC,0.1223,neutral,MINIMAL,0.9601,person,5,0.6313,611.9,True,0.542785
+bowling_10.mp4,bowling,HIGH_SEMANTIC,0.0731,neutral,MINIMAL,0.9551,person,5,0.7881,361.4,True,0.560544
+bowling_11.mp4,bowling,HIGH_SEMANTIC,0.0735,neutral,MINIMAL,0.9223,person,5,0.7125,534.2,True,0.530305
+bowling_12.mp4,bowling,HIGH_SEMANTIC,0.0975,neutral,MINIMAL,0.9284,person,3,0.8438,440.6,True,0.574907
+bowling_13.mp4,bowling,HIGH_SEMANTIC,0.0761,neutral,MINIMAL,0.931,person,5,0.703,272.4,True,0.532029
+bowling_14.mp4,bowling,HIGH_SEMANTIC,0.0913,neutral,MINIMAL,0.9288,person,2,0.7278,477.4,True,0.543554
+bowling_15.mp4,bowling,HIGH_SEMANTIC,0.1183,neutral,MINIMAL,0.9152,person,1,0.6795,451.3,True,0.53749
+bowling_16.mp4,bowling,HIGH_SEMANTIC,0.0422,neutral,MINIMAL,0.8591,person,2,0.6178,223.9,True,0.472014
+bowling_17.mp4,bowling,HIGH_SEMANTIC,0.1806,neutral,MINIMAL,0.9092,person,5,0.6942,553.9,True,0.563991
+bowling_18.mp4,bowling,HIGH_SEMANTIC,0.189,neutral,MINIMAL,0.9778,person,8,0.7316,380.9,True,0.600727
+bowling_19.mp4,bowling,HIGH_SEMANTIC,-0.0018,neutral,MINIMAL,0.9455,person,7,0.702,227.3,True,0.506423
+bowling_20.mp4,bowling,HIGH_SEMANTIC,0.0635,neutral,MINIMAL,0.8499,person,3,0.6463,728.0,True,0.484444
+bowling_21.mp4,bowling,HIGH_SEMANTIC,0.1754,neutral,MINIMAL,0.9288,person,5,0.667,486.6,True,0.562006
+bowling_22.mp4,bowling,HIGH_SEMANTIC,0.122,neutral,MINIMAL,0.8828,person,8,0.6583,809.3,True,0.522343
+bowling_23.mp4,bowling,HIGH_SEMANTIC,0.0381,neutral,MINIMAL,0.8905,person,4,0.7032,469.6,True,0.502726
+bowling_24.mp4,bowling,HIGH_SEMANTIC,0.1173,neutral,MINIMAL,0.9808,person,5,0.6134,225.1,True,0.543565
+riding_a_bike_00.mp4,riding a bike,HIGH_SEMANTIC,0.0518,neutral,MINIMAL,0.8441,person,8,0.8485,409.6,True,0.528292
+riding_a_bike_01.mp4,riding a bike,HIGH_SEMANTIC,0.1403,neutral,MINIMAL,0.7997,person,5,0.7469,490.9,True,0.522751
+riding_a_bike_02.mp4,riding a bike,HIGH_SEMANTIC,0.1674,neutral,MINIMAL,0.904,person,5,0.6357,593.7,True,0.542294
+riding_a_bike_03.mp4,riding a bike,HIGH_SEMANTIC,0.177,neutral,MINIMAL,0.7921,person,3,0.7483,368.6,True,0.535099
+riding_a_bike_04.mp4,riding a bike,HIGH_SEMANTIC,0.1347,neutral,MINIMAL,0.8356,person,8,0.6971,96.7,False,0.0
+riding_a_bike_05.mp4,riding a bike,HIGH_SEMANTIC,0.1463,neutral,MINIMAL,0.8681,person,5,0.7691,462.7,True,0.554663
+riding_a_bike_06.mp4,riding a bike,HIGH_SEMANTIC,0.1312,neutral,MINIMAL,0.8348,person,3,0.7875,80.0,False,0.0
+riding_a_bike_07.mp4,riding a bike,HIGH_SEMANTIC,0.2314,neutral,MINIMAL,0.8086,person,4,0.6375,686.8,True,0.534933
+riding_a_bike_08.mp4,riding a bike,HIGH_SEMANTIC,0.2295,neutral,MINIMAL,0.7883,person,6,0.6872,453.5,True,0.539535
+riding_a_bike_09.mp4,riding a bike,HIGH_SEMANTIC,0.1456,neutral,MINIMAL,0.8148,person,3,0.7306,472.5,True,0.526027
+riding_a_bike_10.mp4,riding a bike,HIGH_SEMANTIC,0.185,neutral,MINIMAL,0.8637,person,4,0.6487,716.4,True,0.538438
+riding_a_bike_11.mp4,riding a bike,HIGH_SEMANTIC,0.1672,neutral,MINIMAL,0.774,person,6,0.7483,601.3,True,0.524868
+riding_a_bike_12.mp4,riding a bike,HIGH_SEMANTIC,-0.0283,neutral,MINIMAL,0.7979,person,2,0.7615,437.6,True,0.46964
+riding_a_bike_13.mp4,riding a bike,HIGH_SEMANTIC,0.1826,neutral,MINIMAL,0.8267,person,4,0.7417,660.4,True,0.547818
+riding_a_bike_14.mp4,riding a bike,HIGH_SEMANTIC,0.1528,neutral,MINIMAL,0.8337,person,7,0.8076,715.1,True,0.554808
+riding_a_bike_15.mp4,riding a bike,HIGH_SEMANTIC,0.1479,neutral,MINIMAL,0.8799,person,3,0.7798,168.1,True,0.562061
+riding_a_bike_16.mp4,riding a bike,HIGH_SEMANTIC,0.144,neutral,MINIMAL,0.8212,person,1,0.8199,700.4,True,0.549988
+riding_a_bike_17.mp4,riding a bike,HIGH_SEMANTIC,0.0841,neutral,MINIMAL,0.8429,person,6,0.7492,164.4,True,0.515965
+riding_a_bike_18.mp4,riding a bike,HIGH_SEMANTIC,0.1267,neutral,MINIMAL,0.8091,person,7,0.5893,204.6,True,0.481204
+riding_a_bike_19.mp4,riding a bike,HIGH_SEMANTIC,0.2295,neutral,MINIMAL,0.8541,person,2,0.8051,356.7,True,0.592037
+riding_a_bike_20.mp4,riding a bike,HIGH_SEMANTIC,0.2388,neutral,MINIMAL,0.7954,person,1,0.802,619.7,True,0.574428
+riding_a_bike_21.mp4,riding a bike,HIGH_SEMANTIC,0.1407,neutral,MINIMAL,0.7963,person,7,0.7493,407.2,True,0.522328
+driving_car_00.mp4,driving car,HIGH_SEMANTIC,0.0504,neutral,MINIMAL,0.848,person,2,0.6538,322.5,True,0.480417
+driving_car_01.mp4,driving car,HIGH_SEMANTIC,0.2111,neutral,MINIMAL,0.8805,person,7,0.6062,422.7,True,0.544186
+driving_car_02.mp4,driving car,HIGH_SEMANTIC,0.1946,neutral,MINIMAL,0.9103,person,8,0.5501,871.3,True,0.533951
+driving_car_03.mp4,driving car,HIGH_SEMANTIC,0.1397,neutral,MINIMAL,0.8493,person,2,0.5683,540.9,True,0.49522
+driving_car_04.mp4,driving car,HIGH_SEMANTIC,0.0551,neutral,MINIMAL,0.9412,person,2,0.5902,658.4,True,0.498986
+driving_car_05.mp4,driving car,HIGH_SEMANTIC,0.0058,neutral,MINIMAL,0.8743,person,1,0.6809,279.7,True,0.478567
+driving_car_06.mp4,driving car,HIGH_SEMANTIC,0.0863,neutral,MINIMAL,0.8958,person,4,0.5934,444.9,True,0.496433
+driving_car_07.mp4,driving car,HIGH_SEMANTIC,0.0515,neutral,MINIMAL,0.8512,person,2,0.5796,436.6,True,0.463391
+driving_car_08.mp4,driving car,HIGH_SEMANTIC,0.0914,neutral,MINIMAL,0.8678,person,4,0.6531,918.3,True,0.503571
+driving_car_09.mp4,driving car,HIGH_SEMANTIC,0.0746,neutral,MINIMAL,0.8325,person,5,0.537,693.2,True,0.45545
+driving_car_10.mp4,driving car,HIGH_SEMANTIC,0.162,neutral,MINIMAL,0.9065,person,4,0.6196,421.9,True,0.536992
+driving_car_11.mp4,driving car,HIGH_SEMANTIC,0.0728,neutral,MINIMAL,0.9588,person,2,0.5578,337.4,True,0.504185
+driving_car_12.mp4,driving car,HIGH_SEMANTIC,0.1224,neutral,MINIMAL,0.9146,person,3,0.6048,345.3,True,0.52027
+driving_car_13.mp4,driving car,HIGH_SEMANTIC,0.0745,neutral,MINIMAL,0.8478,person,5,0.6663,412.8,True,0.493124
+driving_car_14.mp4,driving car,HIGH_SEMANTIC,0.0973,neutral,MINIMAL,0.8695,person,5,0.6426,356.5,True,0.503909
+driving_car_15.mp4,driving car,HIGH_SEMANTIC,0.0655,neutral,MINIMAL,0.8592,person,3,0.6386,690.6,True,0.486589
+driving_car_16.mp4,driving car,HIGH_SEMANTIC,0.0942,neutral,MINIMAL,0.8794,person,4,0.5745,186.7,True,0.489105
+driving_car_17.mp4,driving car,HIGH_SEMANTIC,-0.0191,neutral,MINIMAL,0.8747,person,2,0.579,176.8,True,0.450915
+driving_car_18.mp4,driving car,HIGH_SEMANTIC,0.0813,neutral,MINIMAL,0.8476,person,2,0.6869,573.7,True,0.50089
+driving_car_19.mp4,driving car,HIGH_SEMANTIC,0.1001,neutral,MINIMAL,0.8413,person,6,0.5898,308.5,True,0.481926
+driving_car_20.mp4,driving car,HIGH_SEMANTIC,0.0753,neutral,MINIMAL,0.8584,person,1,0.5331,183.2,True,0.463821
+driving_car_21.mp4,driving car,HIGH_SEMANTIC,0.0718,neutral,MINIMAL,0.8334,person,4,0.6704,227.9,True,0.488001
+driving_car_22.mp4,driving car,HIGH_SEMANTIC,0.0814,neutral,MINIMAL,0.8795,person,5,0.633,587.3,True,0.498659
+driving_car_23.mp4,driving car,HIGH_SEMANTIC,-0.0041,neutral,MINIMAL,0.9019,person,7,0.5207,559.0,True,0.445825
+driving_car_24.mp4,driving car,HIGH_SEMANTIC,0.1286,neutral,MINIMAL,0.8382,person,6,0.5996,629.7,True,0.494729
+javelin_throw_00.mp4,javelin throw,HIGH_SEMANTIC,0.0465,neutral,MINIMAL,0.869,person,1,0.8105,80.0,False,0.0
+javelin_throw_01.mp4,javelin throw,HIGH_SEMANTIC,0.0211,neutral,MINIMAL,0.9088,person,8,0.5682,555.9,True,0.468574
+javelin_throw_02.mp4,javelin throw,HIGH_SEMANTIC,0.0922,neutral,MINIMAL,0.9266,person,5,0.6646,597.4,True,0.527346
+javelin_throw_03.mp4,javelin throw,HIGH_SEMANTIC,0.1439,neutral,MINIMAL,0.8005,person,8,0.7066,680.8,True,0.514393
+javelin_throw_04.mp4,javelin throw,HIGH_SEMANTIC,0.075,neutral,MINIMAL,0.8349,person,6,0.7419,447.2,True,0.507671
+javelin_throw_05.mp4,javelin throw,HIGH_SEMANTIC,0.0816,neutral,MINIMAL,0.8345,person,4,0.5669,526.0,True,0.466426
+javelin_throw_06.mp4,javelin throw,HIGH_SEMANTIC,0.1369,neutral,MINIMAL,0.8168,person,6,0.6266,345.1,True,0.497314
+javelin_throw_07.mp4,javelin throw,HIGH_SEMANTIC,-0.0532,neutral,MINIMAL,0.8555,person,3,0.7649,456.5,True,0.49066
+javelin_throw_08.mp4,javelin throw,HIGH_SEMANTIC,-0.0138,neutral,MINIMAL,0.8745,person,1,0.6852,491.6,True,0.477384
+javelin_throw_09.mp4,javelin throw,HIGH_SEMANTIC,0.056,neutral,MINIMAL,0.8362,person,6,0.6128,693.8,True,0.468248
+javelin_throw_10.mp4,javelin throw,HIGH_SEMANTIC,0.1036,neutral,MINIMAL,0.8334,person,4,0.6519,80.0,False,0.0
+javelin_throw_11.mp4,javelin throw,HIGH_SEMANTIC,0.0553,neutral,MINIMAL,0.877,person,4,0.6523,735.2,True,0.492162
+javelin_throw_12.mp4,javelin throw,HIGH_SEMANTIC,-0.0489,neutral,MINIMAL,0.8614,person,7,0.5655,595.7,True,0.442893
+javelin_throw_13.mp4,javelin throw,HIGH_SEMANTIC,-0.0041,neutral,MINIMAL,0.8743,person,8,0.6134,127.8,True,0.45936
+javelin_throw_14.mp4,javelin throw,HIGH_SEMANTIC,0.0932,neutral,MINIMAL,0.8552,person,3,0.6536,663.0,True,0.500018
+javelin_throw_15.mp4,javelin throw,HIGH_SEMANTIC,0.0542,neutral,MINIMAL,0.878,person,6,0.5266,535.8,True,0.460634
+javelin_throw_16.mp4,javelin throw,HIGH_SEMANTIC,0.0539,neutral,MINIMAL,0.8433,person,3,0.6178,96.9,False,0.0
+javelin_throw_17.mp4,javelin throw,HIGH_SEMANTIC,0.1566,neutral,MINIMAL,0.875,person,5,0.6068,555.6,True,0.520611
+javelin_throw_18.mp4,javelin throw,HIGH_SEMANTIC,-0.0294,neutral,MINIMAL,0.8659,person,1,0.6974,411.2,True,0.477389
+javelin_throw_19.mp4,javelin throw,HIGH_SEMANTIC,0.0441,neutral,MINIMAL,0.8465,person,1,0.7322,231.2,True,0.49697
+reading_book_00.mp4,reading book,LOW_ACTIVITY,0.0712,neutral,MINIMAL,0.4999,person,6,0.2072,257.4,True,0.255237
+reading_book_01.mp4,reading book,LOW_ACTIVITY,0.038,neutral,MINIMAL,0.5267,person,3,0.1218,351.0,True,0.229983
+reading_book_02.mp4,reading book,LOW_ACTIVITY,0.0901,neutral,MINIMAL,0.4793,person,3,0.1746,700.0,True,0.247465
+reading_book_03.mp4,reading book,LOW_ACTIVITY,0.0924,neutral,MINIMAL,0.4713,person,7,0.0829,357.5,True,0.222616
+reading_book_04.mp4,reading book,LOW_ACTIVITY,0.0608,neutral,MINIMAL,0.5045,person,1,0.0902,525.3,True,0.223435
+reading_book_05.mp4,reading book,LOW_ACTIVITY,0.0741,neutral,MINIMAL,0.5424,person,2,0.0616,395.0,True,0.234905
+reading_book_06.mp4,reading book,LOW_ACTIVITY,0.067,neutral,MINIMAL,0.5541,person,6,0.1459,373.1,True,0.257238
+reading_book_07.mp4,reading book,LOW_ACTIVITY,-0.0221,neutral,MINIMAL,0.5473,person,5,0.1096,514.0,True,0.218951
+reading_book_08.mp4,reading book,LOW_ACTIVITY,0.1225,neutral,MINIMAL,0.5067,person,6,0.0864,357.7,True,0.247929
+reading_book_09.mp4,reading book,LOW_ACTIVITY,0.0808,neutral,MINIMAL,0.5454,person,3,0.049,464.4,True,0.235449
+reading_book_10.mp4,reading book,LOW_ACTIVITY,-0.0097,neutral,MINIMAL,0.4768,person,6,0.1273,599.4,True,0.198721
+reading_book_11.mp4,reading book,LOW_ACTIVITY,0.1379,neutral,MINIMAL,0.5333,person,2,0.1496,552.1,True,0.27922
+reading_book_12.mp4,reading book,LOW_ACTIVITY,0.0314,neutral,MINIMAL,0.5075,person,5,0.0929,594.4,True,0.213421
+reading_book_13.mp4,reading book,LOW_ACTIVITY,-0.0191,neutral,MINIMAL,0.5418,person,1,0.1271,322.3,True,0.221403
+reading_book_14.mp4,reading book,LOW_ACTIVITY,0.0252,neutral,MINIMAL,0.5076,person,6,0.1561,102.7,True,0.226759
+reading_book_15.mp4,reading book,LOW_ACTIVITY,0.0178,neutral,MINIMAL,0.5184,person,7,0.1036,513.2,True,0.214464
+reading_book_16.mp4,reading book,LOW_ACTIVITY,0.0505,neutral,MINIMAL,0.5271,person,4,0.1082,229.6,True,0.231739
+reading_book_17.mp4,reading book,LOW_ACTIVITY,-0.0524,neutral,MINIMAL,0.4745,person,3,0.0405,343.8,True,0.17621
+answering_questions_00.mp4,answering questions,LOW_ACTIVITY,0.0692,neutral,MINIMAL,0.8865,person,1,0.3997,518.7,True,0.437875
+answering_questions_01.mp4,answering questions,LOW_ACTIVITY,0.1289,neutral,MINIMAL,0.9001,person,3,0.4628,314.0,True,0.482267
+answering_questions_02.mp4,answering questions,LOW_ACTIVITY,-0.001,neutral,MINIMAL,0.9383,person,2,0.3561,691.6,True,0.41743
+answering_questions_03.mp4,answering questions,LOW_ACTIVITY,0.089,neutral,MINIMAL,0.8885,person,8,0.4894,154.9,True,0.468923
+answering_questions_04.mp4,answering questions,LOW_ACTIVITY,0.1756,neutral,MINIMAL,0.8421,person,7,0.3655,692.4,True,0.45633
+answering_questions_05.mp4,answering questions,LOW_ACTIVITY,0.1728,neutral,MINIMAL,0.9122,person,7,0.4054,682.1,True,0.489757
+answering_questions_06.mp4,answering questions,LOW_ACTIVITY,0.1016,neutral,MINIMAL,0.9284,person,7,0.411,570.2,True,0.468301
+answering_questions_07.mp4,answering questions,LOW_ACTIVITY,0.0183,neutral,MINIMAL,0.9221,person,6,0.4811,427.3,True,0.45032
+answering_questions_08.mp4,answering questions,LOW_ACTIVITY,0.0978,neutral,MINIMAL,0.9439,person,7,0.4647,317.4,True,0.485662
+answering_questions_09.mp4,answering questions,LOW_ACTIVITY,-0.0328,neutral,MINIMAL,0.8531,person,5,0.4015,294.0,True,0.398958
+answering_questions_10.mp4,answering questions,LOW_ACTIVITY,0.0912,neutral,MINIMAL,0.9062,person,2,0.4491,725.1,True,0.465932
+answering_questions_11.mp4,answering questions,LOW_ACTIVITY,-0.0533,neutral,MINIMAL,0.9456,person,4,0.5325,397.2,True,0.464088
+answering_questions_12.mp4,answering questions,LOW_ACTIVITY,0.0343,neutral,MINIMAL,0.9176,person,6,0.5058,567.0,True,0.461322
+answering_questions_13.mp4,answering questions,LOW_ACTIVITY,0.2857,neutral,MINIMAL,0.9017,person,3,0.4835,408.9,True,0.550771
+answering_questions_14.mp4,answering questions,LOW_ACTIVITY,0.0678,neutral,MINIMAL,0.9025,person,2,0.4529,537.4,True,0.456214
+answering_questions_15.mp4,answering questions,LOW_ACTIVITY,0.0319,neutral,MINIMAL,0.9393,person,5,0.4273,260.1,True,0.448333
+answering_questions_16.mp4,answering questions,LOW_ACTIVITY,0.0647,neutral,MINIMAL,0.8794,person,2,0.5151,668.4,True,0.46243
+answering_questions_17.mp4,answering questions,LOW_ACTIVITY,0.1153,neutral,MINIMAL,0.8665,person,1,0.5427,260.3,True,0.485061
+answering_questions_18.mp4,answering questions,LOW_ACTIVITY,0.1463,neutral,MINIMAL,0.9482,person,6,0.4204,336.8,True,0.495459
+answering_questions_19.mp4,answering questions,LOW_ACTIVITY,0.2,neutral,MINIMAL,0.8793,person,7,0.449,463.0,True,0.500015
+answering_questions_20.mp4,answering questions,LOW_ACTIVITY,0.105,neutral,MINIMAL,0.8935,person,6,0.4188,1120.6,True,0.459453
+texting_00.mp4,texting,LOW_ACTIVITY,0.0291,neutral,MINIMAL,0.5339,person,4,0.076,355.5,True,0.217494
+texting_01.mp4,texting,LOW_ACTIVITY,-0.0523,neutral,MINIMAL,0.5121,person,2,0.0988,80.0,False,0.0
+texting_02.mp4,texting,LOW_ACTIVITY,0.0673,neutral,MINIMAL,0.4501,person,5,0.0516,401.9,True,0.19736
+texting_03.mp4,texting,LOW_ACTIVITY,0.0752,neutral,MINIMAL,0.5062,person,5,0.0394,478.9,True,0.217092
+texting_04.mp4,texting,LOW_ACTIVITY,-0.0283,neutral,MINIMAL,0.4844,person,7,0.0619,397.0,True,0.18504
+texting_05.mp4,texting,LOW_ACTIVITY,0.0302,neutral,MINIMAL,0.5289,person,3,0.0703,409.2,True,0.214799
+texting_06.mp4,texting,LOW_ACTIVITY,0.0733,neutral,MINIMAL,0.4976,person,3,0.1365,350.7,True,0.237596
+texting_07.mp4,texting,LOW_ACTIVITY,0.0823,neutral,MINIMAL,0.5068,person,3,0.1259,549.3,True,0.241758
+texting_08.mp4,texting,LOW_ACTIVITY,0.1016,neutral,MINIMAL,0.4672,person,5,0.0566,337.7,True,0.218283
+texting_09.mp4,texting,LOW_ACTIVITY,0.0029,neutral,MINIMAL,0.5103,person,1,0.1473,231.2,True,0.216606
+texting_10.mp4,texting,LOW_ACTIVITY,-0.0104,neutral,MINIMAL,0.4481,person,5,0.1656,414.6,True,0.198236
+texting_11.mp4,texting,LOW_ACTIVITY,0.0129,neutral,MINIMAL,0.4979,person,3,0.0496,237.2,True,0.191835
+texting_12.mp4,texting,LOW_ACTIVITY,0.0118,neutral,MINIMAL,0.521,person,4,0.1326,424.2,True,0.220226
+texting_13.mp4,texting,LOW_ACTIVITY,0.0497,neutral,MINIMAL,0.4817,person,7,0.1201,364.9,True,0.218508
+texting_14.mp4,texting,LOW_ACTIVITY,0.0541,neutral,MINIMAL,0.4879,person,3,0.0365,620.6,True,0.201537
+waiting_in_line_00.mp4,waiting in line,LOW_ACTIVITY,0.01,neutral,MINIMAL,0.5441,person,5,0.1644,447.5,True,0.235546
+waiting_in_line_01.mp4,waiting in line,LOW_ACTIVITY,-0.0437,neutral,MINIMAL,0.5368,person,5,0.1247,264.1,True,0.219072
+waiting_in_line_02.mp4,waiting in line,LOW_ACTIVITY,-0.0083,neutral,MINIMAL,0.5438,person,7,0.1643,246.2,True,0.231401
+waiting_in_line_03.mp4,waiting in line,LOW_ACTIVITY,0.0176,neutral,MINIMAL,0.5606,person,7,0.0511,767.7,True,0.21604
+waiting_in_line_04.mp4,waiting in line,LOW_ACTIVITY,0.0048,neutral,MINIMAL,0.5912,person,2,0.1166,288.9,True,0.238005
+waiting_in_line_05.mp4,waiting in line,LOW_ACTIVITY,-0.0061,neutral,MINIMAL,0.5733,person,6,0.0326,348.3,True,0.208794
+waiting_in_line_06.mp4,waiting in line,LOW_ACTIVITY,0.0023,neutral,MINIMAL,0.5181,person,1,0.2593,800.5,True,0.247109
+waiting_in_line_07.mp4,waiting in line,LOW_ACTIVITY,0.1537,neutral,MINIMAL,0.5662,person,8,0.0674,469.4,True,0.276526
+waiting_in_line_08.mp4,waiting in line,LOW_ACTIVITY,0.0364,neutral,MINIMAL,0.4921,person,4,0.0648,836.9,True,0.203
+waiting_in_line_09.mp4,waiting in line,LOW_ACTIVITY,0.0614,neutral,MINIMAL,0.5366,person,8,0.0456,168.0,True,0.223759
+waiting_in_line_10.mp4,waiting in line,LOW_ACTIVITY,-0.0339,neutral,MINIMAL,0.5157,person,2,0.1291,422.7,True,0.212748
+waiting_in_line_11.mp4,waiting in line,LOW_ACTIVITY,0.0801,neutral,MINIMAL,0.5348,person,8,0.0201,270.4,True,0.224234
+waiting_in_line_12.mp4,waiting in line,LOW_ACTIVITY,0.0752,neutral,MINIMAL,0.5611,person,5,0.0442,511.7,True,0.237504
+waiting_in_line_13.mp4,waiting in line,LOW_ACTIVITY,-0.0168,neutral,MINIMAL,0.5627,person,4,0.0802,343.6,True,0.216996

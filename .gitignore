@@ -1,11 +1,20 @@
-﻿# Byte-compiled / optimized / DLL files
+# ══════════════════════════════════════════════════════════════════════════════
+# VisionEdit — Official Git Ignore Configuration
+# Hardik Jindal (Roll No. 2024UCA1878) & Ayush Agarwal (Roll No. 2024UCA1822)
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── Python Bytecode & Optimization ───────────────────────────────────────────
 __pycache__/
 *.py[cod]
-*.class
+*$py.class
 *.pyc
+*.pyd
 
-# Distribution / packaging
-.Python
+# ── Virtual Environments & Packages ──────────────────────────────────────────
+.venv/
+venv/
+ENV/
+env/
 build/
 develop-eggs/
 dist/
@@ -21,85 +30,52 @@ wheels/
 *.egg-info/
 .installed.eggs
 *.egg
-MANIFEST
 
-# PyInstaller
-*.manifest
-*.spec
-
-# Unit test / coverage reports
-.pytest_cache/
-.cache
-htmlcov/
-.coverage
-.coverage.*
-coverage.xml
-*.cover
-*.py,cover
-
-# Virtual environments
-.venv/
-venv/
-ENV/
-env/
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-*.sublime-project
-*.sublime-workspace
-
-# OS
+# ── Operating System & IDE Specifics ─────────────────────────────────────────
 .DS_Store
 Thumbs.db
 desktop.ini
+$RECYCLE.BIN/
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
 
-# ── Project-specific ────────────────────────────────────────────────────────
-
-# Large binary model weights (download via scripts/download_weights.py)
-weights/
-*.pt
-*.pth
-*.onnx
-*.safetensors
-
-# Downloaded datasets (large — download via scripts/download_kinetics400.py)
-datasets/
-
-# FiftyOne local cache
-fiftyone/
-
-# Generated outputs — results are reproducible
-outputs/gradcam/
-outputs/*.mp4
-outputs/highlight.mp4
-
-# Keep CSV/JSON/MD outputs (small, useful for reference)
-!outputs/results_table.csv
-!outputs/results_table.json
-!outputs/results_summary.md
-!outputs/literature_crossref.txt
-!outputs/real_clip_results.csv
-!outputs/metrics_summary.csv
-!outputs/architecture_diagram.html
-!outputs/presentation.html
-
-# CV_PAPERS PDFs are large — keep the folder tracked but ignore binaries
-CV_PAPERS/*.pdf
-
-# Temp / scratch
+# ── Logs, Caches & Testing Artifacts ─────────────────────────────────────────
+*.log
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
 tmp/
 .tmp/
 scratch/
-*.log
-*.bak
 
-# Python environment lock files (optional — uncomment if you use them)
-# Pipfile.lock
-# poetry.lock
+# ── Large Raw Datasets (Kept on local machine, not pushed to Git) ─────────────
+data/DATASET/
+datasets/
+fiftyone/
 
-# Allow test dataset loaders (Python files, not actual video data)
-!tests/datasets/
-!tests/datasets/*.py
+# ── Runtime Generated Highlight Outputs (Reproducible via main.py) ───────────
+outputs/highlight.mp4
+outputs/gradcam/
+*.mp4.tmp
+
+# ── Auto-downloaded YOLO Models (Ultralytics caches locally) ──────────────────
+yolov8*.pt
+yolov9*.pt
+yolov10*.pt
+
+# ── Whitelist Key Project Assets & Deliverables ───────────────────────────────
+!data/sample_test_video.mp4
+!data/README.md
+!weights/best_model_weights.h5
+!weights/final_model.keras
+!weights/saved_model_tf/
+!outputs/demos/my_webcam_demo.mp4
+!outputs/demos/verified_run.mp4
+!outputs/graphs/*.png
+!CV_PAPERS/**/*.pdf

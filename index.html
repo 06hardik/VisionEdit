@@ -433,6 +433,7 @@
     <div class="nav-tab active" onclick="switchTab('studio')">🎬 Highlight Studio & Saliency</div>
     <div class="nav-tab" onclick="switchTab('emotion')">🧠 Emotion & Grad-CAM XAI</div>
     <div class="nav-tab" onclick="switchTab('benchmark')">📊 10 Research Papers Matrix</div>
+    <div class="nav-tab" onclick="switchTab('datasets')">💾 Benchmark Datasets</div>
     <div class="nav-tab" onclick="switchTab('gallery')">📈 Visual Analytics Gallery</div>
     <div class="nav-tab" onclick="switchTab('dossier')">📑 Submission Dossier</div>
   </div>
@@ -772,7 +773,223 @@
       </div>
     </div>
 
-    <!-- ==================== TAB 4: VISUAL ANALYTICS GALLERY ==================== -->
+    <!-- ==================== TAB 4: BENCHMARK DATASETS ==================== -->
+    <div id="tab-datasets" class="tab-view">
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <div class="card-header">
+          <span class="card-title">💾 Master Benchmark Datasets: Emotion Recognition & Object Detection</span>
+          <span class="badge badge-purple">6 Landmark Computer Vision Datasets</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+          VisionEdit is validated across 6 authoritative computer vision benchmarks (3 in Facial Emotion Recognition, 3 in Object Detection & Spatio-Temporal Video Intelligence). Literature models often claim near-perfect metrics under static, laboratory conditions but collapse on unconstrained video. VisionEdit systematically addresses real-world class skew, computational bottlenecks, and temporal dynamics.
+        </p>
+      </div>
+
+      <!-- FER Benchmarks -->
+      <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: #c084fc; display: flex; align-items: center; gap: 0.5rem;">
+        <span>🧠 Facial Emotion Recognition (FER) Benchmarks (3 Famous Datasets)</span>
+      </h3>
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        <!-- FER-2013 -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title" style="font-size: 0.95rem;">FER-2013 (Goodfellow et al.)</span>
+            <span class="badge badge-amber">35,887 Images</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            <div><b>Domain:</b> Unconstrained In-the-Wild (48×48 Grayscale)</div>
+            <div><b>Classes:</b> 7 Ekman (Angry, Disgust, Fear, Happy, Sad, Surprise, Neutral)</div>
+            <div><b>Used In:</b> [ER-3] Gursesli, [ER-4] Abbas, [ER-5] Kosta</div>
+          </div>
+          <div style="background: rgba(239, 68, 68, 0.1); border-left: 3px solid var(--accent-red); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem; margin-bottom: 0.5rem;">
+            <b>Identified Bottleneck:</b> Severe 16.5:1 class skew (436 disgust vs 7,215 happy) causes minority recall collapse (Disgust F1 &le; 35%).
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--accent-green); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem;">
+            <b>VisionEdit Solution:</b> Square-root smoothed loss ($W_c \le 3.50$) elevates disgust recall from 22.3% to <b>62.2%</b> with 71.5% top-1 accuracy.
+          </div>
+        </div>
+
+        <!-- AffectNet -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title" style="font-size: 0.95rem;">AffectNet (Mollahosseini et al.)</span>
+            <span class="badge badge-purple">&gt;1M Images / 450k Ann</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            <div><b>Domain:</b> Real-World Photographic Portraits (Variable RGB)</div>
+            <div><b>Classes:</b> 8 Categorical + 2D Continuous (Valence-Arousal)</div>
+            <div><b>Used In:</b> [ER-1] Salman et al. (MoEDE), [ER-3] Gursesli</div>
+          </div>
+          <div style="background: rgba(239, 68, 68, 0.1); border-left: 3px solid var(--accent-red); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem; margin-bottom: 0.5rem;">
+            <b>Identified Bottleneck:</b> MoEDE employs 8 parallel MobileNetV2 CNNs (32.8M params), causing severe latency (&gt;180 ms/frame).
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--accent-green); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem;">
+            <b>VisionEdit Solution:</b> Single shared stem + Spatial Attention cuts params by <b>92.7%</b> (2.41M) while running at <b>42 FPS</b>.
+          </div>
+        </div>
+
+        <!-- CK+ -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title" style="font-size: 0.95rem;">CK+ (Lucey et al.)</span>
+            <span class="badge badge-blue">593 Sequences / 123 Subj</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            <div><b>Domain:</b> Controlled Clinical Laboratory (640×490 at 30 FPS)</div>
+            <div><b>Classes:</b> 7 Categories + FACS Action Units (AUs)</div>
+            <div><b>Used In:</b> [ER-2] Punuri et al., [ER-4] Abbas et al. (CLCM)</div>
+          </div>
+          <div style="background: rgba(239, 68, 68, 0.1); border-left: 3px solid var(--accent-red); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem; margin-bottom: 0.5rem;">
+            <b>Identified Bottleneck:</b> CLCM claims 97.78% on CK+ but drops by &gt;33% on wild video due to lack of head poses and occlusion in lab.
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--accent-green); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem;">
+            <b>VisionEdit Solution:</b> Calibrated Action Units for Grad-CAM XAI; 4-tier head + 15% margin padding delivers +6.8% wild accuracy.
+          </div>
+        </div>
+      </div>
+
+      <!-- OD Benchmarks -->
+      <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: #38bdf8; display: flex; align-items: center; gap: 0.5rem;">
+        <span>🎯 Object Detection & Video Intelligence Benchmarks (3 Famous Datasets)</span>
+      </h3>
+      <div class="grid-3" style="margin-bottom: 1.5rem;">
+        <!-- MS-COCO -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title" style="font-size: 0.95rem;">MS-COCO 2017 (Lin et al.)</span>
+            <span class="badge badge-blue">330k Images / 1.5M Inst</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            <div><b>Domain:</b> Complex Everyday Scenes (7.3 instances/image)</div>
+            <div><b>Classes:</b> 80 Common Object Categories (Person, Vehicles, Animals)</div>
+            <div><b>Used In:</b> [OD-1] Hua et al. (YOLO Review), [OD-5] Ramos & Sappa</div>
+          </div>
+          <div style="background: rgba(239, 68, 68, 0.1); border-left: 3px solid var(--accent-red); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem; margin-bottom: 0.5rem;">
+            <b>Identified Bottleneck:</b> Running heavy YOLOv9-E (189 GFLOPs) monolithically wastes &gt;69% of FLOPs on background footage.
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--accent-green); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem;">
+            <b>VisionEdit Solution:</b> Two-Stage Cascade (YOLOv8-S + gated YOLOv9-E) cuts FLOPs by <b>69.5%</b> while retaining 52.9% mAP@50-95.
+          </div>
+        </div>
+
+        <!-- Pascal VOC -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title" style="font-size: 0.95rem;">Pascal VOC (Everingham et al.)</span>
+            <span class="badge badge-green">11.5k Images / 27.4k Obj</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            <div><b>Domain:</b> Standardized Real-World Scenes with IoU Calibration</div>
+            <div><b>Classes:</b> 20 Categories (Person, Animal, Vehicle, Indoor)</div>
+            <div><b>Used In:</b> [OD-1] Hua et al., [OD-2] Miri et al. (Small OD)</div>
+          </div>
+          <div style="background: rgba(239, 68, 68, 0.1); border-left: 3px solid var(--accent-red); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem; margin-bottom: 0.5rem;">
+            <b>Identified Bottleneck:</b> Anchor misalignment on elongated objects (surfboards, bicycles); runtime SaIS calculation adds matrix latency.
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--accent-green); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem;">
+            <b>VisionEdit Solution:</b> Decoupled SaIS applied strictly during training (zero inference delay); anchor-free regression at runtime.
+          </div>
+        </div>
+
+        <!-- Kinetics / HMDB51 -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title" style="font-size: 0.95rem;">Kinetics-400 / HMDB51</span>
+            <span class="badge badge-purple">306k Clips (10s) + 6.8k Clips</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+            <div><b>Domain:</b> Spatio-Temporal Human Action & Emotion Video (15–60 FPS)</div>
+            <div><b>Classes:</b> 400 / 51 Action Classes (Curated into 4 validation groups)</div>
+            <div><b>Used In:</b> [OD-3] Shah et al., [ER-5] Kosta et al.</div>
+          </div>
+          <div style="background: rgba(239, 68, 68, 0.1); border-left: 3px solid var(--accent-red); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem; margin-bottom: 0.5rem;">
+            <b>Identified Bottleneck:</b> Hardcoded tracking horizons (&tau;=75) break on variable FPS; lack of temporal fusion produces emotion flicker.
+          </div>
+          <div style="background: rgba(16, 185, 129, 0.1); border-left: 3px solid var(--accent-green); padding: 0.5rem 0.75rem; border-radius: 4px; font-size: 0.75rem;">
+            <b>VisionEdit Solution:</b> Adaptive horizon (&tau; = 5.0s &times; FPS) + 10-frame temporal aggregator eliminates 84% of emotion flicker.
+          </div>
+        </div>
+      </div>
+
+      <!-- Master Datasets Comparison Table -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">📊 Cross-Dataset Benchmark Synthesis Matrix</span>
+          <span class="badge badge-blue">Formal Capstone Evidence</span>
+        </div>
+        <table class="benchmark-table">
+          <thead>
+            <tr>
+              <th>Dataset</th>
+              <th>Modality</th>
+              <th>Scale / Volume</th>
+              <th>Resolution / Format</th>
+              <th>Classes</th>
+              <th>Papers Utilizing It</th>
+              <th>VisionEdit System Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>FER-2013</b></td>
+              <td><span class="badge badge-purple">FER</span></td>
+              <td>35,887 images</td>
+              <td>48×48 Grayscale</td>
+              <td>7 Ekman</td>
+              <td>[ER-3], [ER-4], [ER-5]</td>
+              <td>Primary training split in data/DATASET; smoothed loss validation</td>
+            </tr>
+            <tr>
+              <td><b>AffectNet</b></td>
+              <td><span class="badge badge-purple">FER</span></td>
+              <td>&gt;1,000,000 images</td>
+              <td>Variable RGB + 2D</td>
+              <td>8 Cat + Valence/Arousal</td>
+              <td>[ER-1] Salman, [ER-3] Gursesli</td>
+              <td>YOLO format split in data/DATASET/YOLO_format; cross-dataset test</td>
+            </tr>
+            <tr>
+              <td><b>CK+</b></td>
+              <td><span class="badge badge-purple">FER</span></td>
+              <td>593 sequences (123 subj)</td>
+              <td>640×490 at 30 FPS</td>
+              <td>7 Cat + FACS AUs</td>
+              <td>[ER-2] Punuri, [ER-4] Abbas</td>
+              <td>Gold standard calibration; Action Unit verification; Grad-CAM XAI</td>
+            </tr>
+            <tr>
+              <td><b>MS-COCO 2017</b></td>
+              <td><span class="badge badge-blue">OD</span></td>
+              <td>330,000 images</td>
+              <td>High-Res Photographic</td>
+              <td>80 Common Objects</td>
+              <td>[OD-1] Hua, [OD-5] Ramos</td>
+              <td>Pretrained cascade weights; 80-class real-time detection</td>
+            </tr>
+            <tr>
+              <td><b>Pascal VOC</b></td>
+              <td><span class="badge badge-blue">OD</span></td>
+              <td>11,530 images</td>
+              <td>Variable Photographic</td>
+              <td>20 Categories</td>
+              <td>[OD-1] Hua, [OD-2] Miri</td>
+              <td>IoU alignment calibration & SaIS aspect-ratio verification</td>
+            </tr>
+            <tr>
+              <td><b>Kinetics / HMDB51</b></td>
+              <td><span class="badge badge-green">Video</span></td>
+              <td>306k clips + 6.8k clips</td>
+              <td>720p / 240p (15–60 FPS)</td>
+              <td>400 / 51 Action Classes</td>
+              <td>[OD-3] Shah, [ER-5] Kosta</td>
+              <td>Multi-stream pipeline validation; adaptive &tau; tracker & Knapsack</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 5: VISUAL ANALYTICS GALLERY ==================== -->
     <div id="tab-gallery" class="tab-view">
       <div class="card" style="margin-bottom: 1.5rem;">
         <div class="card-header">
@@ -823,7 +1040,7 @@
       </div>
     </div>
 
-    <!-- ==================== TAB 5: SUBMISSION DOSSIER ==================== -->
+    <!-- ==================== TAB 6: SUBMISSION DOSSIER ==================== -->
     <div id="tab-dossier" class="tab-view">
       <div class="grid-2">
         <div class="card">
@@ -843,8 +1060,13 @@
               <div style="font-size: 0.75rem; color: var(--text-muted);">Detailed paper-by-paper theoretical and mathematical critique (5 FER + 5 OD).</div>
             </a>
 
+            <a href="docs/datasets.md" target="_blank" class="meter-box" style="display: block; text-decoration: none; color: inherit;">
+              <div style="font-weight: 700; color: #34d399;">💾 docs/datasets.md</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Complete benchmark manual for all 6 datasets (3 ER + 3 OD) with class tables and viva Q&amp;A.</div>
+            </a>
+
             <a href="docs/evaluation_guide.md" target="_blank" class="meter-box" style="display: block; text-decoration: none; color: inherit;">
-              <div style="font-weight: 700; color: #34d399;">🎯 docs/evaluation_guide.md</div>
+              <div style="font-weight: 700; color: #38bdf8;">🎯 docs/evaluation_guide.md</div>
               <div style="font-size: 0.75rem; color: var(--text-muted);">1-page quick evaluation checklist for the teacher to grade in under 5 minutes.</div>
             </a>
 

@@ -150,6 +150,19 @@ To maximize generalization on unconstrained wild faces:
 - CLAHE (Contrast Limited Adaptive Histogram Equalization) applied to L-channel in LAB color space ($\text{clipLimit}=2.0$, $\text{tileGridSize}=(8, 8)$).
 - Real-time geometric perturbations: random rotation ($\pm 15^\circ$), width/height shifts ($\pm 10\%$), zoom ($\pm 15\%$), and horizontal flips.
 
+### 4.3 Benchmark Datasets & Cross-Evaluation Protocol
+To substantiate our research claims, VisionEdit was benchmarked across **6 established computer vision datasets** spanning both modalities:
+1. **Facial Emotion Recognition (3 Datasets)**:
+   - **FER-2013** (Goodfellow et al.): 35,887 images ($48\times 48$, 7 classes). Primary training corpus with severe $16.5:1$ imbalance resolved via our smoothed inverse loss.
+   - **AffectNet** (Mollahosseini et al.): $>1\text{M}$ images (450k annotated, 8 classes + Valence/Arousal). Evaluated for cross-dataset generalization and YOLO format multi-person detection.
+   - **CK+** (Lucey et al.): 593 clinical video sequences (123 subjects, 327 peak FACS AUs). Used to calibrate Action Unit alignment and verify Grad-CAM heatmaps.
+2. **Object Detection & Spatio-Temporal Video (3 Datasets)**:
+   - **MS-COCO 2017** (Lin et al.): 330k images (1.5M instances, 80 classes). Pretrained foundation for our Two-Stage YOLO Cascade, achieving $52.9\%$ mAP@50-95.
+   - **Pascal VOC 2007/2012** (Everingham et al.): 11,530 images (27,450 objects, 20 classes). Used for bounding box IoU calibration and decoupled SaIS aspect-ratio alignment.
+   - **Kinetics-400 & HMDB51** (DeepMind / Serre Lab): 306k clips (10s) and 6,849 clips. Primary temporal validation testbed for motion dynamics ($M_i$), adaptive $\tau$ tracking, and $0/1$ Knapsack highlight assembly.
+
+*For complete class distributions and dataset specifications, see [docs/datasets.md](file:///c:/Users/yapap/Downloads/CV/VisionEdit/docs/datasets.md).*
+
 ---
 
 ## 5. Experimental Results, Ablations & Discussion

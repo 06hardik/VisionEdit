@@ -1,5 +1,7 @@
 @echo off
+setlocal enabledelayedexpansion
 TITLE VisionEdit - Live Webcam Emotion Recognition Demo
+
 echo ======================================================================
 echo   VisionEdit: Live Webcam Facial Emotion Recognition Demo
 echo   Students: Hardik Jindal (2024UCA1878) ^& Ayush Agarwal (2024UCA1822)
@@ -13,13 +15,51 @@ echo   [!] Click on camera window and press 'q' or ESC to stop and view results.
 echo ======================================================================
 echo.
 
-python main.py --mode webcam
+:: Detect valid Python executable
+set "PY_BIN="
 
-if %ERRORLEVEL% NEQ 0 (
-    echo.
-    echo [!] 'python' command failed. Trying 'py -3.10'...
-    py -3.10 main.py --mode webcam
+if exist "%USERPROFILE%\.local\bin\python3.15.exe" (
+    set "PY_BIN=%USERPROFILE%\.local\bin\python3.15.exe"
+    goto :RunScript
 )
+
+if exist "%APPDATA%\uv\python\cpython-3.15-windows-x86_64-none\python.exe" (
+    set "PY_BIN=%APPDATA%\uv\python\cpython-3.15-windows-x86_64-none\python.exe"
+    goto :RunScript
+)
+
+if exist "%APPDATA%\uv\python\cpython-3.15.2-windows-x86_64-none\python.exe" (
+    set "PY_BIN=%APPDATA%\uv\python\cpython-3.15.2-windows-x86_64-none\python.exe"
+    goto :RunScript
+)
+
+python -c "import sys" >nul 2>&1
+if %ERRORLEVEL% EQU 0 (
+    set "PY_BIN=python"
+    goto :RunScript
+)
+
+py -c "import sys" >nul 2>&1
+if %ERRORLEVEL% EQU 0 (
+    set "PY_BIN=py"
+    goto :RunScript
+)
+
+for /d %%D in ("%LOCALAPPDATA%\Programs\Python\Python*") do (
+    if exist "%%D\python.exe" (
+        set "PY_BIN=%%D\python.exe"
+        goto :RunScript
+    )
+)
+
+:RunScript
+if not defined PY_BIN (
+    echo [ERROR] No working Python installation found!
+    pause
+    exit /b 1
+)
+
+"%PY_BIN%" main.py --mode webcam
 
 echo.
 echo Demo finished. Recorded video saved in outputs/demos/.

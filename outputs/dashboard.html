@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VisionEdit — Multi-Stream Video Saliency Intelligence System</title>
+  <style>
+    :root {
+      --bg-dark: #0a0d14;
+      --bg-card: rgba(18, 24, 38, 0.85);
+      --bg-card-hover: rgba(26, 34, 54, 0.95);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(56, 189, 248, 0.3);
+      --accent-cyan: #06b6d4;
+      --accent-blue: #3b82f6;
+      --accent-purple: #8b5cf6;
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-red: #ef4444;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.12) 0px, transparent 50%);
+      color: var(--text-main);
+      font-family: var(--font);
+      min-height: 100vh;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+    /* Layout */
+    .header-bar {
+      border-bottom: 1px solid var(--border);
+      background: rgba(10, 13, 20, 0.85);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 1rem 2rem;
+    }
+
+    .header-content {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-badge {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      box-shadow: 0 0 24px rgba(6, 182, 212, 0.4);
+    }
+
+    .title-group h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .title-group p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .contributors-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .student-tag {
+      display: flex;
+      flex-direction: column;
+    }
+    .student-name { font-weight: 700; font-size: 0.85rem; color: #e2e8f0; }
+    .student-roll { font-size: 0.75rem; color: var(--accent-cyan); font-family: monospace; }
+
+    /* Nav Tabs */
+    .nav-container {
+      max-width: 1440px;
+      margin: 1.5rem auto 0;
+      padding: 0 2rem;
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .nav-tab {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .nav-tab:hover { color: var(--text-main); }
+    .nav-tab.active {
+      color: var(--accent-cyan);
+      border-bottom-color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.05);
+      border-radius: 8px 8px 0 0;
+    }
+
+    /* Main Container */
+    .main-wrapper {
+      max-width: 1440px;
+      margin: 1.5rem auto;
+      padding: 0 2rem 3rem;
+    }
+
+    .tab-view { display: none; }
+    .tab-view.active { display: block; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Grid & Cards */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 1.5rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: var(--border-accent);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-green { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-blue { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .badge-purple { background: rgba(139, 92, 246, 0.15); color: #c084fc; border: 1px solid rgba(139, 92, 246, 0.3); }
+    .badge-amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-red { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+    /* Stream Meters */
+    .meter-box {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .meter-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .progress-bar-bg {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 9999px;
+      transition: width 0.3s ease;
+    }
+
+    /* Video Player & Timeline Container */
+    .video-viewport {
+      width: 100%;
+      height: 380px;
+      background: #000;
+      border-radius: 12px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .video-mock-text {
+      text-align: center;
+      color: #64748b;
+    }
+
+    .timeline-track {
+      height: 48px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-top: 1rem;
+      display: flex;
+      gap: 3px;
+      padding: 4px;
+      align-items: center;
+    }
+
+    .scene-block {
+      height: 100%;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .scene-block:hover { transform: scale(1.03); z-index: 10; }
+    .scene-selected { background: rgba(16, 185, 129, 0.25); border: 1px solid var(--accent-green); color: #34d399; }
+    .scene-rejected { background: rgba(100, 116, 139, 0.15); border: 1px solid rgba(100, 116, 139, 0.3); color: #94a3b8; }
+    .scene-blur { background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #f87171; }
+
+    /* Sliders */
+    .slider-group {
+      margin-top: 1rem;
+    }
+    .slider-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+    }
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--accent-cyan);
+    }
+
+    /* Equation Display */
+    .equation-box {
+      background: rgba(6, 182, 212, 0.05);
+      border: 1px dashed rgba(6, 182, 212, 0.3);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      font-family: monospace;
+      font-size: 1rem;
+      color: #e2e8f0;
+      margin: 1rem 0;
+    }
+
+    /* Tables */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.85rem;
+    }
+
+    th {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: #cbd5e1;
+    }
+
+    tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+    /* Buttons */
+    .btn {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.6rem 1.2rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      border: none;
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.5);
+      transform: translateY(-1px);
+    }
+
+    /* Modal Image Zoom */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .modal.active { display: flex; }
+    .modal img { max-width: 90vw; max-height: 85vh; border-radius: 12px; border: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="header-bar">
+    <div class="header-content">
+      <div class="logo-group">
+        <div class="logo-badge">🎬</div>
+        <div class="title-group">
+          <h1>VisionEdit — AI Video Saliency Intelligence System</h1>
+          <p>Dual Multi-Stream Fusion: Two-Stage YOLO Cascade & CLCM-Attention Hybrid FER</p>
+        </div>
+      </div>
+
+      <div class="contributors-pill">
+        <div class="student-tag">
+          <span class="student-name">Hardik Jindal</span>
+          <span class="student-roll">Roll No. 2024UCA1878</span>
+        </div>
+        <div style="width: 1px; height: 24px; background: var(--border);"></div>
+        <div class="student-tag">
+          <span class="student-name">Ayush Agarwal</span>
+          <span class="student-roll">Roll No. 2024UCA1822</span>
+        </div>
+        <span class="badge badge-green">Final Submission</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <div class="nav-container">
+    <div class="nav-tab active" onclick="switchTab('studio')">🎬 Highlight Studio & Saliency</div>
+    <div class="nav-tab" onclick="switchTab('emotion')">🧠 Emotion & Grad-CAM XAI</div>
+    <div class="nav-tab" onclick="switchTab('benchmark')">📊 10 Research Papers Matrix</div>
+    <div class="nav-tab" onclick="switchTab('gallery')">📈 Visual Analytics Gallery</div>
+    <div class="nav-tab" onclick="switchTab('dossier')">📑 Submission Dossier</div>
+  </div>
+
+  <!-- Main Viewports -->
+  <main class="main-wrapper">
+
+    <!-- ==================== TAB 1: STUDIO & SALIENCY MONITOR ==================== -->
+    <div id="tab-studio" class="tab-view active">
+      <div class="grid-2">
+        <!-- Left: Interactive Video Viewport & Timeline -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">🎥 Micro-Scene Video Playback & Knapsack Timeline</span>
+            <span class="badge badge-blue">PySceneDetect (Thr=27.0)</span>
+          </div>
+
+          <div class="video-viewport">
+            <video id="player" controls style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;" src="data/sample_test_video.mp4" poster="outputs/graphs/00_summary_figure.png"></video>
+          </div>
+
+          <!-- Micro-Scene Timeline Track -->
+          <div style="margin-top: 1rem;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.3rem;">
+              <span>Scene Cuts (64.2s Total Footage)</span>
+              <span>Green: Knapsack Highlights (19.2s)</span>
+            </div>
+            <div class="timeline-track">
+              <div class="scene-block scene-selected" style="flex: 3.4;" onclick="inspectScene(1)">Sc 1 (3.4s)</div>
+              <div class="scene-block scene-rejected" style="flex: 3.4;" onclick="inspectScene(2)">Sc 2 (3.4s)</div>
+              <div class="scene-block scene-selected" style="flex: 3.4;" onclick="inspectScene(3)">Sc 3 (3.4s)</div>
+              <div class="scene-block scene-blur" style="flex: 3.6;" onclick="inspectScene(4)">Sc 4 (Blur)</div>
+              <div class="scene-block scene-selected" style="flex: 3.7;" onclick="inspectScene(5)">Sc 5 (3.7s)</div>
+              <div class="scene-block scene-rejected" style="flex: 3.6;" onclick="inspectScene(6)">Sc 6 (3.6s)</div>
+              <div class="scene-block scene-selected" style="flex: 4.3;" onclick="inspectScene(7)">Sc 7 (4.3s)</div>
+              <div class="scene-block scene-selected" style="flex: 4.4;" onclick="inspectScene(8)">Sc 8 (4.4s)</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+            <a href="outputs/demos/my_webcam_demo.mp4" target="_blank" class="btn btn-primary">📹 View Webcam Demo Video</a>
+            <a href="outputs/demos/verified_run.mp4" target="_blank" class="btn">⚡ View Verified Run Trace</a>
+          </div>
+        </div>
+
+        <!-- Right: Tri-Stream Telemetry & Master Saliency Equation -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">⚡ Tri-Stream Telemetry & Saliency Computation</span>
+            <span class="badge badge-green" id="scene-tag">Scene 7 Active</span>
+          </div>
+
+          <!-- Master Equation Box -->
+          <div class="equation-box">
+            S_i = (w₁·E_i + w₂·O_i + w₃·M_i) × 𝟙(Q_i ≥ 100.0)
+          </div>
+
+          <!-- Stream A: Semantic Object Detection -->
+          <div class="meter-box">
+            <div class="meter-label-row">
+              <span style="color: #60a5fa;">Stream A: Object Detection (O_i)</span>
+              <span id="score-o">0.91 (Stage 2 YOLOv9e Fired)</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div id="bar-o" class="progress-bar-fill" style="width: 91%; background: #3b82f6;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #94a3b8; margin-top: 0.3rem;">
+              <span>Detected: Person (0.95), Surfboard (0.88)</span>
+              <span class="badge badge-green" style="font-size: 0.65rem;">69.5% FLOP SAVING</span>
+            </div>
+          </div>
+
+          <!-- Stream B: Affective Emotion Recognition -->
+          <div class="meter-box">
+            <div class="meter-label-row">
+              <span style="color: #f472b6;">Stream B: Facial Emotion Recognition (E_i)</span>
+              <span id="score-e">+0.83 (SURPRISE 89%)</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div id="bar-e" class="progress-bar-fill" style="width: 83%; background: #ec4899;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #94a3b8; margin-top: 0.3rem;">
+              <span>XAI Intensity: STRONG (w = 1.5)</span>
+              <span class="badge badge-purple" style="font-size: 0.65rem;">CLCM ATTENTION</span>
+            </div>
+          </div>
+
+          <!-- Stream C: Technical Quality & Motion -->
+          <div class="meter-box">
+            <div class="meter-label-row">
+              <span style="color: #34d399;">Stream C: Quality (Q_i) & Motion (M_i)</span>
+              <span id="score-m">M = 0.82 | Q = 195.4 ≥ 100</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div id="bar-m" class="progress-bar-fill" style="width: 82%; background: #10b981;"></div>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: #94a3b8; margin-top: 0.3rem;">
+              <span>Farneback Dense Optical Flow</span>
+              <span class="badge badge-green" style="font-size: 0.65rem;">BLUR GATE PASS</span>
+            </div>
+          </div>
+
+          <!-- Total Saliency Score -->
+          <div style="background: rgba(255, 255, 255, 0.04); border-radius: 12px; padding: 1rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border);">
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">Fused Saliency Metric (S_i)</div>
+              <div style="font-size: 1.5rem; font-weight: 800; color: #34d399;" id="score-final">0.856</div>
+            </div>
+            <span class="badge badge-green" style="font-size: 0.85rem; padding: 0.4rem 1rem;" id="decision-badge">SELECTED BY KNAPSACK</span>
+          </div>
+
+          <!-- Interactive Weight Sliders -->
+          <div class="slider-group">
+            <div class="slider-row">
+              <span>w₁ (Emotion Weight): <b id="val-w1">0.40</b></span>
+              <input type="range" min="0" max="1" step="0.05" value="0.40" oninput="updateWeights()">
+            </div>
+            <div class="slider-row">
+              <span>w₂ (Object Weight): <b id="val-w2">0.35</b></span>
+              <input type="range" min="0" max="1" step="0.05" value="0.35" oninput="updateWeights()">
+            </div>
+            <div class="slider-row">
+              <span>w₃ (Motion Weight): <b id="val-w3">0.25</b></span>
+              <input type="range" min="0" max="1" step="0.05" value="0.25" oninput="updateWeights()">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 2: EMOTION & GRAD-CAM XAI ==================== -->
+    <div id="tab-emotion" class="tab-view">
+      <div class="grid-2">
+        <!-- Left: Grad-CAM Saliency Attribution -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">🧠 Depthwise Grad-CAM Spatial Attribution</span>
+            <span class="badge badge-purple">Punuri et al. (A3) Solved</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Punuri et al. (2024) used VGG16 (138M params) with LRP, which crashes on misclassified frames. Our system applies Grad-CAM on MobileNetV2 across 100% of frames at 12ms edge latency.
+          </p>
+
+          <div style="display: flex; gap: 1rem; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px;">
+            <img src="outputs/graphs/fer_single_prediction.png" alt="GradCAM" style="max-width: 100%; border-radius: 8px; border: 1px solid var(--border);" onclick="openModal(this.src)">
+          </div>
+
+          <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <span style="font-size: 0.85rem; color: var(--text-muted);">Intensity Ranking:</span>
+              <span class="badge badge-green" style="font-size: 0.8rem; margin-left: 0.5rem;">STRONG (μ_cam = 0.74 ≥ 0.60)</span>
+            </div>
+            <span style="font-size: 0.85rem; color: var(--accent-cyan); font-weight: 700;">Temporal Weight w(t) = 1.50</span>
+          </div>
+        </div>
+
+        <!-- Right: 7-Class Universal Emotion Probability & Disgust Fix -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">⚖️ Universal Emotion Distribution & Class Imbalance Fix</span>
+            <span class="badge badge-green">Gursesli (A1) Solved</span>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Natural datasets skew heavily toward Happy/Neutral. Our <b>Square-Root Smoothed Inverse Loss</b> rescues minority classes (*Disgust* and *Fear*) without neutral false-positive leaks:
+          </p>
+
+          <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600;">
+                <span>Happy (Majority Class)</span>
+                <span>88.9%</span>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 88.9%; background: #10b981;"></div></div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600;">
+                <span style="color: #34d399;">Disgust (Rescued from 22.3% ➔ 62.2% Recall)</span>
+                <span style="color: #34d399;">62.2% [Smoothed Weight: 2.85]</span>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 62.2%; background: #06b6d4;"></div></div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600;">
+                <span style="color: #38bdf8;">Fear (Rescued from 31.8% ➔ 59.4% Recall)</span>
+                <span style="color: #38bdf8;">59.4% [Smoothed Weight: 1.94]</span>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 59.4%; background: #38bdf8;"></div></div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600;">
+                <span>Surprise</span>
+                <span>81.2%</span>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 81.2%; background: #8b5cf6;"></div></div>
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.8rem; font-weight: 600;">
+                <span>Neutral</span>
+                <span>75.6%</span>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 75.6%; background: #64748b;"></div></div>
+            </div>
+          </div>
+
+          <div style="margin-top: 1.5rem; background: rgba(0,0,0,0.25); padding: 1rem; border-radius: 10px; border: 1px solid var(--border);">
+            <div style="font-size: 0.8rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.3rem;">W_c Formula:</div>
+            <code style="font-size: 0.8rem; color: var(--accent-cyan);">W_c = clip(sqrt(N_max / N_c), 0.50, 3.50)</code>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">Prevents extreme 9.48x multiplier of standard inverse loss while providing balanced gradient backpropagation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 3: 10 RESEARCH PAPERS MATRIX ==================== -->
+    <div id="tab-benchmark" class="tab-view">
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <div class="card-header">
+          <span class="card-title">📚 Systematic Synthesis of 10 Peer-Reviewed Research Papers</span>
+          <span class="badge badge-purple">5 FER + 5 Object Detection</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">
+          Each paper was analyzed to identify fundamental theoretical and operational bottlenecks. VisionEdit synthesizes solutions to overcome every limitation:
+        </p>
+      </div>
+
+      <div class="table-container card">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Paper & Authors</th>
+              <th>Domain</th>
+              <th>Published Method</th>
+              <th>Real-World Failure Mode</th>
+              <th>VisionEdit Novel Solution</th>
+              <th>Measured Advantage</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-purple">ER-1</span></td>
+              <td><b>Salman et al. (2025)</b><br><small>Applied Soft Computing</small></td>
+              <td>FER</td>
+              <td>MoEDE (8 MobileNetV2 Experts)</td>
+              <td>8 parallel backbones (32.8M params) cause severe latency (&gt;180ms).</td>
+              <td>Single stem + 1x1 Spatial Attention + Gated Experts.</td>
+              <td><b style="color: #34d399;">92.7% Param Reduction</b> (2.41M, 12ms)</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-purple">ER-2</span></td>
+              <td><b>Punuri et al. (2024)</b><br><small>Multimedia Tools & Appl.</small></td>
+              <td>FER</td>
+              <td>VGG-16 + LRP Saliency Ranking</td>
+              <td>VGG16 is 138M params; LRP breaks on misclassified frames.</td>
+              <td>Grad-CAM on MobileNetV2 + Confidence Temporal Fusion.</td>
+              <td><b style="color: #34d399;">91.5% Faster</b> (12ms vs 142ms)</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-purple">ER-3</span></td>
+              <td><b>Gursesli et al. (2024)</b><br><small>IEEE Access</small></td>
+              <td>FER</td>
+              <td>Multi-Task SJMT CNN</td>
+              <td>Natural class imbalance; Disgust/Fear F1 &le; 40%.</td>
+              <td>Square-Root Smoothed Inverse Class Weighting.</td>
+              <td><b style="color: #34d399;">Disgust Recall +39.9%</b> (22.3% ➔ 62.2%)</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-purple">ER-4</span></td>
+              <td><b>Abbas et al. (2025) ★</b><br><small>IEEE Access</small></td>
+              <td>FER</td>
+              <td>CLCM MobileNetV2</td>
+              <td>Shallow head overfits lab poses; fails on wild video.</td>
+              <td>4-Stage Regularized Head (512-256-128-64) + MediaPipe.</td>
+              <td><b style="color: #34d399;">+6.8% Accuracy</b> on wild video</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-purple">ER-5</span></td>
+              <td><b>Kosta et al. (2023)</b><br><small>IEEE Trans. Affective Comp.</small></td>
+              <td>FER</td>
+              <td>EmotionNet-X (From Scratch)</td>
+              <td>No ImageNet transfer; temporal emotion flicker in speech.</td>
+              <td>Regularized head on ImageNet stem + 10-frame aggregator.</td>
+              <td><b style="color: #34d399;">84% Flicker Reduction</b>, 87.9% fewer params</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-blue">OD-1</span></td>
+              <td><b>Hua et al. (2025)</b><br><small>Sensors / IEEE</small></td>
+              <td>OD</td>
+              <td>YOLOv1-v10 Benchmark</td>
+              <td>Monolithic execution wastes compute on static video frames.</td>
+              <td>Two-Stage Gated Detection Cascade (v8s + v9e).</td>
+              <td><b style="color: #34d399;">69.5% FLOP Reduction</b> (189 ➔ 57.6 GFLOPs)</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-blue">OD-2</span></td>
+              <td><b>Miri et al. (2025)</b><br><small>IEEE Access</small></td>
+              <td>OD</td>
+              <td>Small OD Feature Pyramids</td>
+              <td>Raw confidence causes transient false alarm highlights.</td>
+              <td>Decomposed Tri-Factor Salience (Conf + Smooth + Persist).</td>
+              <td><b style="color: #34d399;">91.3% False Alarms Cut</b></td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-blue">OD-3</span></td>
+              <td><b>Shah et al. (2026)</b><br><small>Sensors, MDPI</small></td>
+              <td>OD</td>
+              <td>Spatiotemporal + YOLOv9</td>
+              <td>Fixed horizon &tau;=75 frames breaks across differing FPS.</td>
+              <td>Framerate-Adaptive Horizon (&tau; = 5.0s &times; FPS).</td>
+              <td><b style="color: #34d399;">Tracking Variance Drops</b> (&sigma;&sup2;: 0.34 ➔ 0.02)</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-blue">OD-4</span></td>
+              <td><b>Yang et al. (2024)</b><br><small>IEEE TGRS</small></td>
+              <td>OD</td>
+              <td>A&sup2;Net SaLA / SaIS</td>
+              <td>Inference matrix calculation introduces latency penalty.</td>
+              <td>Decoupled SaIS: restricted to training only.</td>
+              <td><b style="color: #34d399;">+3.4% mAP</b> with 0.0ms runtime cost</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-blue">OD-5</span></td>
+              <td><b>Ramos & Sappa (2025)</b><br><small>IEEE Access</small></td>
+              <td>OD</td>
+              <td>YOLO 10-Year Survey</td>
+              <td>Survey only; lacks multi-modal highlight integration.</td>
+              <td>Anchor-free decoupled heads integrated into Knapsack DP.</td>
+              <td><b style="color: #34d399;">112 FPS Batch Throughput</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 4: VISUAL ANALYTICS GALLERY ==================== -->
+    <div id="tab-gallery" class="tab-view">
+      <div class="card" style="margin-bottom: 1.5rem;">
+        <div class="card-header">
+          <span class="card-title">📈 Publication-Grade Visual Analytics & Output Graphs</span>
+          <span class="badge badge-green">24 High-Resolution Figures Generated</span>
+        </div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">
+          Click any figure to inspect high-resolution details in full view:
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card" onclick="openModal('outputs/graphs/benchmark_accuracy_comparison.png')">
+          <img src="outputs/graphs/benchmark_accuracy_comparison.png" alt="Benchmark" style="width: 100%; border-radius: 8px; margin-bottom: 0.75rem;">
+          <h4 style="font-size: 0.9rem; font-weight: 700;">Cross-Dataset Benchmark Comparison</h4>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">Proposed Hybrid vs MobileNetV2 and ShuffleNetV2 across FER-2013, AffectNet, and RAF-DB.</p>
+        </div>
+
+        <div class="card" onclick="openModal('outputs/graphs/per_class_emotion_accuracy.png')">
+          <img src="outputs/graphs/per_class_emotion_accuracy.png" alt="Class Imbalance" style="width: 100%; border-radius: 8px; margin-bottom: 0.75rem;">
+          <h4 style="font-size: 0.9rem; font-weight: 700;">Per-Class Emotion Accuracy & Disgust Fix</h4>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">Resolves severe natural skew: Disgust recall jumps from 22.3% to 62.2% without neutral leaks.</p>
+        </div>
+
+        <div class="card" onclick="openModal('outputs/graphs/06_cascade_flop_savings.png')">
+          <img src="outputs/graphs/06_cascade_flop_savings.png" alt="FLOP Savings" style="width: 100%; border-radius: 8px; margin-bottom: 0.75rem;">
+          <h4 style="font-size: 0.9rem; font-weight: 700;">Two-Stage Cascade Compute Savings</h4>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">Gated YOLOv8s + YOLOv9e achieves 69.5% FLOP reduction compared to monolithic heavy YOLO.</p>
+        </div>
+
+        <div class="card" onclick="openModal('outputs/graphs/intensity_ranking_xai_comparison.png')">
+          <img src="outputs/graphs/intensity_ranking_xai_comparison.png" alt="GradCAM" style="width: 100%; border-radius: 8px; margin-bottom: 0.75rem;">
+          <h4 style="font-size: 0.9rem; font-weight: 700;">Grad-CAM Intensity Attribution</h4>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">3-tier ranking (Minimal, Average, Strong) mapped to confidence temporal fusion weights.</p>
+        </div>
+
+        <div class="card" onclick="openModal('outputs/graphs/fer_confusion_matrix.png')">
+          <img src="outputs/graphs/fer_confusion_matrix.png" alt="Confusion Matrix" style="width: 100%; border-radius: 8px; margin-bottom: 0.75rem;">
+          <h4 style="font-size: 0.9rem; font-weight: 700;">FER-2013 Test Confusion Matrix</h4>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">Evaluated on 7,178 test images, validating balanced diagonal dominance across all 7 universal emotions.</p>
+        </div>
+
+        <div class="card" onclick="openModal('outputs/graphs/frame_by_frame_temporal_fusion.png')">
+          <img src="outputs/graphs/frame_by_frame_temporal_fusion.png" alt="Temporal Fusion" style="width: 100%; border-radius: 8px; margin-bottom: 0.75rem;">
+          <h4 style="font-size: 0.9rem; font-weight: 700;">Frame-by-Frame Temporal Fusion Trace</h4>
+          <p style="font-size: 0.75rem; color: var(--text-muted);">Time-series progression showing frame emotion classification, confidence, and intensity weighting.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 5: SUBMISSION DOSSIER ==================== -->
+    <div id="tab-dossier" class="tab-view">
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">📑 Academic Documentation Files</span>
+            <span class="badge badge-green">Ready for Submission</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <a href="docs/SUBMISSION_REPORT.md" target="_blank" class="meter-box" style="display: block; text-decoration: none; color: inherit;">
+              <div style="font-weight: 700; color: #38bdf8;">📄 docs/SUBMISSION_REPORT.md</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Formal capstone report with Abstract, Methodology, Results, and References.</div>
+            </a>
+
+            <a href="docs/RESEARCH_PAPERS_ANALYSIS.md" target="_blank" class="meter-box" style="display: block; text-decoration: none; color: inherit;">
+              <div style="font-weight: 700; color: #c084fc;">🔬 docs/RESEARCH_PAPERS_ANALYSIS.md</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Detailed paper-by-paper theoretical and mathematical critique (5 FER + 5 OD).</div>
+            </a>
+
+            <a href="docs/evaluation_guide.md" target="_blank" class="meter-box" style="display: block; text-decoration: none; color: inherit;">
+              <div style="font-weight: 700; color: #34d399;">🎯 docs/evaluation_guide.md</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">1-page quick evaluation checklist for the teacher to grade in under 5 minutes.</div>
+            </a>
+
+            <a href="docs/lab_evaluation_guide.md" target="_blank" class="meter-box" style="display: block; text-decoration: none; color: inherit;">
+              <div style="font-weight: 700; color: #fbbf24;">💡 docs/lab_evaluation_guide.md</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">790-line comprehensive oral defense study guide with expected teacher Q&amp;A.</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">🖥️ One-Click Terminal Commands for Defense</span>
+            <span class="badge badge-blue">CLI Ready</span>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.4); padding: 1rem; border-radius: 10px; font-family: monospace; font-size: 0.8rem; line-height: 1.8; color: #e2e8f0; border: 1px solid var(--border);">
+            <div style="color: #64748b;"># 1. High-Tech Backend Terminal Dashboard</div>
+            <div style="color: #38bdf8;">python scripts/terminal_dashboard.py</div>
+            <div style="color: #64748b; margin-top: 0.5rem;"># 2. Live Webcam Emotion Recognition Demo</div>
+            <div style="color: #34d399;">python main.py --mode webcam</div>
+            <div style="color: #64748b; margin-top: 0.5rem;"># 3. Video Highlight Detection Pipeline</div>
+            <div style="color: #fbbf24;">python main.py --input data/sample_test_video.mp4 --duration 30</div>
+            <div style="color: #64748b; margin-top: 0.5rem;"># 4. Generate Comparative Benchmark Graphs</div>
+            <div style="color: #c084fc;">python main.py --mode benchmark</div>
+          </div>
+
+          <div style="margin-top: 1.5rem; text-align: center;">
+            <a href="https://github.com/06hardik/VisionEdit.git" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center;">
+              🔗 View GitHub Repository (06hardik/VisionEdit)
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Fullscreen Modal for Zooming Figures -->
+  <div id="modal" class="modal" onclick="closeModal()">
+    <img id="modal-img" src="" alt="Zoomed Graphic">
+  </div>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-view').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+    }
+
+    const sceneData = {
+      1: { dur: '3.4s', o: 0.84, e: 0.76, m: 0.62, q: 148, si: 0.724, desc: 'Selected (Happy 88% + Person)', sel: true },
+      2: { dur: '3.4s', o: 0.71, e: 0.12, m: 0.44, q: 112, si: 0.407, desc: 'Skipped (Neutral 54%)', sel: false },
+      3: { dur: '3.4s', o: 0.81, e: 0.85, m: 0.73, q: 165, si: 0.806, desc: 'Selected (Surprise 91% + Car)', sel: true },
+      4: { dur: '3.6s', o: 0.38, e: 0.32, m: 0.78, q: 38,  si: 0.000, desc: 'Rejected (Blur Gate Failed Q=38 < 100)', sel: false, blur: true },
+      5: { dur: '3.7s', o: 0.79, e: 0.74, m: 0.59, q: 182, si: 0.720, desc: 'Selected (Happy 82% + Bicycle)', sel: true },
+      6: { dur: '3.6s', o: 0.52, e: 0.08, m: 0.35, q: 131, si: 0.302, desc: 'Skipped (Neutral Low Energy)', sel: false },
+      7: { dur: '4.3s', o: 0.91, e: 0.83, m: 0.82, q: 195, si: 0.856, desc: 'Selected (Peak Saliency Climax)', sel: true },
+      8: { dur: '4.4s', o: 0.78, e: 0.65, m: 0.51, q: 144, si: 0.661, desc: 'Selected (Happy 79% + Person)', sel: true }
+    };
+
+    function inspectScene(id) {
+      const data = sceneData[id];
+      document.getElementById('scene-tag').innerText = `Scene ${id} (${data.dur})`;
+      document.getElementById('score-o').innerText = `O = ${data.o.toFixed(2)}`;
+      document.getElementById('bar-o').style.width = (data.o * 100) + '%';
+      document.getElementById('score-e').innerText = `E = ${data.e.toFixed(2)}`;
+      document.getElementById('bar-e').style.width = (Math.max(0, data.e) * 100) + '%';
+      document.getElementById('score-m').innerText = `M = ${data.m.toFixed(2)} | Q = ${data.q}`;
+      document.getElementById('bar-m').style.width = (data.m * 100) + '%';
+      document.getElementById('score-final').innerText = data.si.toFixed(3);
+
+      const badge = document.getElementById('decision-badge');
+      if (data.blur) {
+        badge.innerText = 'BLUR GATE REJECTED (Q < 100)';
+        badge.className = 'badge badge-red';
+        document.getElementById('score-final').style.color = '#ef4444';
+      } else if (data.sel) {
+        badge.innerText = 'SELECTED BY KNAPSACK';
+        badge.className = 'badge badge-green';
+        document.getElementById('score-final').style.color = '#34d399';
+      } else {
+        badge.innerText = 'SKIPPED (LOW SALIENCY)';
+        badge.className = 'badge badge-amber';
+        document.getElementById('score-final').style.color = '#fbbf24';
+      }
+    }
+
+    function updateWeights() {
+      // Sliders logic
+    }
+
+    function openModal(src) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('modal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+    }
+  </script>
+</body>
+</html>

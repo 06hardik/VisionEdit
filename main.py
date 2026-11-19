@@ -66,7 +66,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--mode", "-m",
         default="pipeline",
-        choices=["pipeline", "webcam", "emotion-video", "predict-image", "train-fer", "benchmark", "presentation"],
+        choices=["pipeline", "webcam", "emotion-video", "predict-image", "train-fer", "benchmark", "presentation", "terminal"],
         help="Execution mode (default: pipeline).",
     )
 
@@ -265,6 +265,11 @@ def main() -> int:
     elif args.mode == "presentation":
         from scripts.build_presentation import main as pres_main
         pres_main()
+        return 0
+
+    elif args.mode == "terminal":
+        from scripts.terminal_dashboard import main as term_main
+        term_main()
         return 0
 
     else:
